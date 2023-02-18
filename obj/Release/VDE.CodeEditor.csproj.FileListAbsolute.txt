@@ -1,9 +1,0 @@
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\bin\Release\VDE.CodeEditor.dll
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\bin\Release\VDE.CodeEditor.pdb
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\obj\Release\VCodeEditor.Resource.resources
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\obj\Release\VCodeEditor.StyleRes.resources
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\obj\Release\VDE.CodeEditor.csproj.GenerateResource.cache
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\obj\Release\VDE.CodeEditor.csproj.CoreCompileInputs.cache
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\obj\Release\VDE.CodeEditor.dll
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\obj\Release\VDE.CodeEditor.pdb
-C:\Users\Administrator\Desktop\DcvStudio\DcvStudio\VDE Solution\Libraries\VDE.CodeEditor\obj\Release\VDE.CodeEditor.csproj.AssemblyReference.cache
