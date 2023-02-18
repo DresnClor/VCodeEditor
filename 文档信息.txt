@@ -1,0 +1,88 @@
+﻿
+*.vsl
+
+xshd文件：
+<> 表示元素名
+[] 表示节点属性名
+'' 表示元素或子元素成员，以缩进作为层级
+
+
+<Color>元素属性:高亮颜色样式
+	[name]颜色名称 V='true或false'
+	[bold]字体粗体 V='true或false'
+	[italic]字体斜体 V='true或false'
+	[color]前景颜色 使用'SystemColors.'开头为系统颜色，#开头为十六进制颜色，否则为'System.Drawing.Color'下的成员
+	[bgcolor]背景颜色 同[color]
+
+<Delimiters>元素:操作符号
+	V='符号文本' 该值将在代码中解析为符号
+
+<Span>元素:区块规则
+	[name]规则名称
+	[rule]绑定区块的'RuleSet'元素名称
+	[bold]字体粗体 V='true或false'
+	[italic]字体斜体 V='true或false'
+	[color]前景颜色
+	[bgcolor]背景颜色
+	[stopateol]解析到行结束符后停止 V='true或false'
+	[noescapesequences]忽略转义序列 V='true或false'
+	<Begin>开始符号
+	<End>结束符号
+
+<MarkPrevious>元素:标记上一个
+	[bold]字体粗体 V='true或false'
+	[italic]字体斜体 V='true或false'
+	[color]前景颜色 使用'SystemColors.'开头为系统颜色，#开头为十六进制颜色，否则为'System.Drawing.Color'下的成员
+	[bgcolor]背景颜色 同[color]
+	V='标记'
+
+<KeyWords>元素:关键字列表
+	[name]关键字名称
+	[bold]字体粗体 V='true或false'
+	[italic]字体斜体 V='true或false'
+	[color]前景颜色 使用'SystemColors.'开头为系统颜色，#开头为十六进制颜色，否则为'System.Drawing.Color'下的成员
+	[bgcolor]背景颜色 同[color]
+	<Key>元素:关键字信息
+		[word]关键字内容
+	//子节点为<Key>列表
+
+'Colors'节点子节点选项
+	<Color>元素定义列表
+
+'Environment'节点子节点选项
+	'Default'默认<Color>元素
+	'Selection'选择
+	'VRuler'垂直|水平标尺
+	'InvalidLines'无效行
+	'CaretMarker'插入点标记
+	'LineNumbers'行号
+	'FoldLine'折叠行
+	'FoldMarker'折叠标记
+	'SelectedFoldLine'选中折叠行
+	'EOLMarkers'行结束符
+	'SpaceMarkers'空格标记
+	'TabMarkers'Tab制表符标记
+	
+'Properties'节点子节点选项
+	'LineComment'行注释 Value='行注释开头文本'
+	'DrawBracketColor'绘制匹配括号 V='Colors节点内定义的颜色名称，选择color颜色'
+	'DrawBracketRectang'是否绘制匹配括号边框 V='true或false，选择DrawBracketColor的bgcolor颜色'
+	'' V=''
+
+'Digits'节点选项
+	数字样式 <Color>元素
+
+'RuleSets'节点子节点选项
+	R='RuleSet'节点列表
+
+'RuleSet'节点子节点选项
+	[name]规则名称，不指定则为null 同时作为系统默认规则，一个xshd文件只能存在一个默认规则
+	[ignorecase]忽略大小写 V='true或false'
+	[reference]引用外部风格集名称
+	R=<Delimiters>
+	R=<Span>
+	R=<MarkPrevious>
+	R=<KeyWords>
+	R=<>
+
+

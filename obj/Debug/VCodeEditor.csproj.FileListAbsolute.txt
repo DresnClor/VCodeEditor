@@ -1,0 +1,9 @@
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\bin\Debug\VCodeEditor.dll
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\bin\Debug\VCodeEditor.pdb
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.csproj.AssemblyReference.cache
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.Resource.resources
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.StyleRes.resources
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.csproj.GenerateResource.cache
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.csproj.CoreCompileInputs.cache
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.dll
+E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.pdb

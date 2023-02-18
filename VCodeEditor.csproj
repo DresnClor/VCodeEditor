@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F45382F3-5BCB-494D-94DD-4360D34F3870}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>VCodeEditor</RootNamespace>
+    <AssemblyName>VCodeEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Community|AnyCPU'">
+    <OutputPath>bin\Community\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Professional|AnyCPU'">
+    <OutputPath>bin\Professional\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ultimate|AnyCPU'">
+    <OutputPath>bin\Ultimate\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Community|x64'">
+    <OutputPath>bin\x64\Community\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Professional|x64'">
+    <OutputPath>bin\x64\Professional\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ultimate|x64'">
+    <OutputPath>bin\x64\Ultimate\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Community|x86'">
+    <OutputPath>bin\x86\Community\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Professional|x86'">
+    <OutputPath>bin\x86\Professional\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Ultimate|x86'">
+    <OutputPath>bin\x86\Ultimate\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ASPX.xshd" />
+    <EmbeddedResource Include="Resources\BAT-Mode.xshd" />
+    <EmbeddedResource Include="Resources\Boo.xshd" />
+    <EmbeddedResource Include="Resources\Coco-Mode.xshd" />
+    <EmbeddedResource Include="Resources\CPP-Mode.xshd" />
+    <EmbeddedResource Include="Resources\CSharp-Mode.xshd" />
+    <EmbeddedResource Include="Resources\HTML-Mode.xshd" />
+    <None Include="Resources\ICSharpCode.TextEditor.snk" />
+    <EmbeddedResource Include="Resources\Java-Mode.xshd" />
+    <EmbeddedResource Include="Resources\JavaScript-Mode.xshd" />
+    <EmbeddedResource Include="Resources\Mode.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\PHP-Mode.xshd" />
+    <EmbeddedResource Include="Resources\Tex-Mode.xshd" />
+    <EmbeddedResource Include="Resources\VBNET-Mode.xshd" />
+    <EmbeddedResource Include="Resources\XML-Mode.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StyleRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StyleRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Actions\BookmarkActions.cs" />
+    <Compile Include="Actions\CaretActions.cs" />
+    <Compile Include="Actions\ClipBoardActions.cs" />
+    <Compile Include="Actions\FoldActions.cs" />
+    <Compile Include="Actions\FormatActions.cs" />
+    <Compile Include="Actions\HomeEndActions.cs" />
+    <Compile Include="Actions\IEditAction.cs" />
+    <Compile Include="Actions\MiscActions.cs" />
+    <Compile Include="Actions\SelectionActions.cs" />
+    <Compile Include="Document\AbstractSegment.cs" />
+    <Compile Include="Document\BookmarkManager\Bookmark.cs" />
+    <Compile Include="Document\BookmarkManager\BookmarkEventHandler.cs" />
+    <Compile Include="Document\BookmarkManager\BookmarkManager.cs" />
+    <Compile Include="Document\BookmarkManager\BookmarkManagerMemento.cs" />
+    <Compile Include="Document\CustomLineManager\CustomLineManager.cs" />
+    <Compile Include="Document\CustomLineManager\ICustomLineManager.cs" />
+    <Compile Include="Document\DefaultDocument.cs" />
+    <Compile Include="Document\DefaultTextEditorProperties.cs" />
+    <Compile Include="Document\DocumentEventArgs.cs" />
+    <Compile Include="Document\DocumentFactory.cs" />
+    <Compile Include="Document\FoldingStrategy\FoldingManager.cs" />
+    <Compile Include="Document\FoldingStrategy\FoldMarker.cs" />
+    <Compile Include="Document\FoldingStrategy\IFoldingStrategy.cs" />
+    <Compile Include="Document\FoldingStrategy\IndentFoldingStrategy.cs" />
+    <Compile Include="Document\FormattingStrategy\DefaultFormattingStrategy.cs" />
+    <Compile Include="Document\FormattingStrategy\IFormattingStrategy.cs" />
+    <Compile Include="Document\HLStrategy\DefaultHLStrategy.cs" />
+    <Compile Include="Document\HLStrategy\FileHLStrategy.cs" />
+    <Compile Include="Document\HLStrategy\FontContainer.cs" />
+    <Compile Include="Document\HLStrategy\HighlightColor.cs" />
+    <Compile Include="Document\HLStrategy\HighlightInfo.cs" />
+    <Compile Include="Document\HLStrategy\HLBackground.cs" />
+    <Compile Include="Document\HLStrategy\HLColorNotFoundException.cs" />
+    <Compile Include="Document\HLStrategy\HLDefineParser.cs" />
+    <Compile Include="Document\HLStrategy\HLManager.cs" />
+    <Compile Include="Document\HLStrategy\HLRuleSet.cs" />
+    <Compile Include="Document\HLStrategy\HLStrategyFactory.cs" />
+    <Compile Include="Document\HLStrategy\IHLStrategy.cs" />
+    <Compile Include="Document\HLStrategy\KwCategory.cs" />
+    <Compile Include="Document\HLStrategy\NextMarker.cs" />
+    <Compile Include="Document\HLStrategy\PrevMarker.cs" />
+    <Compile Include="Document\HLStrategy\Span.cs" />
+    <Compile Include="Document\HLStrategy\SyntaxModes\FileSyntaxModeProvider.cs" />
+    <Compile Include="Document\HLStrategy\SyntaxModes\ISyntaxModeFileProvider.cs" />
+    <Compile Include="Document\HLStrategy\SyntaxModes\ResourceSyntaxModeProvider.cs" />
+    <Compile Include="Document\HLStrategy\SyntaxModes\SyntaxMode.cs" />
+    <Compile Include="Document\HLStrategy\TextWord.cs" />
+    <Compile Include="Document\IDocument.cs" />
+    <Compile Include="Document\ISegment.cs" />
+    <Compile Include="Document\ITextEditorProperties.cs" />
+    <Compile Include="Document\LineManager\DefaultLineManager.cs" />
+    <Compile Include="Document\LineManager\ILineManager.cs" />
+    <Compile Include="Document\LineManager\LineManagerEventArgs.cs" />
+    <Compile Include="Document\LineManager\LineSegment.cs" />
+    <Compile Include="Document\MarkerStrategy\MarkerStrategy.cs" />
+    <Compile Include="Document\MarkerStrategy\TextMarker.cs" />
+    <Compile Include="Document\Selection\ColumnRange.cs" />
+    <Compile Include="Document\Selection\DefaultSelection.cs" />
+    <Compile Include="Document\Selection\ISelection.cs" />
+    <Compile Include="Document\Selection\SelectionManager.cs" />
+    <Compile Include="Document\TextBufferStrategy\GapTextBufferStrategy.cs" />
+    <Compile Include="Document\TextBufferStrategy\ITextBufferStrategy.cs" />
+    <Compile Include="Document\TextBufferStrategy\PieceTableTextBufferStrategy.cs" />
+    <Compile Include="Document\TextBufferStrategy\StringTextBufferStrategy.cs" />
+    <Compile Include="Document\TextUtilities.cs" />
+    <Compile Include="DresnClor\EditAction.cs" />
+    <Compile Include="DresnClor\IEditorExtsable.cs" />
+    <Compile Include="Gui\AbstractMargin.cs" />
+    <Compile Include="Gui\BracketHighlighter.cs" />
+    <Compile Include="Gui\BrushRegistry.cs" />
+    <Compile Include="Gui\Caret.cs" />
+    <Compile Include="Gui\CompletionWindow\AbstCompleWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\CompletionWindow\CodeCompleListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\CompletionWindow\CodeCompletionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\CompletionWindow\DeclarationViewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\CompletionWindow\ICompletionData.cs" />
+    <Compile Include="Gui\CompletionWindow\ICompletionDataProvider.cs" />
+    <Compile Include="Gui\DrawableLine.cs" />
+    <Compile Include="Gui\FoldMargin.cs" />
+    <Compile Include="Gui\GutterMargin.cs" />
+    <Compile Include="Gui\HRuler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\IconBarMargin.cs" />
+    <Compile Include="Gui\Ime.cs" />
+    <Compile Include="Gui\InsightWindow\IInsightDataProvider.cs" />
+    <Compile Include="Gui\InsightWindow\InsightWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gui\TextArea.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gui\TextAreaClipboardHandler.cs" />
+    <Compile Include="Gui\TextAreaControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Gui\TextAreaDragDropHandler.cs" />
+    <Compile Include="Gui\TextAreaMouseHandler.cs" />
+    <Compile Include="Gui\TextAreaUpdate.cs" />
+    <Compile Include="Gui\TextEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\TextEditorControlBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\TextView.cs" />
+    <Compile Include="Gui\ToolTipRequestEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StyleRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StyleRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tips\ITipsable.cs" />
+    <Compile Include="Undo\IUndoableOperation.cs" />
+    <Compile Include="Undo\UndoableDelete.cs" />
+    <Compile Include="Undo\UndoableInsert.cs" />
+    <Compile Include="Undo\UndoableReplace.cs" />
+    <Compile Include="Undo\UndoQueue.cs" />
+    <Compile Include="Undo\UndoStack.cs" />
+    <Compile Include="Util\FileReader.cs" />
+    <Compile Include="Util\LookupTable.cs" />
+    <Compile Include="Util\RtfWriter.cs" />
+    <Compile Include="Util\TextUtility.cs" />
+    <Compile Include="Util\TipPainter.cs" />
+    <Compile Include="Util\TipPainterTools.cs" />
+    <Compile Include="Util\TipSection.cs" />
+    <Compile Include="Util\TipSpacer.cs" />
+    <Compile Include="Util\TipSplitter.cs" />
+    <Compile Include="Util\TipText.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="文档信息.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Bookmark.png" />
+    <Content Include="Resources\BookmarkHorizontal.png" />
+    <Content Include="Resources\BreakPoint.png" />
+    <Content Include="Resources\Class.png" />
+    <Content Include="Resources\ClassIcon.png" />
+    <Content Include="Resources\Class_Private.png" />
+    <Content Include="Resources\Class_Protected.png" />
+    <Content Include="Resources\Class_Public.png" />
+    <Content Include="Resources\Clearallrequests.png" />
+    <Content Include="Resources\CodeError.png" />
+    <Content Include="Resources\Const.png" />
+    <Content Include="Resources\Const_Private.png" />
+    <Content Include="Resources\Const_Protected.png" />
+    <Content Include="Resources\Const_Public.png" />
+    <Content Include="Resources\Copy.png" />
+    <Content Include="Resources\Cut.png" />
+    <Content Include="Resources\Enum.png" />
+    <Content Include="Resources\Enum_Private.png" />
+    <Content Include="Resources\Enum_Protected.png" />
+    <Content Include="Resources\Enum_Public.png" />
+    <Content Include="Resources\Event.png" />
+    <Content Include="Resources\Event_Private.png" />
+    <Content Include="Resources\Event_Protected.png" />
+    <Content Include="Resources\Event_Public.png" />
+    <Content Include="Resources\Field.png" />
+    <Content Include="Resources\Field_Private.png" />
+    <Content Include="Resources\Field_Protected.png" />
+    <Content Include="Resources\Field_Public.png" />
+    <Content Include="Resources\FormatWarning.png" />
+    <Content Include="Resources\Function.png" />
+    <Content Include="Resources\Function_Private.png" />
+    <Content Include="Resources\Function_Protect.png" />
+    <Content Include="Resources\Function_Public.png" />
+    <Content Include="Resources\Interface.png" />
+    <Content Include="Resources\Interface_Private.png" />
+    <Content Include="Resources\Interface_Protect.png" />
+    <Content Include="Resources\Interface_Public.png" />
+    <Content Include="Resources\LoadProfilenode.png" />
+    <Content Include="Resources\Module.png" />
+    <Content Include="Resources\Module_Private.png" />
+    <Content Include="Resources\Module_Protected.png" />
+    <Content Include="Resources\Module_Public.png" />
+    <Content Include="Resources\Namespace.png" />
+    <Content Include="Resources\NoEditor.png" />
+    <Content Include="Resources\Package.png" />
+    <Content Include="Resources\PanTool.png" />
+    <Content Include="Resources\Paste.png" />
+    <Content Include="Resources\Pointer.png" />
+    <Content Include="Resources\Property.png" />
+    <Content Include="Resources\Property_Private.png" />
+    <Content Include="Resources\Property_Protected.png" />
+    <Content Include="Resources\Property_Public.png" />
+    <Content Include="Resources\Redo.png" />
+    <Content Include="Resources\Rename.png" />
+    <EmbeddedResource Include="Resources\RightArrow.cur" />
+    <Content Include="Resources\Save.png" />
+    <Content Include="Resources\Struct.png" />
+    <Content Include="Resources\Structure_Protected.png" />
+    <Content Include="Resources\Structure_Public.png" />
+    <Content Include="Resources\Struct_Private.png" />
+    <Content Include="Resources\Sub.png" />
+    <Content Include="Resources\Sub_Private.png" />
+    <Content Include="Resources\Sub_Protected.png" />
+    <Content Include="Resources\Sub_Public.png" />
+    <EmbeddedResource Include="Resources\SyntaxModes.xml" />
+    <Content Include="Resources\TextEditorControl.bmp" />
+    <Content Include="Resources\Undo.png" />
+    <Content Include="Resources\ViewCode.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
