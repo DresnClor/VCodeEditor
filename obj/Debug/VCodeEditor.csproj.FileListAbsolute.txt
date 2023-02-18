@@ -7,3 +7,12 @@ E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.csproj.Gener
 E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.csproj.CoreCompileInputs.cache
 E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.dll
 E:\Project\DcvStudio\Libraries\VDE.CodeEditor\obj\Debug\VCodeEditor.pdb
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\bin\Debug\VCodeEditor.dll
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\bin\Debug\VCodeEditor.pdb
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\obj\Debug\VCodeEditor.csproj.AssemblyReference.cache
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\obj\Debug\VCodeEditor.Resource.resources
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\obj\Debug\VCodeEditor.StyleRes.resources
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\obj\Debug\VCodeEditor.csproj.GenerateResource.cache
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\obj\Debug\VCodeEditor.csproj.CoreCompileInputs.cache
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\obj\Debug\VCodeEditor.dll
+E:\DcvStudio Project Team\DcvStudio IDE\dev\Libraries\VCodeEditor\obj\Debug\VCodeEditor.pdb
