@@ -308,6 +308,7 @@
     <Compile Include="Util\TipSpacer.cs" />
     <Compile Include="Util\TipSplitter.cs" />
     <Compile Include="Util\TipText.cs" />
+    <Compile Include="Util\VslParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="文档信息.txt" />
