@@ -20,7 +20,7 @@ namespace VCodeEditor.Document
 		List<LineSegment> lineCollection = new List<LineSegment>();
 		
 		IDocument document;
-		IHLStrategy highlightingStrategy;
+		IStyleStrategy highlightingStrategy;
 		
 		// 自己跟踪文本的长
 		int textLength;
@@ -50,7 +50,7 @@ namespace VCodeEditor.Document
 		/// <summary>
 		/// 高亮策略
 		/// </summary>
-		public IHLStrategy HighlightingStrategy {
+		public IStyleStrategy HighlightingStrategy {
 			get {
 				return highlightingStrategy;
 			}
@@ -64,7 +64,7 @@ namespace VCodeEditor.Document
 			}
 		}
 		
-		public DefaultLineManager(IDocument document, IHLStrategy highlightingStrategy) 
+		public DefaultLineManager(IDocument document, IStyleStrategy highlightingStrategy) 
 		{
 			this.document = document;
 			this.highlightingStrategy  = highlightingStrategy;

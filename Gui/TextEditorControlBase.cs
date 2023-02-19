@@ -212,7 +212,7 @@ namespace VCodeEditor
         /// 高亮策略
         /// </summary>
         //新加
-        public IHLStrategy HLStrategy
+        public IStyleStrategy HLStrategy
         {
             get => this.document.HighlightingStrategy;
             set => this.document.HighlightingStrategy = value;
@@ -653,7 +653,7 @@ namespace VCodeEditor
         {
             if (Document.HighlightingStrategy != null)
             {
-                Document.HighlightingStrategy = HLStrategyFactory.CreateHLStrategy(Document.HighlightingStrategy.Name);
+                Document.HighlightingStrategy = HighlightStrategyFactory.CreateHLStrategy(Document.HighlightingStrategy.Name);
                 OptionsChanged();
             }
         }
@@ -828,7 +828,7 @@ namespace VCodeEditor
             if (autoLoadHighlighting)
             {
                 document.HighlightingStrategy = 
-                    HLStrategyFactory.CreateHLStrategyForFile(fileName);
+                    HighlightStrategyFactory.CreateHLStrategyForFile(fileName);
             }
 
             if (autodetectEncoding)

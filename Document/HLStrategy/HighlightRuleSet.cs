@@ -20,14 +20,14 @@ namespace VCodeEditor.Document
     /// <summary>
     /// 高亮显示规则集
     /// </summary>
-    public class HLRuleSet
+    public class HighlightRuleSet
     {
         /// <summary>
         /// 直接创建
         /// </summary>
-        public HLRuleSet()
+        public HighlightRuleSet()
         {
-            this.KwCategorys = new Dictionary<string, KwCategory>();
+            this.KwCategorys = new Dictionary<string, KeywordCategory>();
             keyWords = new LookupTable(false);
             prevMarkers = new LookupTable(false);
             nextMarkers = new LookupTable(false);
@@ -37,9 +37,9 @@ namespace VCodeEditor.Document
         /// 从xml元素处创建
         /// </summary>
         /// <param name="el">xml元素</param>
-        public HLRuleSet(XmlElement el)
+        public HighlightRuleSet(XmlElement el)
         {
-            this.KwCategorys = new Dictionary<string, KwCategory>();
+            this.KwCategorys = new Dictionary<string, KeywordCategory>();
             XmlNodeList nodes;
 
             if (el.Attributes["name"] != null)
@@ -89,10 +89,10 @@ namespace VCodeEditor.Document
             nodes = el.GetElementsByTagName("KeyWords");
             foreach (XmlElement el2 in nodes)
             {//关键字
-                HighlightColor color = new HighlightColor(el2);
+                HighlightStyle color = new HighlightStyle(el2);
                 //关键字分组
                 string ca = el2.GetAttribute("name");
-                KwCategory category = new KwCategory(ca, this, color);
+                KeywordCategory category = new KeywordCategory(ca, this, color);
                 XmlNodeList keys = el2.GetElementsByTagName("Key");
                 foreach (XmlElement node in keys)
                 {
@@ -129,7 +129,7 @@ namespace VCodeEditor.Document
         ArrayList spans = new ArrayList();
         LookupTable prevMarkers;
         LookupTable nextMarkers;
-        IHLStrategy highlighter = null;
+        IStyleStrategy highlighter = null;
         bool noEscapeSequences = false;
 
         bool ignoreCase = false;
@@ -153,7 +153,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 引用的外部高亮策略
         /// </summary>
-        internal IHLStrategy Highlighter
+        internal IStyleStrategy Highlighter
         {
             get
             {
@@ -260,7 +260,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 关键字分组
         /// </summary>
-        public Dictionary<string, KwCategory> KwCategorys
+        public Dictionary<string, KeywordCategory> KwCategorys
         {
             get;
         }
@@ -268,7 +268,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 将其他规则集中的span等合并到此规则集中
         /// </summary>
-        public void MergeFrom(HLRuleSet ruleSet)
+        public void MergeFrom(HighlightRuleSet ruleSet)
         {
             for (int i = 0; i < delimiters.Length; i++)
             {

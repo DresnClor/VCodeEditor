@@ -165,7 +165,7 @@ namespace VCodeEditor
             OptionsChanged();
         }
 
-        private IHLStrategy HLStrategy
+        private IStyleStrategy HLStrategy
         {
             get => this.TextArea.Document.HighlightingStrategy;
         }
@@ -383,13 +383,13 @@ namespace VCodeEditor
                 // 线结束后油漆东西
                 ColumnRange selectionRange = textArea.SelectionManager.GetSelectionAtLine(lineNumber);
                 LineSegment currentLine = textArea.Document.GetLineSegment(lineNumber);
-                HighlightColor selectionColor = textArea.Document.HighlightingStrategy.GetColorFor("Selection");
+                HighlightStyle selectionColor = textArea.Document.HighlightingStrategy.GetColorFor("Selection");
 
                 bool selectionBeyondEOL = selectionRange.EndColumn > currentLine.Length || ColumnRange.WholeColumn.Equals(selectionRange);
 
                 if (TextEditorProperties.ShowEOLMarker)
                 {
-                    HighlightColor eolMarkerColor = textArea.Document.HighlightingStrategy.GetColorFor("EOLMarkers");
+                    HighlightStyle eolMarkerColor = textArea.Document.HighlightingStrategy.GetColorFor("EOLMarkers");
                     physicalXPos += DrawEOLMarker(
                         g,
                         eolMarkerColor.Color,
@@ -428,7 +428,7 @@ namespace VCodeEditor
         {
             if (DrawLineMarkerAtLine(lineNumber))
             {
-                HighlightColor caretLine = textArea.Document.HighlightingStrategy.GetColorFor("CaretMarker");
+                HighlightStyle caretLine = textArea.Document.HighlightingStrategy.GetColorFor("CaretMarker");
                 return BrushRegistry.GetBrush(caretLine.Color);
             }
             HLBackground background = (HLBackground)textArea.Document.HighlightingStrategy.GetColorFor("Default");
@@ -443,7 +443,7 @@ namespace VCodeEditor
         float PaintFoldingText(Graphics g, int lineNumber, float physicalXPos, Rectangle lineRectangle, string text, bool drawSelected)
         {
             // TODO: 从突出显示文件获取字体和颜色
-            HighlightColor selectionColor = textArea.Document.HighlightingStrategy.GetColorFor("Selection");
+            HighlightStyle selectionColor = textArea.Document.HighlightingStrategy.GetColorFor("Selection");
             Brush bgColorBrush = drawSelected ? BrushRegistry.GetBrush(selectionColor.BackgroundColor) : GetBgColorBrush(lineNumber);
             Brush backgroundBrush = textArea.Enabled ? bgColorBrush : SystemBrushes.InactiveBorder;
 
@@ -663,10 +663,10 @@ namespace VCodeEditor
             Brush bgColorBrush = GetBgColorBrush(lineNumber);
             Brush backgroundBrush = textArea.Enabled ? bgColorBrush : SystemBrushes.InactiveBorder;
 
-            HighlightColor selectionColor = textArea.Document.HighlightingStrategy.GetColorFor("Selection");
+            HighlightStyle selectionColor = textArea.Document.HighlightingStrategy.GetColorFor("Selection");
             ColumnRange selectionRange = textArea.SelectionManager.GetSelectionAtLine(lineNumber);
-            HighlightColor tabMarkerColor = textArea.Document.HighlightingStrategy.GetColorFor("TabMarkers");
-            HighlightColor spaceMarkerColor = textArea.Document.HighlightingStrategy.GetColorFor("SpaceMarkers");
+            HighlightStyle tabMarkerColor = textArea.Document.HighlightingStrategy.GetColorFor("TabMarkers");
+            HighlightStyle spaceMarkerColor = textArea.Document.HighlightingStrategy.GetColorFor("SpaceMarkers");
 
             LineSegment currentLine = textArea.Document.GetLineSegment(lineNumber);
 
@@ -1484,7 +1484,7 @@ namespace VCodeEditor
             Color r = color;
             if (HLStrategy.Properties.ContainsKey("DrawBracketColor"))
             {
-                HighlightColor hcolor = HLStrategy.GetHLColor(
+                HighlightStyle hcolor = HLStrategy.GetHighlightColor(
                     HLStrategy.Properties["DrawBracketColor"]);
                 color = hcolor.Color;
                 r = hcolor.BackgroundColor;
@@ -1505,7 +1505,7 @@ namespace VCodeEditor
         //Edit:DresnClor
         void DrawInvalidLineMarker(Graphics g, float x, float y)
         {
-            HighlightColor invalidLinesColor =
+            HighlightStyle invalidLinesColor =
                 textArea.Document.HighlightingStrategy.GetColorFor(
                     "InvalidLines");
             g.DrawString(
@@ -1521,7 +1521,7 @@ namespace VCodeEditor
         //Edit:DresnClor
         void DrawSpaceMarker(Graphics g, Color color, float x, float y)
         {
-            HighlightColor spaceMarkerColor =
+            HighlightStyle spaceMarkerColor =
                 textArea.Document.HighlightingStrategy.GetColorFor(
                     "SpaceMarkers");
             //原符号：\u00B7
@@ -1537,7 +1537,7 @@ namespace VCodeEditor
         //Edit:DresnClor
         void DrawTabMarker(Graphics g, Color color, float x, float y)
         {
-            HighlightColor tabMarkerColor =
+            HighlightStyle tabMarkerColor =
                 textArea.Document.HighlightingStrategy.GetColorFor(
                     "TabMarkers");
             //原符号：\u00BB
@@ -1563,7 +1563,7 @@ namespace VCodeEditor
                                 width,
                                 fontHeight));
 
-            HighlightColor eolMarkerColor =
+            HighlightStyle eolMarkerColor =
                 textArea.Document.HighlightingStrategy.GetColorFor(
                     "EOLMarkers");
             g.DrawString(
@@ -1583,7 +1583,7 @@ namespace VCodeEditor
             {
                 return;
             }
-            HighlightColor vRulerColor =
+            HighlightStyle vRulerColor =
                 textArea.Document.HighlightingStrategy.GetColorFor(
                     "VRuler");
 

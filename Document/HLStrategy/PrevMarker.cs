@@ -24,7 +24,7 @@ namespace VCodeEditor.Document
 	public class PrevMarker
 	{
 		string      what;
-		HighlightColor color;
+		HighlightStyle color;
 		bool        markMarker = false;
 		
 		/// <value>
@@ -39,7 +39,7 @@ namespace VCodeEditor.Document
 		/// <value>
 		/// Color for marking previous token
 		/// </value>
-		public HighlightColor Color {
+		public HighlightStyle Color {
 			get {
 				return color;
 			}
@@ -60,7 +60,7 @@ namespace VCodeEditor.Document
 		/// </summary>
 		public PrevMarker(XmlElement mark)
 		{
-			color = new HighlightColor(mark);
+			color = new HighlightStyle(mark);
 			what  = mark.InnerText;
 			if (mark.Attributes["markmarker"] != null) {
 				markMarker = Boolean.Parse(mark.Attributes["markmarker"].InnerText);

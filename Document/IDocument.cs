@@ -69,7 +69,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 高亮策略
         /// </summary>
-        IHLStrategy HighlightingStrategy
+        IStyleStrategy HighlightingStrategy
         {
             get;
             set;

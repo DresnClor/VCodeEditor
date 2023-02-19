@@ -13,6 +13,7 @@ using System.IO;
 
 namespace VCodeEditor.Document
 {
+	[Obsolete]
 	public class ResourceSyntaxModeProvider : ISyntaxModeFileProvider
 	{
 		List<SyntaxMode> syntaxModes = null;

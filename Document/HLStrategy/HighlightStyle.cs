@@ -18,9 +18,9 @@ using System.Xml;
 namespace VCodeEditor.Document
 {
     /// <summary>
-    /// A color used for highlighting 
+    /// 高亮样式
     /// </summary>
-    public class HighlightColor
+    public class HighlightStyle
     {
         bool systemColor = false;
         string systemColorName = null;
@@ -31,11 +31,230 @@ namespace VCodeEditor.Document
         Color color;
         Color backgroundcolor = System.Drawing.Color.WhiteSmoke;
 
+        Font font;
+
         bool bold = false;
         bool italic = false;
         bool hasForgeground = false;
         bool hasBackground = false;
+        /// <summary>
+        /// 从xml元素创建高亮颜色
+        /// </summary>
+        public HighlightStyle(XmlElement el)
+        {
+            Debug.Assert(el != null, "VCodeEditor.Document.SyntaxColor(XmlElement el) : el == null");
+            if (el.Attributes["name"] != null)
+            {//名称
+                this.Name = el.Attributes["name"].InnerText;
+            }
+            else
+            {
+                this.Name = "";
+            }
+            if (el.Attributes["bold"] != null)
+            {//粗体
+                bold = Boolean.Parse(el.Attributes["bold"].InnerText);
+            }
 
+            if (el.Attributes["italic"] != null)
+            {//斜体
+                italic = Boolean.Parse(el.Attributes["italic"].InnerText);
+            }
+
+            if (el.Attributes["color"] != null)
+            {//颜色
+                string c = el.Attributes["color"].InnerText;
+                if (c[0] == '#')
+                {
+                    color = ParseColor(c);
+                }
+                else if (c.StartsWith("SystemColors."))
+                {
+                    systemColor = true;
+                    systemColorName = c.Substring("SystemColors.".Length);
+                }
+                else
+                {
+                    color = (Color)(Color.GetType()).InvokeMember(c, BindingFlags.GetProperty, null, Color, new object[0]);
+                }
+                hasForgeground = true;
+            }
+            else
+            {
+                color = Color.Transparent; // to set it to the default value.
+            }
+
+            if (el.Attributes["bgcolor"] != null)
+            {//背景颜色
+                string c = el.Attributes["bgcolor"].InnerText;
+                if (c[0] == '#')
+                {
+                    backgroundcolor = ParseColor(c);
+                }
+                else if (c.StartsWith("SystemColors."))
+                {
+                    systemBgColor = true;
+                    systemBgColorName = c.Substring("SystemColors.".Length);
+                }
+                else
+                {
+                    backgroundcolor = (Color)(Color.GetType()).InvokeMember(c, BindingFlags.GetProperty, null, Color, new object[0]);
+                }
+                hasBackground = true;
+            }
+        }
+
+        /// <summary>
+        /// 从xml元素创建高亮颜色，如果xml元素未指定，则使用默认
+        /// </summary>
+        public HighlightStyle(XmlElement el, HighlightStyle defaultColor)
+        {
+            Debug.Assert(el != null, "VCodeEditor.Document.SyntaxColor(XmlElement el) : el == null");
+            if (el.Attributes["name"] != null)
+            {//名称
+                this.Name = el.Attributes["name"].InnerText;
+            }
+            else
+            {
+                this.Name = "";
+            }
+            if (el.Attributes["bold"] != null)
+            {
+                bold = Boolean.Parse(el.Attributes["bold"].InnerText);
+            }
+            else
+            {
+                bold = defaultColor.Bold;
+            }
+
+            if (el.Attributes["italic"] != null)
+            {
+                italic = Boolean.Parse(el.Attributes["italic"].InnerText);
+            }
+            else
+            {
+                italic = defaultColor.Italic;
+            }
+
+            if (el.Attributes["font"] != null)
+            {
+                string[] descr = el.Attributes["font"].InnerText.Split(new char[] { ',', '=' });
+                if (descr.Length == 4)
+                {
+                    FontStyle fontStyle = FontStyle.Regular;
+                    if (bold)
+                        fontStyle = (FontStyle)fontStyle | FontStyle.Bold;
+                    if (italic)
+                        fontStyle = (FontStyle)fontStyle | FontStyle.Italic;
+                    FontFamily fontFamily;
+                    if (descr[0] == "Ref")
+                    {
+                        fontFamily = FontContainer.GetPrivateFont(descr[1]);
+                    }
+                    else
+                    {
+                        fontFamily = new FontFamily(descr[1]);
+                    }
+                    if (fontFamily != null)
+                        if (fontFamily.IsStyleAvailable(fontStyle))
+                            font = new Font(fontFamily, float.Parse(descr[3]), fontStyle);
+                }
+            }
+
+            if (el.Attributes["color"] != null)
+            {
+                string c = el.Attributes["color"].InnerText;
+                if (c[0] == '#')
+                {
+                    color = ParseColor(c);
+                }
+                else if (c.StartsWith("SystemColors."))
+                {
+                    systemColor = true;
+                    systemColorName = c.Substring("SystemColors.".Length);
+                }
+                else
+                {
+                    color = (Color)(Color.GetType()).InvokeMember(
+                        c,
+                        BindingFlags.GetProperty,
+                        null,
+                        Color,
+                        new object[0]);
+                }
+                hasForgeground = true;
+            }
+            else
+            {
+                color = defaultColor.color;
+            }
+
+            if (el.Attributes["bgcolor"] != null)
+            {
+                string c = el.Attributes["bgcolor"].InnerText;
+                if (c[0] == '#')
+                {
+                    backgroundcolor = ParseColor(c);
+                }
+                else if (c.StartsWith("SystemColors."))
+                {
+                    systemBgColor = true;
+                    systemBgColorName = c.Substring("SystemColors.".Length);
+                }
+                else
+                {
+                    backgroundcolor = (Color)(Color.GetType()).InvokeMember(c, BindingFlags.GetProperty, null, Color, new object[0]);
+                }
+                hasBackground = true;
+            }
+            else
+            {
+                backgroundcolor = defaultColor.BackgroundColor;
+            }
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="HighlightStyle"/>
+        /// </summary>
+        public HighlightStyle(Color color, bool bold, bool italic)
+        {
+            hasForgeground = true;
+            this.color = color;
+            this.bold = bold;
+            this.italic = italic;
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="HighlightStyle"/>
+        /// </summary>
+        public HighlightStyle(Color color, Color backgroundcolor, bool bold, bool italic)
+        {
+            hasForgeground = true;
+            hasBackground = true;
+            this.color = color;
+            this.backgroundcolor = backgroundcolor;
+            this.bold = bold;
+            this.italic = italic;
+        }
+
+
+        /// <summary>
+        /// Creates a new instance of <see cref="HighlightStyle"/>
+        /// </summary>
+        public HighlightStyle(string systemColor, string systemBackgroundColor, bool bold, bool italic)
+        {
+            hasForgeground = true;
+            hasBackground = true;
+
+            this.systemColor = true;
+            systemColorName = systemColor;
+
+            systemBgColor = true;
+            systemBgColorName = systemBackgroundColor;
+
+            this.bold = bold;
+            this.italic = italic;
+        }
         public bool HasForgeground
         {
             get
@@ -120,6 +339,8 @@ namespace VCodeEditor.Document
         {
             get
             {
+                if (font != null)
+                    return font;
                 if (Bold)
                 {
                     return Italic ? FontContainer.BoldItalicFont : FontContainer.BoldFont;
@@ -132,8 +353,7 @@ namespace VCodeEditor.Document
         {
             string[] cNames = colorName.Split('*');
             PropertyInfo myPropInfo = typeof(System.Drawing.SystemColors).GetProperty(cNames[0], BindingFlags.Public |
-                                                                                                 BindingFlags.Instance |
-                                                                                                 BindingFlags.Static);
+                                                                                                 BindingFlags.Instance | BindingFlags.Static);
             Color c = (Color)myPropInfo.GetValue(null, null);
 
             if (cNames.Length == 2)
@@ -146,199 +366,7 @@ namespace VCodeEditor.Document
             return c;
         }
 
-        /// <summary>
-        /// 从xml元素创建高亮颜色
-        /// </summary>
-        public HighlightColor(XmlElement el)
-        {
-            Debug.Assert(el != null, "VCodeEditor.Document.SyntaxColor(XmlElement el) : el == null");
-            if (el.Attributes["name"] != null)
-            {//名称
-                this.Name = el.Attributes["name"].InnerText;
-            }
-            else
-            {
-                this.Name = "";
-            }
-            if (el.Attributes["bold"] != null)
-            {//粗体
-                bold = Boolean.Parse(el.Attributes["bold"].InnerText);
-            }
 
-            if (el.Attributes["italic"] != null)
-            {//斜体
-                italic = Boolean.Parse(el.Attributes["italic"].InnerText);
-            }
-
-            if (el.Attributes["color"] != null)
-            {//颜色
-                string c = el.Attributes["color"].InnerText;
-                if (c[0] == '#')
-                {
-                    color = ParseColor(c);
-                }
-                else if (c.StartsWith("SystemColors."))
-                {
-                    systemColor = true;
-                    systemColorName = c.Substring("SystemColors.".Length);
-                }
-                else
-                {
-                    color = (Color)(Color.GetType()).InvokeMember(c, BindingFlags.GetProperty, null, Color, new object[0]);
-                }
-                hasForgeground = true;
-            }
-            else
-            {
-                color = Color.Transparent; // to set it to the default value.
-            }
-
-            if (el.Attributes["bgcolor"] != null)
-            {//背景颜色
-                string c = el.Attributes["bgcolor"].InnerText;
-                if (c[0] == '#')
-                {
-                    backgroundcolor = ParseColor(c);
-                }
-                else if (c.StartsWith("SystemColors."))
-                {
-                    systemBgColor = true;
-                    systemBgColorName = c.Substring("SystemColors.".Length);
-                }
-                else
-                {
-                    backgroundcolor = (Color)(Color.GetType()).InvokeMember(c, BindingFlags.GetProperty, null, Color, new object[0]);
-                }
-                hasBackground = true;
-            }
-        }
-
-        /// <summary>
-        /// 从xml元素创建高亮颜色，如果xml元素未指定，则使用默认
-        /// </summary>
-        public HighlightColor(XmlElement el, HighlightColor defaultColor)
-        {
-            Debug.Assert(el != null, "VCodeEditor.Document.SyntaxColor(XmlElement el) : el == null");
-            if (el.Attributes["name"] != null)
-            {//名称
-                this.Name = el.Attributes["name"].InnerText;
-            }
-            else
-            {
-                this.Name = "";
-            }
-            if (el.Attributes["bold"] != null)
-            {
-                bold = Boolean.Parse(el.Attributes["bold"].InnerText);
-            }
-            else
-            {
-                bold = defaultColor.Bold;
-            }
-
-            if (el.Attributes["italic"] != null)
-            {
-                italic = Boolean.Parse(el.Attributes["italic"].InnerText);
-            }
-            else
-            {
-                italic = defaultColor.Italic;
-            }
-
-            if (el.Attributes["color"] != null)
-            {
-                string c = el.Attributes["color"].InnerText;
-                if (c[0] == '#')
-                {
-                    color = ParseColor(c);
-                }
-                else if (c.StartsWith("SystemColors."))
-                {
-                    systemColor = true;
-                    systemColorName = c.Substring("SystemColors.".Length);
-                }
-                else
-                {
-                    color = (Color)(Color.GetType()).InvokeMember(
-                        c, 
-                        BindingFlags.GetProperty, 
-                        null, 
-                        Color, 
-                        new object[0]);
-                }
-                hasForgeground = true;
-            }
-            else
-            {
-                color = defaultColor.color;
-            }
-
-            if (el.Attributes["bgcolor"] != null)
-            {
-                string c = el.Attributes["bgcolor"].InnerText;
-                if (c[0] == '#')
-                {
-                    backgroundcolor = ParseColor(c);
-                }
-                else if (c.StartsWith("SystemColors."))
-                {
-                    systemBgColor = true;
-                    systemBgColorName = c.Substring("SystemColors.".Length);
-                }
-                else
-                {
-                    backgroundcolor = (Color)(Color.GetType()).InvokeMember(c, BindingFlags.GetProperty, null, Color, new object[0]);
-                }
-                hasBackground = true;
-            }
-            else
-            {
-                backgroundcolor = defaultColor.BackgroundColor;
-            }
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="HighlightColor"/>
-        /// </summary>
-        public HighlightColor(Color color, bool bold, bool italic)
-        {
-            hasForgeground = true;
-            this.color = color;
-            this.bold = bold;
-            this.italic = italic;
-        }
-
-        /// <summary>
-        /// Creates a new instance of <see cref="HighlightColor"/>
-        /// </summary>
-        public HighlightColor(Color color, Color backgroundcolor, bool bold, bool italic)
-        {
-            hasForgeground = true;
-            hasBackground = true;
-            this.color = color;
-            this.backgroundcolor = backgroundcolor;
-            this.bold = bold;
-            this.italic = italic;
-        }
-
-
-        /// <summary>
-        /// Creates a new instance of <see cref="HighlightColor"/>
-        /// </summary>
-        public HighlightColor(string systemColor, string systemBackgroundColor, bool bold, bool italic)
-        {
-            hasForgeground = true;
-            hasBackground = true;
-
-            this.systemColor = true;
-            systemColorName = systemColor;
-
-            systemBgColor = true;
-            systemBgColorName = systemBackgroundColor;
-
-            this.bold = bold;
-            this.italic = italic;
-        }
 
         static Color ParseColor(string c)
         {
@@ -357,11 +385,12 @@ namespace VCodeEditor.Document
         }
 
         /// <summary>
-        /// Converts a <see cref="HighlightColor"/> instance to string (for debug purposes)
+        /// Converts a <see cref="HighlightStyle"/> instance to string (for debug purposes)
         /// </summary>
         public override string ToString()
         {
-            return "[HighlightColor: Bold = " + Bold +
+            return "[HighlightStyle: Name = " + Font.Name +
+                                  ", Bold = " + Bold +
                                   ", Italic = " + Italic +
                                   ", Color = " + Color +
                                   ", BackgroundColor = " + BackgroundColor + "]";

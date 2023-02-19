@@ -3,20 +3,40 @@
 <!-- <Property name="DrawBracketColor" value="绘制匹配括号颜色 ，只能指定内部定义颜色名称 选择前景颜色"/>
 		<Property name="DrawBracketRectang" value="绘制匹配括号边框 由DrawBracketColor指定颜色 选择背景颜色"/> -->
 
-<SyntaxDefinition name = "C#" extensions = ".cs">
-	<Colors>
-		<Color name="Sy" color="#302695EC" bgcolor="#ffff0000" exampleText="；" />
-	</Colors>
-	<Environment>
+<Vsl name = "CSharp" language="C#" extensions = ".cs" Description="syntaxdefinition for C# 2000 by Mike Krueger">
+	<Styles>
+		<Style name="Sy" color="#302695EC" bgcolor="#ffff0000" font="" exampleText="；" />
+	</Styles>
+	<EnvColors>
 		<LineNumbers color="#FF2695EC" />
-	</Environment>
+	</EnvColors>
 	<Properties>
 		<Property name="LineComment" value="//"/>
 		<Property name="DrawBracketColor" value="Sy"/>
 		<Property name="DrawBracketRectang" value="true"/>
 		<Property name="DrawBracket" value="//"/>
+		<Property name="DrawBracket" value="//"/>
+		<Property name="DrawBracket" value="//"/>
+		<Property name="DrawBracket" value="//"/>
+		<Property name="DrawBracket" value="//"/>
+		<Property name="DrawBracket" value="//"/>
+		<Property name="DrawBracket" value="//"/>
 	</Properties>
-	<Digits name = "Digits" bold = "false" italic = "false" color = "DarkBlue"/>
+	<Resources>
+		<!--资源-->
+		<Image name="图片名称" path="路径"/>
+		<Font name="必须与字体内标识名称系统" path=""/>
+		
+	</Resources>
+
+	<Breakpoint>
+		<!--断点样式 正常 禁用 无法命中 -->
+		<Normal image="指定资源图片名称" path="弃用image，选择路径"/>
+		<Disable  image=""/>
+		<UnableToHit image=""/>
+	</Breakpoint>
+	
+	<Digits name = "Digits" font="" bold = "false" italic = "false" color = "DarkBlue"/>
 
 	<RuleSets>
 		<RuleSet ignorecase="false">
@@ -324,4 +344,4 @@
 			</KeyWords>
 		</RuleSet>
 	</RuleSets>
-</SyntaxDefinition>
+</Vsl>

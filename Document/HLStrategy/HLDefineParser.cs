@@ -17,6 +17,7 @@ using System.Reflection;
 
 namespace VCodeEditor.Document
 {
+    [Obsolete]
     internal class HLDefineParser
     {
         private HLDefineParser()
@@ -84,7 +85,7 @@ namespace VCodeEditor.Document
                     {
                         string n = c.Attributes["name"].InnerText;
                         highlighter.Colors.Add(n,
-                            new HighlightColor(c));
+                            new HighlightStyle(c));
                     }
                 }
 
@@ -96,7 +97,7 @@ namespace VCodeEditor.Document
                         if (node is XmlElement)
                         {
                             XmlElement el = (XmlElement)node;
-                            highlighter.SetColorFor(el.Name, el.HasAttribute("bgcolor") ? new HLBackground(el) : new HighlightColor(el));
+                            highlighter.SetColorFor(el.Name, el.HasAttribute("bgcolor") ? new HLBackground(el) : new HighlightStyle(el));
                         }
                     }
                 }
@@ -112,13 +113,13 @@ namespace VCodeEditor.Document
 
                 if (doc.DocumentElement["Digits"] != null)
                 {
-                    highlighter.DigitColor = new HighlightColor(doc.DocumentElement["Digits"]);
+                    highlighter.DigitColor = new HighlightStyle(doc.DocumentElement["Digits"]);
                 }
 
                 XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("RuleSet");
                 foreach (XmlElement element in nodes)
                 {
-                    highlighter.AddRuleSet(new HLRuleSet(element));
+                    highlighter.AddRuleSet(new HighlightRuleSet(element));
                 }
 
                 xmlTextReader.Close();

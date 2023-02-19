@@ -30,9 +30,9 @@ namespace VCodeEditor.Document
 		}
 		
 		/// <value>
-		/// The current <see cref="IHLStrategy"/>连接到此直线经理
+		/// The current <see cref="IStyleStrategy"/>连接到此直线经理
 		/// </value>
-		IHLStrategy HighlightingStrategy {
+		IStyleStrategy HighlightingStrategy {
 			get;
 			set;
 		}

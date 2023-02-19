@@ -24,17 +24,17 @@ namespace VCodeEditor.Document
 	public class Span
 	{
 		bool        stopEOL;
-		HighlightColor color;
-		HighlightColor beginColor = null;
-		HighlightColor endColor = null;
+		HighlightStyle color;
+		HighlightStyle beginColor = null;
+		HighlightStyle endColor = null;
 		char[]      begin = null;
 		char[]      end   = null;
 		string      name  = null;
 		string      rule  = null;
-		HLRuleSet ruleSet = null;
+		HighlightRuleSet ruleSet = null;
 		bool        noEscapeSequences = false;
 		
-		internal HLRuleSet RuleSet {
+		internal HighlightRuleSet RuleSet {
 			get {
 				return ruleSet;
 			}
@@ -55,7 +55,7 @@ namespace VCodeEditor.Document
 		/// <summary>
 		/// 高亮颜色
 		/// </summary>
-		public HighlightColor Color {
+		public HighlightStyle Color {
 			get {
 				return color;
 			}
@@ -64,7 +64,7 @@ namespace VCodeEditor.Document
 		/// <summary>
 		/// 高亮开始颜色
 		/// </summary>
-		public HighlightColor BeginColor {
+		public HighlightStyle BeginColor {
 			get {		
 				if(beginColor != null) {
 					return beginColor;
@@ -77,7 +77,7 @@ namespace VCodeEditor.Document
 		/// <summary>
 		/// 高亮结束颜色
 		/// </summary>
-		public HighlightColor EndColor {
+		public HighlightStyle EndColor {
 			get {
 				return endColor!=null ? endColor : color;
 			}
@@ -130,7 +130,7 @@ namespace VCodeEditor.Document
 		
 		public Span(XmlElement span)
 		{
-			color   = new HighlightColor(span);
+			color   = new HighlightStyle(span);
 			
 			if (span.Attributes["rule"] != null) {
 				rule = span.Attributes["rule"].InnerText;
@@ -143,11 +143,11 @@ namespace VCodeEditor.Document
 			name    = span.Attributes["name"].InnerText;
 			stopEOL = Boolean.Parse(span.Attributes["stopateol"].InnerText);
 			begin   = span["Begin"].InnerText.ToCharArray();
-			beginColor = new HighlightColor(span["Begin"], color);
+			beginColor = new HighlightStyle(span["Begin"], color);
 			
 			if (span["End"] != null) {
 				end  = span["End"].InnerText.ToCharArray();
-				endColor = new HighlightColor(span["End"], color);
+				endColor = new HighlightStyle(span["End"], color);
 			}
 		}
 	}

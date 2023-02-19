@@ -14,75 +14,65 @@ using System.Text;
 namespace VCodeEditor.Document
 {
     /// <summary>
-    /// A highlighting strategy for a buffer.
-    /// 高亮显示策略接口
+    /// 样式策略接口
     /// </summary>
-    public interface IHLStrategy
+    public interface IStyleStrategy
     {
         /// <value>
-        /// 高亮显示策略的名称必须唯一
+        /// 策略名称
         /// </value>
-        string Name
-        {
-            get;
-        }
+        string Name { get; }
 
         /// <value>
-        /// 使用此高亮显示策略的文件扩展名
+        /// 文件扩展名列表
         /// </value>
-        string[] Extensions
-        {
-            set;
-            get;
-        }
+        string[] Extensions { set; get; }
 
         /// <summary>
-        /// 属性表
+        /// 配置属性表
         /// </summary>
-        Dictionary<string, string> Properties
-        {
-            get;
-        }
+        Dictionary<string, string> Properties { get; }
+
+
 
         /// <summary>
         /// 规则集
         /// </summary>
-        List<HLRuleSet> Rules
-        {
-            get;
-        }
+        List<HighlightRuleSet> Rules { get; }
 
         /// <summary>
         /// 默认规则
         /// </summary>
-        HLRuleSet DefaultRuleSet
-        {
-            get;
-        }
+        HighlightRuleSet DefaultRuleSet { get; }
 
-        // returns special color. (BackGround Color, Cursor Color and so on)
+        /// <summary>
+        /// 获取图片资源
+        /// </summary>
+        /// <param name="name">图片名称</param>
+        /// <returns>如果不存在，返回null</returns>
+        Image GetImage(string name);
 
         /// <remarks>
         /// 获取指定名称的系统颜色
         /// </remarks>
-        HighlightColor GetColorFor(string name);
+        HighlightStyle GetColorFor(string name);
 
         /// <summary>
         /// 获取xshd文件内部定义的颜色
         /// </summary>
         /// <param name="name">颜色名称</param>
         /// <returns></returns>
-        HighlightColor GetHLColor(string name);
+        HighlightStyle GetHighlightColor(string name);
 
         /// <remarks>
         /// 取规则集，span为null返回默认规则集
         /// </remarks>
-        HLRuleSet GetRuleSet(Span span);
+        HighlightRuleSet GetRuleSet(Span span);
 
         /// <remarks>
         /// 获取指定位置的高亮颜色
         /// </remarks>
-        HighlightColor GetColor(IDocument document, LineSegment keyWord, int index, int length);
+        HighlightStyle GetColor(IDocument document, LineSegment keyWord, int index, int length);
 
         /// <remarks>
         /// 更新高亮单词集
@@ -93,5 +83,31 @@ namespace VCodeEditor.Document
         /// 更新高亮单词集
         /// </remarks>
         void MarkTokens(IDocument document);
+    }
+
+    /// <summary>
+    /// 断点样式
+    /// </summary>
+    public class BreakpointStyle
+    {
+        public BreakpointStyle()
+        {
+
+        }
+
+        /// <summary>
+        /// 断点正常图片
+        /// </summary>
+        public Image Normal { get; set; }
+
+        /// <summary>
+        /// 断点禁用图片
+        /// </summary>
+        public Image Disable { get; set; }
+
+        /// <summary>
+        /// 断点未命中图片
+        /// </summary>
+        public Image UnableToHit { get; set; }
     }
 }

@@ -21,16 +21,16 @@ namespace VCodeEditor.Document
 	/// <summary>
 	/// 高亮策略工厂
 	/// </summary>
-	public class HLStrategyFactory
+	public class HighlightStrategyFactory
 	{
-		public static IHLStrategy CreateHLStrategy()
+		public static IStyleStrategy CreateHLStrategy()
 		{
-			return (IHLStrategy)HLManager.Manager.HLDefines["Default"];
+			return (IStyleStrategy)HLManager.Manager.HLDefines["Default"];
 		}
 		
-		public static IHLStrategy CreateHLStrategy(string name)
+		public static IStyleStrategy CreateHLStrategy(string name)
 		{
-			IHLStrategy highlightingStrategy  = HLManager.Manager.FindHL(name);
+			IStyleStrategy highlightingStrategy  = HLManager.Manager.FindHL(name);
 			
 			if (highlightingStrategy == null) {
 				return CreateHLStrategy();
@@ -38,9 +38,9 @@ namespace VCodeEditor.Document
 			return highlightingStrategy;
 		}
 		
-		public static IHLStrategy CreateHLStrategyForFile(string fileName)
+		public static IStyleStrategy CreateHLStrategyForFile(string fileName)
 		{
-			IHLStrategy highlightingStrategy  = HLManager.Manager.FindHLForFile(fileName);
+			IStyleStrategy highlightingStrategy  = HLManager.Manager.FindHLForFile(fileName);
 			if (highlightingStrategy == null) {
 				return CreateHLStrategy();
 			}

@@ -20,7 +20,7 @@ namespace VCodeEditor.Document
 	/// <summary>
 	/// 使用背景图像扩展高亮颜色
 	/// </summary>
-	public class HLBackground : HighlightColor
+	public class HLBackground : HighlightStyle
 	{
 		Image backgroundImage;
 

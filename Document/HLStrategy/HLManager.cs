@@ -18,6 +18,7 @@ namespace VCodeEditor.Document
 	/// <summary>
 	/// 高亮管理器
 	/// </summary>
+	[Obsolete]
 	public class HLManager
 	{
 		/// <summary>
@@ -108,7 +109,7 @@ namespace VCodeEditor.Document
 		{
 			DefaultHLStrategy defaultHighlightingStrategy = new DefaultHLStrategy(); 
 			defaultHighlightingStrategy.Extensions = new string[] {};
-			defaultHighlightingStrategy.Rules.Add(new HLRuleSet());
+			defaultHighlightingStrategy.Rules.Add(new HighlightRuleSet());
 			highlightingDefs["Default"] = defaultHighlightingStrategy;
 		}
 		
@@ -117,7 +118,7 @@ namespace VCodeEditor.Document
 		/// </summary>
 		/// <param name="entry"></param>
 		/// <returns></returns>
-		IHLStrategy LoadDefinition(DictionaryEntry entry)
+		IStyleStrategy LoadDefinition(DictionaryEntry entry)
 		{
 			SyntaxMode              syntaxMode             = (SyntaxMode)entry.Key;
 			ISyntaxModeFileProvider syntaxModeFileProvider = 
@@ -163,14 +164,14 @@ namespace VCodeEditor.Document
 		/// </summary>
 		/// <param name="name">风格名称</param>
 		/// <returns>如果不存在该风格，则返回默认风格</returns>
-		public IHLStrategy FindHL(string name)
+		public IStyleStrategy FindHL(string name)
 		{
 			object def = highlightingDefs[name];
 			if (def is DictionaryEntry) {
 
 				return LoadDefinition((DictionaryEntry)def);
 			}
-			return def == null ? DefaultHL : (IHLStrategy)def;
+			return def == null ? DefaultHL : (IStyleStrategy)def;
 		}
 		
 		/// <summary>
@@ -178,7 +179,7 @@ namespace VCodeEditor.Document
 		/// </summary>
 		/// <param name="fileName"></param>
 		/// <returns></returns>
-		public IHLStrategy FindHLForFile(string fileName)
+		public IStyleStrategy FindHLForFile(string fileName)
 		{
 			string highlighterName = (string)extensionsToName[Path.GetExtension(fileName).ToUpperInvariant()];
 			if (highlighterName != null) {
@@ -186,7 +187,7 @@ namespace VCodeEditor.Document
 				if (def is DictionaryEntry) {
 					return LoadDefinition((DictionaryEntry)def);
 				}
-				return def == null ? DefaultHL : (IHLStrategy)def;
+				return def == null ? DefaultHL : (IStyleStrategy)def;
 			} else {
 				return DefaultHL;
 			}

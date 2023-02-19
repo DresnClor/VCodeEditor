@@ -34,7 +34,7 @@ namespace VCodeEditor.Document
 	/// </summary>
 	public class TextWord
 	{
-		HighlightColor  color;
+		HighlightStyle  color;
 		LineSegment     line;
 		IDocument       document;
 		
@@ -48,7 +48,7 @@ namespace VCodeEditor.Document
 				length = 1;
 			}
 			
-			public SpaceTextWord(HighlightColor color)
+			public SpaceTextWord(HighlightStyle color)
 			{
 				length = 1;
 				base.SyntaxColor = color;
@@ -78,7 +78,7 @@ namespace VCodeEditor.Document
 			{
 				length = 1;
 			}
-			public TabTextWord(HighlightColor color)
+			public TabTextWord(HighlightStyle color)
 			{
 				length = 1;
 				base.SyntaxColor = color;
@@ -164,7 +164,7 @@ namespace VCodeEditor.Document
 			}
 		}
 		
-		public HighlightColor SyntaxColor {
+		public HighlightStyle SyntaxColor {
 			get {
 				return color;
 			}
@@ -185,7 +185,7 @@ namespace VCodeEditor.Document
 		}
 		
 		// TAB
-		public TextWord(IDocument document, LineSegment line, int offset, int length, HighlightColor color, bool hasDefaultColor)
+		public TextWord(IDocument document, LineSegment line, int offset, int length, HighlightStyle color, bool hasDefaultColor)
 		{
 			Debug.Assert(document != null);
 			Debug.Assert(line != null);

@@ -11,6 +11,7 @@ using System.Xml;
 
 namespace VCodeEditor.Document
 {
+	[Obsolete]
 	public interface ISyntaxModeFileProvider
 	{
 		ICollection<SyntaxMode> SyntaxModes {

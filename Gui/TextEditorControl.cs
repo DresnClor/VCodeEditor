@@ -44,7 +44,7 @@ namespace VCodeEditor
 
             textAreaPanel.Dock = DockStyle.Fill;
             Document = (new DocumentFactory()).CreateDocument();
-            Document.HighlightingStrategy = HLStrategyFactory.CreateHLStrategy();
+            Document.HighlightingStrategy = HighlightStrategyFactory.CreateHLStrategy();
             primaryTextArea = new TextAreaControl(this);
             primaryTextArea.Dock = DockStyle.Fill;
             textAreaPanel.Controls.Add(primaryTextArea);
@@ -343,7 +343,7 @@ namespace VCodeEditor
         public void SetHighlighting(string name)
         {
             Document.HighlightingStrategy =
-                HLStrategyFactory.CreateHLStrategy(name);
+                HighlightStrategyFactory.CreateHLStrategy(name);
         }
 
         /// <summary>

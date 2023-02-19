@@ -21,7 +21,8 @@ namespace VCodeEditor.Document
     /// <summary>
     /// 加载文件高亮策略
     /// </summary>
-    public class FileHLStrategy : IHLStrategy
+    [Obsolete("本类将在版本取消，请使用 VCodeEditor.Util.VslParser 加载编辑框样式文件")]
+    public class FileHLStrategy : IStyleStrategy
     {
         /// <param name="name">高亮名称</param>
         /// <param name="file">配置文件</param>
@@ -63,7 +64,7 @@ namespace VCodeEditor.Document
                     {
                         string n = c.Attributes["name"].InnerText;
                         this.Colors.Add(n,
-                            new HighlightColor(c));
+                            new HighlightStyle(c));
                     }
                 }
                 //解析环境配置
@@ -79,7 +80,7 @@ namespace VCodeEditor.Document
                                 el.Name,
                                 el.HasAttribute("bgcolor") ?
                                         new HLBackground(el) :
-                                        new HighlightColor(el));
+                                        new HighlightStyle(el));
                         }
                     }
                 }
@@ -95,13 +96,13 @@ namespace VCodeEditor.Document
                 //解析数字
                 if (doc.DocumentElement["Digits"] != null)
                 {
-                    this.DigitColor = new HighlightColor(doc.DocumentElement["Digits"]);
+                    this.DigitColor = new HighlightStyle(doc.DocumentElement["Digits"]);
                 }
                 //解析规则
                 XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("RuleSet");
                 foreach (XmlElement element in nodes)
                 {
-                    this.AddRuleSet(new HLRuleSet(element));
+                    this.AddRuleSet(new HighlightRuleSet(element));
                 }
                 this.ResolveReferences();
             }
@@ -115,25 +116,25 @@ namespace VCodeEditor.Document
         public FileHLStrategy(string name)
         {
             this.name = name;
-            this.references = new Dictionary<string, IHLStrategy>();
+            this.references = new Dictionary<string, IStyleStrategy>();
 
-            this.digitColor = new HighlightColor(SystemColors.WindowText, false, false);
-            this.defaultTextColor = new HighlightColor(SystemColors.WindowText, false, false);
+            this.digitColor = new HighlightStyle(SystemColors.WindowText, false, false);
+            this.defaultTextColor = new HighlightStyle(SystemColors.WindowText, false, false);
 
             // set small 'default color environment'
             this.environmentColors["Default"] = new HLBackground("WindowText", "Window", false, false);
-            this.environmentColors["Selection"] = new HighlightColor("HighlightText", "Highlight", false, false);
-            this.environmentColors["VRuler"] = new HighlightColor("ControlLight", "Window", false, false);
-            this.environmentColors["InvalidLines"] = new HighlightColor(Color.Red, false, false);
-            this.environmentColors["CaretMarker"] = new HighlightColor(Color.FromArgb(224, 229, 235), false, false);
+            this.environmentColors["Selection"] = new HighlightStyle("HighlightText", "Highlight", false, false);
+            this.environmentColors["VRuler"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentColors["InvalidLines"] = new HighlightStyle(Color.Red, false, false);
+            this.environmentColors["CaretMarker"] = new HighlightStyle(Color.FromArgb(224, 229, 235), false, false);
             this.environmentColors["LineNumbers"] = new HLBackground("ControlDark", "Window", false, false);
 
-            this.environmentColors["FoldLine"] = new HighlightColor(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
-            this.environmentColors["FoldMarker"] = new HighlightColor(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
-            this.environmentColors["SelectedFoldLine"] = new HighlightColor(Color.Black, false, false);
-            this.environmentColors["EOLMarkers"] = new HighlightColor("ControlLight", "Window", false, false);
-            this.environmentColors["SpaceMarkers"] = new HighlightColor("ControlLight", "Window", false, false);
-            this.environmentColors["TabMarkers"] = new HighlightColor("ControlLight", "Window", false, false);
+            this.environmentColors["FoldLine"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
+            this.environmentColors["FoldMarker"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
+            this.environmentColors["SelectedFoldLine"] = new HighlightStyle(Color.Black, false, false);
+            this.environmentColors["EOLMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentColors["SpaceMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentColors["TabMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
             //this.defaultRuleSet = new HLRuleSet();
         }
 
@@ -144,11 +145,11 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 规则列表
         /// </summary>
-        List<HLRuleSet> rules = new List<HLRuleSet>();
+        List<HighlightRuleSet> rules = new List<HighlightRuleSet>();
         /// <summary>
         /// 环境颜色列表
         /// </summary>
-        Dictionary<string, HighlightColor> environmentColors = new Dictionary<string, HighlightColor>();
+        Dictionary<string, HighlightStyle> environmentColors = new Dictionary<string, HighlightStyle>();
         /// <summary>
         /// 属性列表
         /// </summary>
@@ -160,25 +161,25 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 高亮颜色列表
         /// </summary>
-        internal Dictionary<string, HighlightColor> Colors = new Dictionary<string, HighlightColor>();
+        internal Dictionary<string, HighlightStyle> Colors = new Dictionary<string, HighlightStyle>();
         /// <summary>
         /// 数字高亮颜色
         /// </summary>
-        HighlightColor digitColor;
+        HighlightStyle digitColor;
 
         /// <summary>
         /// 外部引用规则集列表
         /// </summary>
-        Dictionary<string, IHLStrategy> references;
+        Dictionary<string, IStyleStrategy> references;
         /// <summary>
         /// 默认规则集
         /// </summary>
-        HLRuleSet defaultRuleSet = null;
+        HighlightRuleSet defaultRuleSet = null;
 
         /// <summary>
         /// 数字颜色
         /// </summary>
-        public HighlightColor DigitColor
+        public HighlightStyle DigitColor
         {
             get
             {
@@ -195,7 +196,7 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="name">颜色名称</param>
         /// <returns></returns>
-        public HighlightColor this[string name]
+        public HighlightStyle this[string name]
         {
             get
             {
@@ -249,7 +250,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 默认规则
         /// </summary>
-        public HLRuleSet DefaultRuleSet
+        public HighlightRuleSet DefaultRuleSet
         {
             get => /*this.RuleSet(null);*/this.defaultRuleSet;
         }
@@ -257,7 +258,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 高亮规则列表
         /// </summary>
-        public List<HLRuleSet> Rules
+        public List<HighlightRuleSet> Rules
         {
             get
             {
@@ -270,9 +271,9 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="name">规则集名称</param>
         /// <returns></returns>
-        public HLRuleSet RuleSet(string name)
+        public HighlightRuleSet RuleSet(string name)
         {
-            foreach (HLRuleSet rule in this.Rules)
+            foreach (HighlightRuleSet rule in this.Rules)
             {
                 if (rule.Name == name)
                     return rule;
@@ -285,9 +286,9 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public HLRuleSet FindHighlightRuleSet(string name)
+        public HighlightRuleSet FindHighlightRuleSet(string name)
         {
-            foreach (HLRuleSet ruleSet in rules)
+            foreach (HighlightRuleSet ruleSet in rules)
             {
                 if (ruleSet.Name == name)
                 {
@@ -301,9 +302,9 @@ namespace VCodeEditor.Document
         /// 添加高亮规则集
         /// </summary>
         /// <param name="aRuleSet"></param>
-        public void AddRuleSet(HLRuleSet aRuleSet)
+        public void AddRuleSet(HighlightRuleSet aRuleSet)
         {
-            HLRuleSet existing = FindHighlightRuleSet(aRuleSet.Name);
+            HighlightRuleSet existing = FindHighlightRuleSet(aRuleSet.Name);
             if (existing != null)
             {
                 existing.MergeFrom(aRuleSet);
@@ -324,7 +325,7 @@ namespace VCodeEditor.Document
 
         void ResolveRuleSetReferences()
         {
-            foreach (HLRuleSet ruleSet in Rules)
+            foreach (HighlightRuleSet ruleSet in Rules)
             {
                 if (ruleSet.Name == null)
                 {
@@ -336,7 +337,7 @@ namespace VCodeEditor.Document
                     if (aSpan.Rule != null)
                     {
                         bool found = false;
-                        foreach (HLRuleSet refSet in Rules)
+                        foreach (HighlightRuleSet refSet in Rules)
                         {
                             if (refSet.Name == aSpan.Rule)
                             {
@@ -366,7 +367,7 @@ namespace VCodeEditor.Document
 
         void ResolveExternalReferences()
         {
-            foreach (HLRuleSet ruleSet in this.Rules)
+            foreach (HighlightRuleSet ruleSet in this.Rules)
             {
                 if (ruleSet.Reference != null)
                 {
@@ -387,12 +388,12 @@ namespace VCodeEditor.Document
         //			defaultColor = color;
         //		}
 
-        HighlightColor defaultTextColor;
+        HighlightStyle defaultTextColor;
 
         /// <summary>
         /// 默认文本颜色
         /// </summary>
-        public HighlightColor DefaultTextColor
+        public HighlightStyle DefaultTextColor
         {
             get
             {
@@ -405,10 +406,10 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="name"></param>
         /// <param name="color"></param>
-        internal void SetColorFor(string name, HighlightColor color)
+        internal void SetColorFor(string name, HighlightStyle color)
         {
             if (name == "Default")
-                defaultTextColor = new HighlightColor(color.Color, color.Bold, color.Italic);
+                defaultTextColor = new HighlightStyle(color.Color, color.Bold, color.Italic);
             environmentColors[name] = color;
         }
 
@@ -417,20 +418,20 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public HighlightColor GetColorFor(string name)
+        public HighlightStyle GetColorFor(string name)
         {
             if (!environmentColors.ContainsKey(name))
             {
                 throw new Exception("Color : " + name + " not found!");
             }
-            return (HighlightColor)environmentColors[name];
+            return (HighlightStyle)environmentColors[name];
         }
 
-        public HighlightColor GetHLColor(string name)
+        public HighlightStyle GetHighlightColor(string name)
         {
             if (this.Colors.ContainsKey(name))
                 return this.Colors[name];
-            return new HighlightColor(Color.Black, Color.White, false, false);
+            return new HighlightStyle(Color.Black, Color.White, false, false);
         }
 
         /// <summary>
@@ -441,12 +442,12 @@ namespace VCodeEditor.Document
         /// <param name="currentOffset"></param>
         /// <param name="currentLength"></param>
         /// <returns></returns>
-        public HighlightColor GetColor(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
+        public HighlightStyle GetColor(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
         {
             return GetColor(defaultRuleSet, document, currentSegment, currentOffset, currentLength);
         }
 
-        HighlightColor GetColor(HLRuleSet ruleSet, IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
+        HighlightStyle GetColor(HighlightRuleSet ruleSet, IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
         {
             if (ruleSet != null)
             {
@@ -456,7 +457,7 @@ namespace VCodeEditor.Document
                 }
                 else
                 {
-                    return (HighlightColor)ruleSet.KeyWords[document, currentSegment, currentOffset, currentLength];
+                    return (HighlightStyle)ruleSet.KeyWords[document, currentSegment, currentOffset, currentLength];
                 }
             }
             return null;
@@ -467,7 +468,7 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="aSpan"></param>
         /// <returns></returns>
-        public HLRuleSet GetRuleSet(Span aSpan)
+        public HighlightRuleSet GetRuleSet(Span aSpan)
         {
             if (aSpan == null)
             {
@@ -753,7 +754,7 @@ namespace VCodeEditor.Document
         // Span state variables
         bool inSpan;
         Span activeSpan;
-        HLRuleSet activeRuleSet;
+        HighlightRuleSet activeRuleSet;
 
         // Line scanning state variables
         int currentOffset;
@@ -777,7 +778,7 @@ namespace VCodeEditor.Document
         List<TextWord> ParseLine(IDocument document)
         {
             List<TextWord> words = new List<TextWord>();
-            HighlightColor markNext = null;
+            HighlightStyle markNext = null;
 
             currentOffset = 0;
             currentLength = 0;
@@ -1005,7 +1006,7 @@ namespace VCodeEditor.Document
         /// pushes the curWord string on the word list, with the
         /// correct color.
         /// </summary>
-        void PushCurWord(IDocument document, ref HighlightColor markNext, List<TextWord> words)
+        void PushCurWord(IDocument document, ref HighlightStyle markNext, List<TextWord> words)
         {
             // Svante Lidman : Need to look through the next prev logic.
             if (currentLength > 0)
@@ -1037,7 +1038,7 @@ namespace VCodeEditor.Document
 
                 if (inSpan)
                 {
-                    HighlightColor c = null;
+                    HighlightStyle c = null;
                     bool hasDefaultColor = true;
                     if (activeSpan.Rule == null)
                     {
@@ -1062,7 +1063,7 @@ namespace VCodeEditor.Document
                 }
                 else
                 {
-                    HighlightColor c = markNext != null ? markNext : GetColor(activeRuleSet, document, currentLine, currentOffset, currentLength);
+                    HighlightStyle c = markNext != null ? markNext : GetColor(activeRuleSet, document, currentLine, currentOffset, currentLength);
                     if (c == null)
                     {
                         words.Add(new TextWord(document, currentLine, currentOffset, currentLength, this.DefaultTextColor, true));

@@ -16,9 +16,9 @@ namespace VCodeEditor.Document
     /// <summary>
     /// 关键字分组管理
     /// </summary>
-    public class KwCategory
+    public class KeywordCategory
     {
-        public KwCategory(string name, HLRuleSet highlightRuleSet, HighlightColor highlightColor)
+        public KeywordCategory(string name, HighlightRuleSet highlightRuleSet, HighlightStyle highlightColor)
         {
             this.Keywords = new List<string>();
             this.HighlightColor = highlightColor;
@@ -28,12 +28,12 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 规则集
         /// </summary>
-        private HLRuleSet RuleSet;
+        private HighlightRuleSet RuleSet;
 
         /// <summary>
         /// 高亮颜色
         /// </summary>
-        private HighlightColor HighlightColor;
+        private HighlightStyle HighlightColor;
 
         /// <summary>
         /// 分组名称
@@ -43,7 +43,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 分组高亮颜色
         /// </summary>
-        public HighlightColor Color
+        public HighlightStyle Color
         {
             get; set;
         }

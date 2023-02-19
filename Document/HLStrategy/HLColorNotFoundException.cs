@@ -9,6 +9,7 @@ using System;
 
 namespace VCodeEditor.Document
 {
+	[Obsolete]
 	public class HLColorNotFoundException : Exception
 	{
 		public HLColorNotFoundException(string name) : base(name)

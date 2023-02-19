@@ -14,11 +14,18 @@ using System.Xml;
 
 namespace VCodeEditor.Document
 {
+	/// <summary>
+	///Syntaxs配置文件提供者
+	/// </summary>
+	[Obsolete]
 	public class FileSyntaxModeProvider : ISyntaxModeFileProvider
 	{
 		string    directory;
 		List<SyntaxMode> syntaxModes = null;
 		
+		/// <summary>
+		/// 语法模式
+		/// </summary>
 		public ICollection<SyntaxMode> SyntaxModes {
 			get {
 				return syntaxModes;

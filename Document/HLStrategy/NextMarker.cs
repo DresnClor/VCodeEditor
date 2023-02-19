@@ -24,7 +24,7 @@ namespace VCodeEditor.Document
 	public class NextMarker
 	{
 		string      what;
-		HighlightColor color;
+		HighlightStyle color;
 		bool        markMarker = false;
 		
 		/// <value>
@@ -39,7 +39,7 @@ namespace VCodeEditor.Document
 		/// <value>
 		/// Color for marking next token
 		/// </value>
-		public HighlightColor Color {
+		public HighlightStyle Color {
 			get {
 				return color;
 			}
@@ -60,7 +60,7 @@ namespace VCodeEditor.Document
 		/// </summary>
 		public NextMarker(XmlElement mark)
 		{
-			color = new HighlightColor(mark);
+			color = new HighlightStyle(mark);
 			what  = mark.InnerText;
 			if (mark.Attributes["markmarker"] != null) {
 				markMarker = Boolean.Parse(mark.Attributes["markmarker"].InnerText);

@@ -13,6 +13,7 @@ using System.Xml;
 
 namespace VCodeEditor.Document
 {
+	[Obsolete]
 	public class SyntaxMode
 	{
 		string   fileName;

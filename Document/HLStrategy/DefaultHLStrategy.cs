@@ -18,21 +18,24 @@ using System.Text;
 
 namespace VCodeEditor.Document
 {
-    public class DefaultHLStrategy : IHLStrategy
+    /// <summary>
+    /// 默认高亮定义
+    /// </summary>
+    public class DefaultHLStrategy : IStyleStrategy
     {
         string name;
-        List<HLRuleSet> rules = new List<HLRuleSet>();
+        List<HighlightRuleSet> rules = new List<HighlightRuleSet>();
 
-        Dictionary<string, HighlightColor> environmentColors = new Dictionary<string, HighlightColor>();
+        Dictionary<string, HighlightStyle> environmentColors = new Dictionary<string, HighlightStyle>();
         Dictionary<string, string> properties = new Dictionary<string, string>();
         string[] extensions;
 
-        internal Dictionary<string, HighlightColor> Colors = new Dictionary<string, HighlightColor>();
+        internal Dictionary<string, HighlightStyle> Colors = new Dictionary<string, HighlightStyle>();
 
-        HighlightColor digitColor;
-        HLRuleSet defaultRuleSet = null;
+        HighlightStyle digitColor;
+        HighlightRuleSet defaultRuleSet = null;
 
-        public HighlightColor DigitColor
+        public HighlightStyle DigitColor
         {
             get
             {
@@ -44,7 +47,7 @@ namespace VCodeEditor.Document
             }
         }
 
-        public HighlightColor this[string name]
+        public HighlightStyle this[string name]
         {
             get
             {
@@ -65,23 +68,23 @@ namespace VCodeEditor.Document
         {
             this.name = name;
 
-            digitColor = new HighlightColor(SystemColors.WindowText, false, false);
-            defaultTextColor = new HighlightColor(SystemColors.WindowText, false, false);
+            digitColor = new HighlightStyle(SystemColors.WindowText, false, false);
+            defaultTextColor = new HighlightStyle(SystemColors.WindowText, false, false);
 
             // set small 'default color environment'
             environmentColors["Default"] = new HLBackground("WindowText", "Window", false, false);
-            environmentColors["Selection"] = new HighlightColor("HighlightText", "Highlight", false, false);
-            environmentColors["VRuler"] = new HighlightColor("ControlLight", "Window", false, false);
-            environmentColors["InvalidLines"] = new HighlightColor(Color.Red, false, false);
-            environmentColors["CaretMarker"] = new HighlightColor(Color.FromArgb(224, 229, 235), false, false);
+            environmentColors["Selection"] = new HighlightStyle("HighlightText", "Highlight", false, false);
+            environmentColors["VRuler"] = new HighlightStyle("ControlLight", "Window", false, false);
+            environmentColors["InvalidLines"] = new HighlightStyle(Color.Red, false, false);
+            environmentColors["CaretMarker"] = new HighlightStyle(Color.FromArgb(224, 229, 235), false, false);
             environmentColors["LineNumbers"] = new HLBackground("ControlDark", "Window", false, false);
 
-            environmentColors["FoldLine"] = new HighlightColor(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
-            environmentColors["FoldMarker"] = new HighlightColor(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
-            environmentColors["SelectedFoldLine"] = new HighlightColor(Color.Black, false, false);
-            environmentColors["EOLMarkers"] = new HighlightColor("ControlLight", "Window", false, false);
-            environmentColors["SpaceMarkers"] = new HighlightColor("ControlLight", "Window", false, false);
-            environmentColors["TabMarkers"] = new HighlightColor("ControlLight", "Window", false, false);
+            environmentColors["FoldLine"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
+            environmentColors["FoldMarker"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
+            environmentColors["SelectedFoldLine"] = new HighlightStyle(Color.Black, false, false);
+            environmentColors["EOLMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            environmentColors["SpaceMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            environmentColors["TabMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
 
         }
 
@@ -113,7 +116,7 @@ namespace VCodeEditor.Document
             }
         }
 
-        public HLRuleSet DefaultRuleSet
+        public HighlightRuleSet DefaultRuleSet
         {
             get => this.RuleSet(null);
         }
@@ -121,7 +124,7 @@ namespace VCodeEditor.Document
         /// <summary>
         /// 高亮规则列表
         /// </summary>
-        public List<HLRuleSet> Rules
+        public List<HighlightRuleSet> Rules
         {
             get
             {
@@ -129,9 +132,9 @@ namespace VCodeEditor.Document
             }
         }
 
-        public HLRuleSet RuleSet(string name)
+        public HighlightRuleSet RuleSet(string name)
         {
-            foreach (HLRuleSet rule in this.Rules)
+            foreach (HighlightRuleSet rule in this.Rules)
             {
                 if (rule.Name == name)
                     return rule;
@@ -144,9 +147,9 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public HLRuleSet FindHighlightRuleSet(string name)
+        public HighlightRuleSet FindHighlightRuleSet(string name)
         {
-            foreach (HLRuleSet ruleSet in rules)
+            foreach (HighlightRuleSet ruleSet in rules)
             {
                 if (ruleSet.Name == name)
                 {
@@ -160,9 +163,9 @@ namespace VCodeEditor.Document
         /// 添加高亮规则集
         /// </summary>
         /// <param name="aRuleSet"></param>
-        public void AddRuleSet(HLRuleSet aRuleSet)
+        public void AddRuleSet(HighlightRuleSet aRuleSet)
         {
-            HLRuleSet existing = FindHighlightRuleSet(aRuleSet.Name);
+            HighlightRuleSet existing = FindHighlightRuleSet(aRuleSet.Name);
             if (existing != null)
             {
                 existing.MergeFrom(aRuleSet);
@@ -183,7 +186,7 @@ namespace VCodeEditor.Document
 
         void ResolveRuleSetReferences()
         {
-            foreach (HLRuleSet ruleSet in Rules)
+            foreach (HighlightRuleSet ruleSet in Rules)
             {
                 if (ruleSet.Name == null)
                 {
@@ -195,7 +198,7 @@ namespace VCodeEditor.Document
                     if (aSpan.Rule != null)
                     {
                         bool found = false;
-                        foreach (HLRuleSet refSet in Rules)
+                        foreach (HighlightRuleSet refSet in Rules)
                         {
                             if (refSet.Name == aSpan.Rule)
                             {
@@ -225,11 +228,11 @@ namespace VCodeEditor.Document
 
         void ResolveExternalReferences()
         {
-            foreach (HLRuleSet ruleSet in Rules)
+            foreach (HighlightRuleSet ruleSet in Rules)
             {
                 if (ruleSet.Reference != null)
                 {
-                    IHLStrategy highlighter = HLManager.Manager.FindHL(ruleSet.Reference);
+                    IStyleStrategy highlighter = HLManager.Manager.FindHL(ruleSet.Reference);
 
                     if (highlighter != null)
                     {
@@ -254,9 +257,9 @@ namespace VCodeEditor.Document
         //			defaultColor = color;
         //		}
 
-        HighlightColor defaultTextColor;
+        HighlightStyle defaultTextColor;
 
-        public HighlightColor DefaultTextColor
+        public HighlightStyle DefaultTextColor
         {
             get
             {
@@ -269,28 +272,28 @@ namespace VCodeEditor.Document
         /// </summary>
         /// <param name="name"></param>
         /// <param name="color"></param>
-        internal void SetColorFor(string name, HighlightColor color)
+        internal void SetColorFor(string name, HighlightStyle color)
         {
             if (name == "Default")
-                defaultTextColor = new HighlightColor(color.Color, color.Bold, color.Italic);
+                defaultTextColor = new HighlightStyle(color.Color, color.Bold, color.Italic);
             environmentColors[name] = color;
         }
 
-        public HighlightColor GetColorFor(string name)
+        public HighlightStyle GetColorFor(string name)
         {
             if (!environmentColors.ContainsKey(name))
             {
                 throw new Exception("Color : " + name + " not found!");
             }
-            return (HighlightColor)environmentColors[name];
+            return (HighlightStyle)environmentColors[name];
         }
 
-        public HighlightColor GetColor(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
+        public HighlightStyle GetColor(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
         {
             return GetColor(defaultRuleSet, document, currentSegment, currentOffset, currentLength);
         }
 
-        HighlightColor GetColor(HLRuleSet ruleSet, IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
+        HighlightStyle GetColor(HighlightRuleSet ruleSet, IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
         {
             if (ruleSet != null)
             {
@@ -300,18 +303,18 @@ namespace VCodeEditor.Document
                 }
                 else
                 {
-                    return (HighlightColor)ruleSet.KeyWords[document, currentSegment, currentOffset, currentLength];
+                    return (HighlightStyle)ruleSet.KeyWords[document, currentSegment, currentOffset, currentLength];
                 }
             }
             return null;
         }
-        public HighlightColor GetHLColor(string name)
+        public HighlightStyle GetHighlightColor(string name)
         {
             if (this.Colors.ContainsKey(name))
                 return this.Colors[name];
-            return new HighlightColor(Color.Black, Color.White, false, false);
+            return new HighlightStyle(Color.Black, Color.White, false, false);
         }
-        public HLRuleSet GetRuleSet(Span aSpan)
+        public HighlightRuleSet GetRuleSet(Span aSpan)
         {
             if (aSpan == null)
             {
@@ -588,7 +591,7 @@ namespace VCodeEditor.Document
         // Span state variables
         bool inSpan;
         Span activeSpan;
-        HLRuleSet activeRuleSet;
+        HighlightRuleSet activeRuleSet;
 
         // Line scanning state variables
         int currentOffset;
@@ -604,7 +607,7 @@ namespace VCodeEditor.Document
         List<TextWord> ParseLine(IDocument document)
         {
             List<TextWord> words = new List<TextWord>();
-            HighlightColor markNext = null;
+            HighlightStyle markNext = null;
 
             currentOffset = 0;
             currentLength = 0;
@@ -832,7 +835,7 @@ namespace VCodeEditor.Document
         /// pushes the curWord string on the word list, with the
         /// correct color.
         /// </summary>
-        void PushCurWord(IDocument document, ref HighlightColor markNext, List<TextWord> words)
+        void PushCurWord(IDocument document, ref HighlightStyle markNext, List<TextWord> words)
         {
             // Svante Lidman : Need to look through the next prev logic.
             if (currentLength > 0)
@@ -864,7 +867,7 @@ namespace VCodeEditor.Document
 
                 if (inSpan)
                 {
-                    HighlightColor c = null;
+                    HighlightStyle c = null;
                     bool hasDefaultColor = true;
                     if (activeSpan.Rule == null)
                     {
@@ -889,7 +892,7 @@ namespace VCodeEditor.Document
                 }
                 else
                 {
-                    HighlightColor c = markNext != null ? markNext : GetColor(activeRuleSet, document, currentLine, currentOffset, currentLength);
+                    HighlightStyle c = markNext != null ? markNext : GetColor(activeRuleSet, document, currentLine, currentOffset, currentLength);
                     if (c == null)
                     {
                         words.Add(new TextWord(document, currentLine, currentOffset, currentLength, this.DefaultTextColor, true));
