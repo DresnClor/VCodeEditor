@@ -15,8 +15,8 @@
 		<Property name="DrawBracketColor" value="Sy"/>
 		<Property name="DrawBracketRectang" value="true"/>
 		<Property name="DrawBracket" value="//"/>
-		<Property name="DrawBracket" value="//"/>
-		<Property name="DrawBracket" value="//"/>
+		<Property name="BreakpointBar" value="//"/>
+		<Property name="IconBar" value="//"/>
 		<Property name="DrawBracket" value="//"/>
 		<Property name="DrawBracket" value="//"/>
 		<Property name="DrawBracket" value="//"/>
