@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 书签工厂接口
+	/// 书签工厂
 	/// </summary>
 	public interface IBookmarkFactory
 	{
@@ -25,7 +25,7 @@ namespace VCodeEditor.Document
 	}
 
 	/// <summary>
-	/// 书签管理
+	/// 书签管理器
 	/// </summary>
 	public class BookmarkManager
 	{
@@ -323,7 +323,14 @@ namespace VCodeEditor.Document
 			}
 		}
 		
+		/// <summary>
+		/// 移除书签触发
+		/// </summary>
 		public event BookmarkEventHandler Removed;
+
+		/// <summary>
+		/// 添加书签触发
+		/// </summary>
 		public event BookmarkEventHandler Added;
 		
 		/// <summary>

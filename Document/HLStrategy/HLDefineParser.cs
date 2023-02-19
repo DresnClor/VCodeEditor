@@ -84,7 +84,7 @@ namespace VCodeEditor.Document
                     foreach (XmlElement c in col.ChildNodes)
                     {
                         string n = c.Attributes["name"].InnerText;
-                        highlighter.Colors.Add(n,
+                        highlighter.Styles.Add(n,
                             new HighlightStyle(c));
                     }
                 }
@@ -97,7 +97,7 @@ namespace VCodeEditor.Document
                         if (node is XmlElement)
                         {
                             XmlElement el = (XmlElement)node;
-                            highlighter.SetColorFor(el.Name, el.HasAttribute("bgcolor") ? new HLBackground(el) : new HighlightStyle(el));
+                            highlighter.SetColorFor(el.Name, el.HasAttribute("bgcolor") ? new HighlightBackground(el) : new HighlightStyle(el));
                         }
                     }
                 }
@@ -113,7 +113,7 @@ namespace VCodeEditor.Document
 
                 if (doc.DocumentElement["Digits"] != null)
                 {
-                    highlighter.DigitColor = new HighlightStyle(doc.DocumentElement["Digits"]);
+                    highlighter.DigitStyle = new HighlightStyle(doc.DocumentElement["Digits"]);
                 }
 
                 XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("RuleSet");

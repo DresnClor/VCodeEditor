@@ -57,7 +57,7 @@ namespace VCodeEditor.Document
             }
 
             if (el.Attributes["reference"] != null)
-            {//参考
+            {//引用规则
                 reference = el.Attributes["reference"].InnerText;
             }
 
@@ -151,7 +151,7 @@ namespace VCodeEditor.Document
         }
 
         /// <summary>
-        /// 引用的外部高亮策略
+        /// 引用的外部高亮样式
         /// </summary>
         internal IStyleStrategy Highlighter
         {

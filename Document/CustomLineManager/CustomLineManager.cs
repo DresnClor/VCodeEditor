@@ -16,9 +16,21 @@ namespace VCodeEditor.Document
 	/// </summary>
 	public class CustomLine
 	{
+		/// <summary>
+		/// 开始行号
+		/// </summary>
 		public int    StartLineNr;
+		/// <summary>
+		/// 结束行号
+		/// </summary>
 		public int    EndLineNr;
+		/// <summary>
+		/// 颜色
+		/// </summary>
 		public Color  Color;
+		/// <summary>
+		/// 只读
+		/// </summary>
 		public bool   ReadOnly;
 
 		public CustomLine(int lineNr, Color customColor, bool readOnly)
@@ -38,7 +50,7 @@ namespace VCodeEditor.Document
 	}
 		
 	/// <summary>
-	/// 自定义行管理
+	/// 自定义行管理器
 	/// </summary>
 	public class CustomLineManager : ICustomLineManager
 	{
@@ -60,12 +72,12 @@ namespace VCodeEditor.Document
 				return lines;
 			}
 		}
-		
-		/// <remarks>
-		/// 返回颜色，如果行<code>lineNr</code> 有自定义bg颜色
-		/// 否则返回 <code>defaultColor</code>
-		/// </remarks>
-		public Color GetCustomColor(int lineNr, Color defaultColor)
+
+        /// <remarks>
+        /// 如果行<code>lineNr</code> 有自定义bg颜色，返回颜色。
+        /// 否则返回 <code>defaultColor</code>
+        /// </remarks>
+        public Color GetCustomColor(int lineNr, Color defaultColor)
 		{
 			foreach(CustomLine line in lines)
 				if (line.StartLineNr <= lineNr && line.EndLineNr >= lineNr)
@@ -115,12 +127,12 @@ namespace VCodeEditor.Document
 		}
 		
 		/// <remarks>
-		/// 更改
+		/// 更改前触发
 		/// </remarks>
 		public event EventHandler BeforeChanged;
 
 		/// <remarks>
-		/// 更改
+		/// 更改后触发
 		/// </remarks>
 		public event EventHandler Changed;
 		

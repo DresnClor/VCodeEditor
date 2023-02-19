@@ -12,12 +12,12 @@ using System.Collections.Generic;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 此界面用于折叠功能 文本区域。
+	/// 折叠策略
 	/// </summary>
 	public interface IFoldingStrategy
 	{
 		/// <remarks>
-		/// 计算特定行的折叠级别。
+		/// 生成折叠标记
 		/// </remarks>
 		List<FoldMarker> GenerateFoldMarkers(IDocument document, string fileName, object parseInformation);
 	}

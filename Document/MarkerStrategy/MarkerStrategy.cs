@@ -14,10 +14,13 @@ using System.Collections.Generic;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 标记策略。
+	/// 文本标记管理策略
 	/// </summary>
 	public class MarkerStrategy
 	{
+		/// <summary>
+		/// 标记列表
+		/// </summary>
 		List<TextMarker> textMarker = new List<TextMarker>();
 		IDocument document;
 		

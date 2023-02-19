@@ -26,24 +26,24 @@ namespace VCodeEditor.Document
         string name;
         List<HighlightRuleSet> rules = new List<HighlightRuleSet>();
 
-        Dictionary<string, HighlightStyle> environmentColors = new Dictionary<string, HighlightStyle>();
+        Dictionary<string, HighlightStyle> environmentStyle = new Dictionary<string, HighlightStyle>();
         Dictionary<string, string> properties = new Dictionary<string, string>();
         string[] extensions;
 
-        internal Dictionary<string, HighlightStyle> Colors = new Dictionary<string, HighlightStyle>();
+        internal Dictionary<string, HighlightStyle> Styles = new Dictionary<string, HighlightStyle>();
 
-        HighlightStyle digitColor;
+        HighlightStyle digitStyle;
         HighlightRuleSet defaultRuleSet = null;
 
-        public HighlightStyle DigitColor
+        public HighlightStyle DigitStyle
         {
             get
             {
-                return digitColor;
+                return digitStyle;
             }
             set
             {
-                digitColor = value;
+                digitStyle = value;
             }
         }
 
@@ -51,11 +51,11 @@ namespace VCodeEditor.Document
         {
             get
             {
-                return environmentColors[name];
+                return environmentStyle[name];
             }
             set
             {
-                environmentColors[name] = value;
+                environmentStyle[name] = value;
             }
         }
 
@@ -67,24 +67,22 @@ namespace VCodeEditor.Document
         public DefaultHLStrategy(string name)
         {
             this.name = name;
-
-            digitColor = new HighlightStyle(SystemColors.WindowText, false, false);
-            defaultTextColor = new HighlightStyle(SystemColors.WindowText, false, false);
-
-            // set small 'default color environment'
-            environmentColors["Default"] = new HLBackground("WindowText", "Window", false, false);
-            environmentColors["Selection"] = new HighlightStyle("HighlightText", "Highlight", false, false);
-            environmentColors["VRuler"] = new HighlightStyle("ControlLight", "Window", false, false);
-            environmentColors["InvalidLines"] = new HighlightStyle(Color.Red, false, false);
-            environmentColors["CaretMarker"] = new HighlightStyle(Color.FromArgb(224, 229, 235), false, false);
-            environmentColors["LineNumbers"] = new HLBackground("ControlDark", "Window", false, false);
-
-            environmentColors["FoldLine"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
-            environmentColors["FoldMarker"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
-            environmentColors["SelectedFoldLine"] = new HighlightStyle(Color.Black, false, false);
-            environmentColors["EOLMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
-            environmentColors["SpaceMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
-            environmentColors["TabMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.digitStyle = new HighlightStyle(SystemColors.WindowText, false, false);
+            this.defaultTextColor = new HighlightStyle(SystemColors.WindowText, false, false);
+            this.environmentStyle["Default"] = new HighlightBackground("WindowText", "Window", false, false);
+            this.environmentStyle["Selection"] = new HighlightStyle("HighlightText", "Highlight", false, false);
+            this.environmentStyle["VRuler"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentStyle["InvalidLines"] = new HighlightStyle(Color.Red, false, false);
+            this.environmentStyle["CaretMarker"] = new HighlightStyle(Color.FromArgb(224, 229, 235), false, false);
+            this.environmentStyle["LineNumbers"] = new HighlightBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["BreakpointBar"] = new HighlightBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["IconBar"] = new HighlightBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["FoldLine"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
+            this.environmentStyle["FoldMarker"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
+            this.environmentStyle["SelectedFoldLine"] = new HighlightStyle(Color.Black, false, false);
+            this.environmentStyle["EOLMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentStyle["SpaceMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentStyle["TabMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
 
         }
 
@@ -267,6 +265,10 @@ namespace VCodeEditor.Document
             }
         }
 
+        public string Language => throw new NotImplementedException();
+
+        public BreakpointStyle BreakpointStyle => throw new NotImplementedException();
+
         /// <summary>
         /// 设置指定名称的高亮颜色配置
         /// </summary>
@@ -276,16 +278,16 @@ namespace VCodeEditor.Document
         {
             if (name == "Default")
                 defaultTextColor = new HighlightStyle(color.Color, color.Bold, color.Italic);
-            environmentColors[name] = color;
+            environmentStyle[name] = color;
         }
 
         public HighlightStyle GetStyleFor(string name)
         {
-            if (!environmentColors.ContainsKey(name))
+            if (!environmentStyle.ContainsKey(name))
             {
                 throw new Exception("Color : " + name + " not found!");
             }
-            return (HighlightStyle)environmentColors[name];
+            return (HighlightStyle)environmentStyle[name];
         }
 
         public HighlightStyle GetStyle(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
@@ -310,8 +312,8 @@ namespace VCodeEditor.Document
         }
         public HighlightStyle GetHighlightStyle(string name)
         {
-            if (this.Colors.ContainsKey(name))
-                return this.Colors[name];
+            if (this.Styles.ContainsKey(name))
+                return this.Styles[name];
             return new HighlightStyle(Color.Black, Color.White, false, false);
         }
         public HighlightRuleSet GetRuleSet(Span aSpan)
@@ -752,7 +754,7 @@ namespace VCodeEditor.Document
                                     }
                                 }
 
-                                words.Add(new TextWord(document, currentLine, currentOffset, currentLength, DigitColor, false));
+                                words.Add(new TextWord(document, currentLine, currentOffset, currentLength, DigitStyle, false));
                                 currentOffset += currentLength;
                                 currentLength = 0;
                                 continue;
@@ -854,7 +856,7 @@ namespace VCodeEditor.Document
                                 PrevMarker marker = (PrevMarker)activeRuleSet.PrevMarkers[document, currentLine, currentOffset, currentLength];
                                 if (marker != null)
                                 {
-                                    prevWord.SyntaxColor = marker.Color;
+                                    prevWord.SyntaxStyle = marker.Color;
                                     //									document.Caret.ValidateCaretPos();
                                     //									document.RequestUpdate(new TextAreaUpdate(TextAreaUpdateType.SingleLine, document.GetLineNumberForOffset(document.Caret.Offset)));
                                 }
@@ -911,7 +913,7 @@ namespace VCodeEditor.Document
                         if (nextMarker.MarkMarker && words.Count > 0)
                         {
                             TextWord prevword = ((TextWord)words[words.Count - 1]);
-                            prevword.SyntaxColor = nextMarker.Color;
+                            prevword.SyntaxStyle = nextMarker.Color;
                         }
                         markNext = nextMarker.Color;
                     }
@@ -925,5 +927,9 @@ namespace VCodeEditor.Document
             }
         }
 
+        public Image GetImage(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

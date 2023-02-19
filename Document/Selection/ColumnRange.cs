@@ -18,7 +18,14 @@ namespace VCodeEditor.Document
 	/// </summary>
 	public class ColumnRange 
 	{
-		public static readonly ColumnRange NoColumn    = new ColumnRange(-2, -2);
+        public ColumnRange(int startColumn, int endColumn)
+        {
+            this.startColumn = startColumn;
+            this.endColumn = endColumn;
+
+        }
+
+        public static readonly ColumnRange NoColumn    = new ColumnRange(-2, -2);
 		public static readonly ColumnRange WholeColumn = new ColumnRange(-1, -1);
 		
 		int startColumn;
@@ -47,14 +54,7 @@ namespace VCodeEditor.Document
 				endColumn = value;
 			}
 		}
-		
-		public ColumnRange(int startColumn, int endColumn)
-		{
-			this.startColumn = startColumn;
-			this.endColumn = endColumn;
-			
-		}
-		
+	
 		public override int GetHashCode()
 		{
 			return startColumn + (endColumn << 16);

@@ -111,7 +111,7 @@ namespace VCodeEditor
 					dataObject.SetData(LineSelectedType, false, lineSelected);
 				}
 				// 默认值没有突出显示，因此我们不需要RTF输出
-				if (textArea.Document.HighlightingStrategy.Name != "Default") {
+				if (textArea.Document.HighlightStyle.Name != "Default") {
 					dataObject.SetData(DataFormats.Rtf, RtfWriter.GenerateRtf(textArea));
 				}
 				OnCopyText(new CopyTextEventArgs(stringToCopy));
@@ -226,7 +226,9 @@ namespace VCodeEditor
 				CopyText(this, e);
 			}
 		}
-		
+		/// <summary>
+		/// 复制文本事件
+		/// </summary>
 		public event CopyTextEventHandler CopyText;
 	}
 	

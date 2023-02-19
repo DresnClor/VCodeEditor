@@ -12,7 +12,7 @@ namespace VCodeEditor.Document
 	public delegate void BookmarkEventHandler(object sender, BookmarkEventArgs e);
 
 	/// <summary>
-	/// 书签事件处理程序
+	/// 书签事件参数
 	/// </summary>
 	public class BookmarkEventArgs : EventArgs
 	{

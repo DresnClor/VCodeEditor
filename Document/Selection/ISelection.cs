@@ -11,7 +11,7 @@ using VCodeEditor.Undo;
 namespace VCodeEditor.Document
 {
     /// <summary>
-    /// 选择接口
+    /// 文本内容选择接口
     /// </summary>
     public interface ISelection
     {
@@ -58,7 +58,7 @@ namespace VCodeEditor.Document
         }
 
         /// <value>
-        /// 返回真实，如果选择是矩形的
+        /// 如果选择是矩形的，返回true
         /// </value>
         bool IsRectangularSelection
         {
@@ -66,7 +66,7 @@ namespace VCodeEditor.Document
         }
 
         /// <value>
-        /// 获取选择是否为空
+        /// 选择是否为空
         /// </value>
         bool IsEmpty
         {

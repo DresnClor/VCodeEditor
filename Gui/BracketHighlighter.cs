@@ -17,7 +17,7 @@ namespace VCodeEditor
 	/// <summary>
 	/// 高亮括号
 	/// </summary>
-	public class Highlight
+	public class HighlightBracket
 	{
 		Point openBrace;
 		Point closeBrace;
@@ -46,7 +46,7 @@ namespace VCodeEditor
 			}
 		}
 		
-		public Highlight(Point openBrace, Point closeBrace)
+		public HighlightBracket(Point openBrace, Point closeBrace)
 		{
 			this.openBrace = openBrace;
 			this.closeBrace = closeBrace;
@@ -97,7 +97,7 @@ namespace VCodeEditor
 		/// <param name="document"></param>
 		/// <param name="offset"></param>
 		/// <returns></returns>
-		public Highlight GetHighlight(IDocument document, int offset)
+		public HighlightBracket GetHighlight(IDocument document, int offset)
 		{
 			int searchOffset;
 			if (document.TextEditorProperties.BracketMatchingStyle == BracketMatchingStyle.After) {
@@ -113,7 +113,7 @@ namespace VCodeEditor
 					int bracketOffset = TextUtilities.SearchBracketForward(document, searchOffset + 1, opentag, closingtag);
 					if (bracketOffset >= 0) {
 						Point p = document.OffsetToPosition(bracketOffset);
-						return new Highlight(p, endP);
+						return new HighlightBracket(p, endP);
 					}
 				}
 			} else if (word == closingtag) {
@@ -121,7 +121,7 @@ namespace VCodeEditor
 					int bracketOffset = TextUtilities.SearchBracketBackward(document, searchOffset - 1, opentag, closingtag);
 					if (bracketOffset >= 0) {
 						Point p = document.OffsetToPosition(bracketOffset);
-						return new Highlight(p, endP);
+						return new HighlightBracket(p, endP);
 					}
 				}
 			}

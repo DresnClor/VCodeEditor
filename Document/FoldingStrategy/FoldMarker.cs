@@ -116,7 +116,7 @@ namespace VCodeEditor.Document
 		}
 		
 		/// <summary>
-		/// 折叠文本
+		/// 折叠文本，用于折叠后展示
 		/// </summary>
 		public string FoldText {
 			get {

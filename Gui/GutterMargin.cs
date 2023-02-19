@@ -19,12 +19,14 @@ using VCodeEditor.Document;
 namespace VCodeEditor
 {
 	/// <summary>
-	/// 装订线边栏
+	/// 行号栏
 	/// </summary>
 	public class GutterMargin : AbstractMargin, IDisposable
 	{
 		StringFormat numberStringFormat = (StringFormat)StringFormat.GenericTypographic.Clone();
-		
+		/// <summary>
+		/// 鼠标样式
+		/// </summary>
 		public static Cursor RightLeftCursor;
 		
 		static GutterMargin()
@@ -71,7 +73,7 @@ namespace VCodeEditor
 			if (rect.Width <= 0 || rect.Height <= 0) {
 				return;
 			}
-			HighlightStyle lineNumberPainterColor = textArea.Document.HighlightingStrategy.GetStyleFor("LineNumbers");
+			HighlightStyle lineNumberPainterColor = textArea.Document.HighlightStyle.GetStyleFor("LineNumbers");
 			int fontHeight = textArea.TextView.FontHeight;
 			Brush fillBrush = textArea.Enabled ? BrushRegistry.GetBrush(lineNumberPainterColor.BackgroundColor) : SystemBrushes.InactiveBorder;
 			Brush drawBrush = BrushRegistry.GetBrush(lineNumberPainterColor.Color);

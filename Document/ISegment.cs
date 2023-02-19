@@ -10,7 +10,7 @@ using VCodeEditor.Undo;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 段落跨度接口
+	/// 段落信息接口
 	/// </summary>
 	public interface ISegment
 	{

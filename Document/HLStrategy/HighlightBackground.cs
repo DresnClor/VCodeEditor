@@ -20,7 +20,7 @@ namespace VCodeEditor.Document
 	/// <summary>
 	/// 使用背景图像扩展高亮颜色
 	/// </summary>
-	public class HLBackground : HighlightStyle
+	public class HighlightBackground : HighlightStyle
 	{
 		Image backgroundImage;
 
@@ -36,7 +36,7 @@ namespace VCodeEditor.Document
 		/// <summary>
 		/// Creates a new instance of <see cref="HighlightBackground"/>
 		/// </summary>
-		public HLBackground(XmlElement el) : base(el)
+		public HighlightBackground(XmlElement el) : base(el)
 		{
 			if (el.Attributes["image"] != null) {
 				backgroundImage = new Bitmap(el.Attributes["image"].InnerText);
@@ -46,11 +46,11 @@ namespace VCodeEditor.Document
 		/// <summary>
 		/// Creates a new instance of <see cref="HighlightBackground"/>
 		/// </summary>
-		public HLBackground(Color color, Color backgroundcolor, bool bold, bool italic) : base(color, backgroundcolor, bold, italic)
+		public HighlightBackground(Color color, Color backgroundcolor, bool bold, bool italic) : base(color, backgroundcolor, bold, italic)
 		{
 		}
 		
-		public HLBackground(string systemColor, string systemBackgroundColor, bool bold, bool italic) : base(systemColor, systemBackgroundColor, bold, italic)
+		public HighlightBackground(string systemColor, string systemBackgroundColor, bool bold, bool italic) : base(systemColor, systemBackgroundColor, bold, italic)
 		{
 		}
 	}

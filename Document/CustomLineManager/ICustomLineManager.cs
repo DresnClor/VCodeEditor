@@ -12,7 +12,7 @@ using System.Drawing;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 此类处理缓冲区自定义行
+	/// 自定义行管理器
 	/// </summary>
 	public interface ICustomLineManager
 	{

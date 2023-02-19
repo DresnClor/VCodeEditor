@@ -13,7 +13,7 @@ using System.Text;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 本类处理自动和智能缩入在文本买到的，而 你键入。
+	/// 默认格式化策略
 	/// </summary>
 	public class DefaultFormattingStrategy : IFormattingStrategy
 	{

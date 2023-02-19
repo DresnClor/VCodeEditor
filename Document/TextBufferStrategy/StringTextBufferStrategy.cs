@@ -14,7 +14,7 @@ using VCodeEditor.Undo;
 namespace VCodeEditor.Document
 {
     /// <summary>
-    /// 文本缓冲策略
+    /// 字符串文本缓冲策略
     /// </summary>
     public class StringTextBufferStrategy : ITextBufferStrategy
     {

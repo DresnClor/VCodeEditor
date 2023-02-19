@@ -100,7 +100,7 @@ namespace VCodeEditor.Document
 				int xPos = 0;
 				foreach (TextWord word in Words) {
 					if (x < xPos + word.Length) {
-						return word.SyntaxColor;
+						return word.SyntaxStyle;
 					}
 					xPos += word.Length;
 				}

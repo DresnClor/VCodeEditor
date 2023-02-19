@@ -18,6 +18,9 @@ namespace VCodeEditor.Document
     /// </summary>
     public interface IDocument
     {
+        /// <summary>
+        /// 编辑框属性
+        /// </summary>
         ITextEditorProperties TextEditorProperties
         {
             get;
@@ -25,7 +28,7 @@ namespace VCodeEditor.Document
         }
 
         /// <summary>
-        /// 撤销栈
+        /// 撤销、重做栈
         /// </summary>
         UndoStack UndoStack
         {
@@ -33,7 +36,7 @@ namespace VCodeEditor.Document
         }
 
         /// <value>
-        /// 只读文档
+        /// 将文档设为只读
         /// </value>
         bool ReadOnly
         {
@@ -42,7 +45,7 @@ namespace VCodeEditor.Document
         }
 
         /// <summary>
-        /// 格式化策略
+        /// 文档格式化策略
         /// </summary>
         IFormattingStrategy FormattingStrategy
         {
@@ -59,7 +62,7 @@ namespace VCodeEditor.Document
         }
 
         /// <summary>
-        /// 折叠管理
+        /// 折叠管理器
         /// </summary>
         FoldingManager FoldingManager
         {
@@ -67,16 +70,16 @@ namespace VCodeEditor.Document
         }
 
         /// <summary>
-        /// 高亮策略
+        /// 编辑框样式
         /// </summary>
-        IStyleStrategy HighlightingStrategy
+        IStyleStrategy HighlightStyle
         {
             get;
             set;
         }
 
         /// <summary>
-        /// 书签管理
+        /// 书签管理器
         /// </summary>
         BookmarkManager BookmarkManager
         {
@@ -92,7 +95,7 @@ namespace VCodeEditor.Document
         }
 
         /// <summary>
-        /// 编辑管理
+        /// 标记管理器
         /// </summary>
         MarkerStrategy MarkerStrategy
         {
@@ -106,7 +109,7 @@ namespace VCodeEditor.Document
         //			get;
         //		}
 
-        #region ILineManager interface
+        #region ILineManager 行管理接口
         /// <summary>
         /// 所有行段的集合
         /// </summary>
@@ -175,9 +178,9 @@ namespace VCodeEditor.Document
         int GetLastLogicalLine(int lineNumber);
 
         /// <remarks>
-        /// 获取给定逻辑线的可见线。
+        /// 获取给定逻辑行的可见行。
         /// 示例：行数==100个折叠位于线跟踪器中
-        /// 0.1（2折叠，不可见线）之间此方法返回98
+        /// 0.1（2折叠，不可见行）之间此方法返回98
         /// "可见"行号
         /// </remarks>
         int GetVisibleLine(int lineNumber);
@@ -188,17 +191,17 @@ namespace VCodeEditor.Document
         //		int GetVisibleColumn(int logicalLine, int logicalColumn);
 
         /// <remarks>
-        /// 获取行号后的下一条可见线
+        /// 获取行号后的下一条可见行
         /// </remarks>
         int GetNextVisibleLineAbove(int lineNumber, int lineCount);
 
         /// <remarks>
-        /// 获取行号下的下一条可见线
+        /// 获取行号下的下一条可见行
         /// </remarks>
         int GetNextVisibleLineBelow(int lineNumber, int lineCount);
-        #endregion
+        #endregion ILineManager 行管理接口
 
-        #region ITextBufferStrategy interface
+        #region ITextBufferStrategy 文本缓冲策略接口
         /// <value>
         /// 文本内容
         /// </value>
@@ -270,7 +273,13 @@ namespace VCodeEditor.Document
         /// 要复制的字符数。
         /// </param>
         string GetText(int offset, int length);
-        #endregion
+        #endregion  ITextBufferStrategy 文本缓冲策略接口
+     
+        /// <summary>
+        /// 获取自动行段落文本
+        /// </summary>
+        /// <param name="segment">行段落</param>
+        /// <returns></returns>
         string GetText(ISegment segment);
 
         #region ITextModel interface
@@ -280,7 +289,7 @@ namespace VCodeEditor.Document
         Point OffsetToPosition(int offset);
 
         /// <summary>
-        /// 从偏移返回逻辑行/列位置
+        /// 从位置返回逻辑行/列偏移
         /// </summary>
         int PositionToOffset(Point p);
         #endregion
@@ -309,18 +318,23 @@ namespace VCodeEditor.Document
         void UpdateSegmentListOnDocumentChange<T>(List<T> list, DocumentEventArgs e) where T : ISegment;
 
         /// <summary>
-        /// 当提交更新称为"提交更新"时，会被激发
+        /// 当提交更新称为"提交更新"时触发
         /// </summary>
         event EventHandler UpdateCommited;
 
         /// <summary>
+        /// 将要改变文档前触发
         /// </summary>
         event DocumentEventHandler DocumentAboutToBeChanged;
 
         /// <summary>
+        /// 文档改变触发
         /// </summary>
         event DocumentEventHandler DocumentChanged;
 
+        /// <summary>
+        /// 文本内容改变触发
+        /// </summary>
         event EventHandler TextContentChanged;
     }
 }

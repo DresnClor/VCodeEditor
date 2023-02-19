@@ -26,7 +26,7 @@ using VCodeEditor.Document;
 namespace VCodeEditor
 {
 	/// <summary>
-	/// 插入点模式
+	/// 光标插入点模式
 	/// </summary>
 	public enum CaretMode {
 		/// <summary>
@@ -38,11 +38,11 @@ namespace VCodeEditor
 		/// </summary>
 		OverwriteMode
 	}
-	
-	/// <summary>
-	/// 插入点
-	/// </summary>
-	public class Caret : IDisposable
+
+    /// <summary>
+    /// 光标插入点
+    /// </summary>
+    public class Caret : IDisposable
 	{
 		int       line          = 0;
 		int       column        = 0;
@@ -340,13 +340,13 @@ namespace VCodeEditor
 		}
 		
 		/// <remarks>
-		/// 每次移动插入点时都会被调用
+		/// 插入点位置被改变触发
 		/// </remarks>
 		public event EventHandler PositionChanged;
 
-		/// <remarks>
-		/// 每次插入点模式改变时都会被调用
-		/// </remarks>
-		public event EventHandler CaretModeChanged;
+        /// <remarks>
+        /// 插入点插入模式被改变触发
+        /// </remarks>
+        public event EventHandler CaretModeChanged;
 	}
 }

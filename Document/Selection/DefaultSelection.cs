@@ -11,7 +11,7 @@ using System.Drawing;
 namespace VCodeEditor.Document
 {
     /// <summary>
-    /// 默认实现 <see cref="VCodeEditor.Document.ISelection"/> 接口
+    /// 选择接口 <see cref="VCodeEditor.Document.ISelection"/> 默认实现
     /// </summary>
     public class DefaultSelection : ISelection
     {
@@ -95,7 +95,7 @@ namespace VCodeEditor.Document
         }
 
         /// <value>
-        /// 返回真实，如果选择是矩形的
+        /// 如果选择是矩形的，返回true
         /// </value>
         // TODO : 使用此未使用的属性
         public bool IsRectangularSelection

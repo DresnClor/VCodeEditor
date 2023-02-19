@@ -10,10 +10,11 @@ using System;
 namespace VCodeEditor.Document
 {
 	public delegate void LineManagerEventHandler(object sender, LineManagerEventArgs e);
+
 	public delegate void LineLengthEventHandler(object sender, LineLengthEventArgs e);
 	
 	/// <summary>
-	/// 行管理事件
+	/// 行管理事件参数
 	/// </summary>
 	public class LineManagerEventArgs : EventArgs
 	{
@@ -57,7 +58,7 @@ namespace VCodeEditor.Document
 	}
 	
 	/// <summary>
-	/// 行长度事件
+	/// 行长度事件参数
 	/// </summary>
 	public class LineLengthEventArgs : EventArgs
 	{

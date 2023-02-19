@@ -27,7 +27,18 @@ using VCodeEditor.Gui.CompletionWindow;
 
 namespace VCodeEditor
 {
+    /// <summary>
+    /// 按键事件
+    /// </summary>
+    /// <param name="ch"></param>
+    /// <returns></returns>
     public delegate bool KeyEventHandler(char ch);
+
+    /// <summary>
+    /// 对话框按键处理
+    /// </summary>
+    /// <param name="keyData"></param>
+    /// <returns></returns>
     public delegate bool DialogKeyProcessor(Keys keyData);
 
     /// <summary>
@@ -276,11 +287,15 @@ namespace VCodeEditor
             bracketshemes.Add(new BracketHighlightingSheme('(', ')'));
             bracketshemes.Add(new BracketHighlightingSheme('[', ']'));
 
+
             caret.PositionChanged += new EventHandler(SearchMatchingBracket);
             Document.TextContentChanged += new EventHandler(TextContentChanged);
             Document.FoldingManager.FoldingsChanged += new EventHandler(DocumentFoldingsChanged);
         }
 
+        /// <summary>
+        /// 更新匹配括号
+        /// </summary>
         public void UpdateMatchingBracket()
         {
             SearchMatchingBracket(null, null);
@@ -319,7 +334,7 @@ namespace VCodeEditor
             foreach (BracketHighlightingSheme bracketsheme in bracketshemes)
             {
                 //				if (bracketsheme.IsInside(textareapainter.Document, textareapainter.Document.Caret.Offset)) {
-                Highlight highlight = bracketsheme.GetHighlight(Document, Caret.Offset - 1);
+                HighlightBracket highlight = bracketsheme.GetHighlight(Document, Caret.Offset - 1);
                 if (textView.Highlight != null && textView.Highlight.OpenBrace.Y >= 0 && textView.Highlight.OpenBrace.Y < Document.TotalNumberOfLines)
                 {
                     UpdateLine(textView.Highlight.OpenBrace.Y);
@@ -441,6 +456,9 @@ namespace VCodeEditor
             oldToolTip = text;
         }
 
+        /// <summary>
+        /// 工具提示请求事件
+        /// </summary>
         public event ToolTipRequestEventHandler ToolTipRequest;
 
         protected virtual void OnToolTipRequest(ToolTipRequestEventArgs e)
@@ -657,7 +675,7 @@ namespace VCodeEditor
         /// 此方法在每个按键上调用
         /// </summary>
         /// <returns>
-        /// 诚然，如果钥匙是由这种方法处理，不应该插入文本区域。
+        /// 诚然，如果key是由这种方法处理，不应该插入文本区域。
         /// </returns>
         protected internal virtual bool HandleKeyPress(char ch)
         {
@@ -744,7 +762,7 @@ namespace VCodeEditor
         }
 
         /// <summary>
-        /// 此方法执行对话密钥
+        /// 此方法执行对话框按键
         /// </summary>
         public bool ExecuteDialogKey(Keys keyData)
         {
@@ -837,7 +855,7 @@ namespace VCodeEditor
         }
 
         /// <summary>
-        /// 可视更新
+        /// 开始更新
         /// </summary>
         public void BeginUpdate()
         {
@@ -853,7 +871,7 @@ namespace VCodeEditor
         }
 
         /// <summary>
-        /// 启用剪切或状态
+        /// 启用剪切或粘贴
         /// </summary>
         public bool EnableCutOrPaste
         {
@@ -883,7 +901,7 @@ namespace VCodeEditor
         /// <returns></returns>
         string GenerateWhitespaceString(int length)
         {
-            return new String(' ', length);
+            return new string(' ', length);
         }
         /// <remarks>
         /// 在插入点插入单个字符
@@ -1129,7 +1147,13 @@ namespace VCodeEditor
             Invalidate(r);
         }
         #endregion
+        /// <summary>
+        /// 按键事件
+        /// </summary>
         public event KeyEventHandler KeyEventHandler;
+        /// <summary>
+        /// 处理对话框按键
+        /// </summary>
         public event DialogKeyProcessor DoProcessDialogKey;
 
         //internal void

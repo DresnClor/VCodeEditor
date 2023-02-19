@@ -44,7 +44,7 @@ namespace VCodeEditor
 
             textAreaPanel.Dock = DockStyle.Fill;
             Document = (new DocumentFactory()).CreateDocument();
-            Document.HighlightingStrategy = HighlightStrategyFactory.CreateHLStrategy();
+            Document.HighlightStyle = HighlightStrategyFactory.CreateHLStrategy();
             primaryTextArea = new TextAreaControl(this);
             primaryTextArea.Dock = DockStyle.Fill;
             textAreaPanel.Controls.Add(primaryTextArea);
@@ -330,10 +330,10 @@ namespace VCodeEditor
         /// <param name="filePath">高亮文件路径</param>
         public void InitStyle(string filePath)
         {
-            this.HLStrategy = new FileHLStrategy(
+           /* this.HLStrategy = new FileHLStrategy(
                 Path.GetExtension(filePath),
                 filePath);
-            this.InitStyle();
+            this.InitStyle();*/
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace VCodeEditor
         /// <param name="name">风格名称</param>
         public void SetHighlighting(string name)
         {
-            Document.HighlightingStrategy =
+            Document.HighlightStyle =
                 HighlightStrategyFactory.CreateHLStrategy(name);
         }
 

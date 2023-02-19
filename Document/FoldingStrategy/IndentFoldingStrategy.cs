@@ -11,7 +11,7 @@ using System.Collections.Generic;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 计算折叠级别的简单折叠策略 行缩进级别。
+	///  缩进折叠策略
 	/// </summary>
 	public class IndentFoldingStrategy : IFoldingStrategy
 	{
@@ -27,6 +27,12 @@ namespace VCodeEditor.Document
 			return l;
 		}
 		
+		/// <summary>
+		/// 获取级别
+		/// </summary>
+		/// <param name="document"></param>
+		/// <param name="offset"></param>
+		/// <returns></returns>
 		int GetLevel(IDocument document, int offset)
 		{
 			int level = 0;

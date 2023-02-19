@@ -17,16 +17,25 @@ using VCodeEditor.Document;
 namespace VCodeEditor
 {
 	/// <summary>
-	/// 笔刷注册
+	/// 画刷注册
 	/// </summary>
 	public class BrushRegistry
 	{
-		static Hashtable brushes = new Hashtable();
+        /// <summary>
+        /// 画刷哈希表
+        /// </summary>
+        static Hashtable brushes = new Hashtable();
+		/// <summary>
+		/// 笔哈希表
+		/// </summary>
 		static Hashtable pens    = new Hashtable();
+		/// <summary>
+		/// 点笔哈希表
+		/// </summary>
 		static Hashtable dotPens = new Hashtable();
 		
 		/// <summary>
-		/// 获取笔刷
+		/// 获取画刷
 		/// </summary>
 		/// <param name="color"></param>
 		/// <returns></returns>

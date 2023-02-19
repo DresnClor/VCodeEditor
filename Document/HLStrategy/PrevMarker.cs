@@ -26,30 +26,29 @@ namespace VCodeEditor.Document
 		string      what;
 		HighlightStyle color;
 		bool        markMarker = false;
-		
-		/// <value>
-		/// String value to indicate to mark previous token
-		/// </value>
-		public string What {
+
+        /// <value>
+        /// 指示标记上一个标记的字符串值
+        /// </value>
+        public string What {
 			get {
 				return what;
 			}
 		}
-		
-		/// <value>
-		/// Color for marking previous token
-		/// </value>
-		public HighlightStyle Color {
+
+        /// <value>
+        /// 高亮样式
+        /// </value>
+        public HighlightStyle Color {
 			get {
 				return color;
 			}
 		}
-		
-		/// <value>
-		/// If true the indication text will be marked with the same color
-		/// too
-		/// </value>
-		public bool MarkMarker {
+
+        /// <value>
+        /// 如果指示文本将用相同的颜色标记，返回true
+        /// </value>
+        public bool MarkMarker {
 			get {
 				return markMarker;
 			}

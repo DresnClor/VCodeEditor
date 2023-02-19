@@ -50,7 +50,7 @@ namespace VCodeEditor.Document
 		/// <summary>
 		/// 高亮策略
 		/// </summary>
-		public IStyleStrategy HighlightingStrategy {
+		public IStyleStrategy HighlightStyle {
 			get {
 				return highlightingStrategy;
 			}

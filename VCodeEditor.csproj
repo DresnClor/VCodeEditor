@@ -196,7 +196,7 @@
     <Compile Include="Document\HLStrategy\FontContainer.cs" />
     <Compile Include="Document\HLStrategy\HighlightStyle.cs" />
     <Compile Include="Document\HLStrategy\HighlightInfo.cs" />
-    <Compile Include="Document\HLStrategy\HLBackground.cs" />
+    <Compile Include="Document\HLStrategy\HighlightBackground.cs" />
     <Compile Include="Document\HLStrategy\HLColorNotFoundException.cs" />
     <Compile Include="Document\HLStrategy\HLDefineParser.cs" />
     <Compile Include="Document\HLStrategy\HLManager.cs" />

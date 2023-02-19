@@ -233,10 +233,10 @@ namespace VCodeEditor.Actions
 				return;
 			}
 			
-			if (textArea.Document.HighlightingStrategy.Properties.ContainsKey("LineComment")) {
+			if (textArea.Document.HighlightStyle.Properties.ContainsKey("LineComment")) {
 				new ToggleLineComment().Execute(textArea);
-			} else if (textArea.Document.HighlightingStrategy.Properties.ContainsKey("BlockCommentBegin") &&
-			           textArea.Document.HighlightingStrategy.Properties.ContainsKey("BlockCommentBegin")) {
+			} else if (textArea.Document.HighlightStyle.Properties.ContainsKey("BlockCommentBegin") &&
+			           textArea.Document.HighlightStyle.Properties.ContainsKey("BlockCommentBegin")) {
 				new ToggleBlockComment().Execute(textArea);
 			}
 		}
@@ -325,8 +325,8 @@ namespace VCodeEditor.Actions
 			}
 			
 			string comment = null;
-			if (textArea.Document.HighlightingStrategy.Properties.ContainsKey("LineComment")) {
-				comment = textArea.Document.HighlightingStrategy.Properties["LineComment"].ToString();
+			if (textArea.Document.HighlightStyle.Properties.ContainsKey("LineComment")) {
+				comment = textArea.Document.HighlightStyle.Properties["LineComment"].ToString();
 			}
 			
 			if (comment == null || comment.Length == 0) {
@@ -386,13 +386,13 @@ namespace VCodeEditor.Actions
 			}
 			
 			string commentStart = null;
-			if (textArea.Document.HighlightingStrategy.Properties.ContainsKey("BlockCommentBegin")) {
-				commentStart = textArea.Document.HighlightingStrategy.Properties["BlockCommentBegin"].ToString();
+			if (textArea.Document.HighlightStyle.Properties.ContainsKey("BlockCommentBegin")) {
+				commentStart = textArea.Document.HighlightStyle.Properties["BlockCommentBegin"].ToString();
 			}
 			
 			string commentEnd = null;
-			if (textArea.Document.HighlightingStrategy.Properties.ContainsKey("BlockCommentEnd")) {
-				commentEnd = textArea.Document.HighlightingStrategy.Properties["BlockCommentEnd"].ToString();
+			if (textArea.Document.HighlightStyle.Properties.ContainsKey("BlockCommentEnd")) {
+				commentEnd = textArea.Document.HighlightStyle.Properties["BlockCommentEnd"].ToString();
 			}
 			
 			if (commentStart == null || commentStart.Length == 0 || commentEnd == null || commentEnd.Length == 0) {

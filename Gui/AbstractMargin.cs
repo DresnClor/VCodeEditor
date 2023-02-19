@@ -123,9 +123,21 @@ namespace VCodeEditor
 			}
 		}
 		
+		/// <summary>
+		/// 绘制触发
+		/// </summary>
 		public event MarginPaintEventHandler Painted;
+	/// <summary>
+	/// 鼠标按下
+	/// </summary>
 		public event MarginMouseEventHandler MouseDown;
+		/// <summary>
+		/// 鼠标移动
+		/// </summary>
 		public event MarginMouseEventHandler MouseMove;
+		/// <summary>
+		/// 鼠标离开
+		/// </summary>
 		public event EventHandler            MouseLeave;
 	}
 }

@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 折叠管理
+	/// 折叠管理器
 	/// </summary>
 	public class FoldingManager
 	{

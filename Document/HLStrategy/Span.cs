@@ -19,7 +19,7 @@ using System.Xml;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 范围规则
+	/// 规则范围
 	/// </summary>
 	public class Span
 	{

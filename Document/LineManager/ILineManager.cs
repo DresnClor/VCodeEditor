@@ -15,85 +15,67 @@ namespace VCodeEditor.Document
 	public interface ILineManager
 	{
 		/// <value>
-		/// 所有行段的集合
+		/// 全部行集合
 		/// </value>
 		List<LineSegment> LineSegmentCollection {
 			get;
 		}
 		
 		/// <value>
-		/// 行的总数，这可能是！=阵列列表。
-		/// 如果最后一行以分界线结束。
+		/// 行总数
 		/// </value>
 		int TotalNumberOfLines {
 			get;
 		}
 		
 		/// <value>
-		/// The current <see cref="IStyleStrategy"/>连接到此直线经理
+		/// 编辑框样式
 		/// </value>
-		IStyleStrategy HighlightingStrategy {
+		IStyleStrategy HighlightStyle {
 			get;
 			set;
 		}
 		
 		/// <summary>
-		/// 返回给定偏移的有效行号。
+		/// 获取给定偏移的有效行号。
 		/// </summary>
-		/// <param name="offset">
-		/// 指向行中的字符的偏移
-		/// 已返回行号。
-		/// </param>
-		/// <returns>
-		/// 值是行号的 int。
-		/// </returns>
+		/// <param name="offset">指向行中的字符的偏移</param>
 		/// <exception cref="System.ArgumentException">如果偏移指向无效位置</exception>
 		int GetLineNumberForOffset(int offset);
+
+        /// <summary>
+        /// 获取取给定偏移的有效行段落
+        /// </summary>
+        /// <param name="offset">指向行中的字符的偏移</param>
+        /// <exception cref="System.ArgumentException">如果偏移指向无效位置</exception>
+        LineSegment GetLineSegmentForOffset(int offset);
+
+        /// <summary>
+        /// 获取给定行号的有效行段落</summary>
+        /// <param name="lineNumber">行号</param>
+        /// <exception cref="System.ArgumentException">如果偏移指向无效位置</exception>
+        LineSegment GetLineSegment(int lineNumber);
 		
 		/// <summary>
-		/// Returns a <see cref="LineSegment"/> 给定偏移。
-		/// </summary>
-		/// <param name="offset">
-		/// 指向行中的字符的偏移
-		/// is returned.
-		/// </param>
-		/// <returns>
-		/// A <see cref="LineSegment"/> object.
-		/// </returns>
-		/// <exception cref="System.ArgumentException">If offset points not to a valid position</exception>
-		LineSegment GetLineSegmentForOffset(int offset);
-		
-		/// <summary>
-		/// Returns a <see cref="LineSegment"/> 给定行号。
-		/// 此功能应用于获取行，而不是获取
-		/// line using the <see cref="ArrayList"/>.
-		/// </summary>
-		/// <param name="lineNumber">
-		/// 请求的行号。
-		/// </param>
-		/// <returns>
-		/// A <see cref="LineSegment"/> object.
-		/// </returns>
-		/// <exception cref="System.ArgumentException">If offset points not to a valid position</exception>
-		LineSegment GetLineSegment(int lineNumber);
-		
-		/// <summary>
-		/// 在内部使用，不要称自己为"
+		/// 内部使用
+		/// 插入文本
 		/// </summary>
 		void Insert(int offset, string text);
+
+        /// <summary>
+        /// 内部使用
+		/// 移除文本
+        /// </summary>
+        void Remove(int offset, int length);
+
+        /// <summary>
+        /// 内部使用
+		/// 替换指定位置文本
+        /// </summary>
+        void Replace(int offset, int length, string text);
 		
 		/// <summary>
-		/// Used internally, do not call yourself.
-		/// </summary>
-		void Remove(int offset, int length);
-		
-		/// <summary>
-		/// Used internally, do not call yourself.
-		/// </summary>
-		void Replace(int offset, int length, string text);
-		
-		/// <summary>
-		/// 设置此行管理器的内容=中断文本 成行。
+		/// 设置行管理器的内容
 		/// </summary>
 		void SetContent(string text);
 		
@@ -127,20 +109,23 @@ namespace VCodeEditor.Document
 //		int GetVisibleColumn(int logicalLine, int logicalColumn);
 		
 		/// <summary>
-		/// 获取行号后的下一条可见线
+		/// 获取行号后的下一条可见行
 		/// </summary>
 		int GetNextVisibleLineAbove(int lineNumber, int lineCount);
 		
 		/// <summary>
-		///获取行号下的下一条可见线
+		///获取行号下的下一条可见行
 		/// </summary>
 		int GetNextVisibleLineBelow(int lineNumber, int lineCount);
 		
 		/// <summary>
-		/// 插入或删除线条时被激发
+		/// 插入或删除行时被激发
 		/// </summary>
 		event LineManagerEventHandler LineCountChanged;
 		
+		/// <summary>
+		/// 行长度被改变时触发
+		/// </summary>
 		event LineLengthEventHandler LineLengthChanged;
 	}
 }

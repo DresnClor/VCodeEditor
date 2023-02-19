@@ -12,9 +12,7 @@ using System.Text;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 此界面处理自动和智能缩入和格式
-	/// 键入时文档中。语言绑定可以覆盖此
-	/// 接口并定义自己的凹痕/格式。
+	/// 文本内容格式化策略
 	/// </summary>
 	public interface IFormattingStrategy
 	{
@@ -29,20 +27,18 @@ namespace VCodeEditor.Document
 		int FormatLine(TextArea textArea, int line, int caretOffset, char charTyped);
 		
 		/// <summary>
-		/// 此功能将凹痕级别设置为特定行
+		/// 设定指定行的缩进级别
 		/// </summary>
-		/// <returns>
-		/// 插入字符的数量。
-		/// </returns>
+		/// <returns>插入字符的数量</returns>
 		int IndentLine(TextArea textArea, int line);
+
+        /// <summary>
+        /// 设定一系列行的缩进级别
+        /// </summary>
+        void IndentLines(TextArea textArea, int begin, int end);
 		
 		/// <summary>
-		/// 此功能将缩微线设置在一系列行中。
-		/// </summary>
-		void IndentLines(TextArea textArea, int begin, int end);
-		
-		/// <summary>
-		///在由偏移跳过定义的块中查找开口支架的偏移 字符串和注释中的括号。
+		/// 搜索左括号
 		/// </summary>
 		/// <param name="document">要搜索的文件</param>
 		/// <param name="offset">块中位置的偏移或关闭支架的偏移。</param>
@@ -50,15 +46,15 @@ namespace VCodeEditor.Document
 		/// <param name="closingBracket">关闭支架的字符。</param>
 		/// <returns>如果没有找到匹配的支架，则返回开口支架的偏移或 -1。</returns>
 		int SearchBracketBackward(IDocument document, int offset, char openBracket, char closingBracket);
-		
-		/// <summary>
-		/// 在由偏移跳过定义的块中查找关闭支架的偏移 字符串和注释中的括号。
-		/// </summary>
-		/// <param name="document">The document to search in.</param>
-		/// <param name="offset">The offset of an position in the block or the offset of the opening bracket.</param>
-		/// <param name="openBracket">The character for the opening bracket.</param>
-		/// <param name="closingBracket">The character for the closing bracket.</param>
-		/// <returns>Returns the offset of the closing bracket or -1 if no matching bracket was found.</returns>
-		int SearchBracketForward(IDocument document, int offset, char openBracket, char closingBracket);
+
+        /// <summary>
+        /// 搜索右括号
+        /// </summary>
+        /// <param name="document">The document to search in.</param>
+        /// <param name="offset">The offset of an position in the block or the offset of the opening bracket.</param>
+        /// <param name="openBracket">The character for the opening bracket.</param>
+        /// <param name="closingBracket">The character for the closing bracket.</param>
+        /// <returns>Returns the offset of the closing bracket or -1 if no matching bracket was found.</returns>
+        int SearchBracketForward(IDocument document, int offset, char openBracket, char closingBracket);
 	}
 }

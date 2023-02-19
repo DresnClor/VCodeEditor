@@ -140,7 +140,7 @@ namespace VCodeEditor.Document
                             this.SetColorFor(
                                 el.Name,
                                 el.HasAttribute("bgcolor") ?
-                                        new HLBackground(el) :
+                                        new HighlightBackground(el) :
                                         new HighlightStyle(el));
                         }
                     }
@@ -179,14 +179,14 @@ namespace VCodeEditor.Document
             this.references = new Dictionary<string, IStyleStrategy>();
             this.digitStyle = new HighlightStyle(SystemColors.WindowText, false, false);
             this.defaultTextColor = new HighlightStyle(SystemColors.WindowText, false, false);
-            this.environmentStyle["Default"] = new HLBackground("WindowText", "Window", false, false);
+            this.environmentStyle["Default"] = new HighlightBackground("WindowText", "Window", false, false);
             this.environmentStyle["Selection"] = new HighlightStyle("HighlightText", "Highlight", false, false);
             this.environmentStyle["VRuler"] = new HighlightStyle("ControlLight", "Window", false, false);
             this.environmentStyle["InvalidLines"] = new HighlightStyle(Color.Red, false, false);
             this.environmentStyle["CaretMarker"] = new HighlightStyle(Color.FromArgb(224, 229, 235), false, false);
-            this.environmentStyle["LineNumbers"] = new HLBackground("ControlDark", "Window", false, false);
-            this.environmentStyle["BreakpointBar"] = new HLBackground("ControlDark", "Window", false, false);
-            this.environmentStyle["IconBar"] = new HLBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["LineNumbers"] = new HighlightBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["BreakpointBar"] = new HighlightBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["IconBar"] = new HighlightBackground("ControlDark", "Window", false, false);
             this.environmentStyle["FoldLine"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
             this.environmentStyle["FoldMarker"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
             this.environmentStyle["SelectedFoldLine"] = new HighlightStyle(Color.Black, false, false);
@@ -1100,7 +1100,7 @@ namespace VCodeEditor.Document
                                 PrevMarker marker = (PrevMarker)activeRuleSet.PrevMarkers[document, currentLine, currentOffset, currentLength];
                                 if (marker != null)
                                 {
-                                    prevWord.SyntaxColor = marker.Color;
+                                    prevWord.SyntaxStyle = marker.Color;
                                     //									document.Caret.ValidateCaretPos();
                                     //									document.RequestUpdate(new TextAreaUpdate(TextAreaUpdateType.SingleLine, document.GetLineNumberForOffset(document.Caret.Offset)));
                                 }
@@ -1157,7 +1157,7 @@ namespace VCodeEditor.Document
                         if (nextMarker.MarkMarker && words.Count > 0)
                         {
                             TextWord prevword = ((TextWord)words[words.Count - 1]);
-                            prevword.SyntaxColor = nextMarker.Color;
+                            prevword.SyntaxStyle = nextMarker.Color;
                         }
                         markNext = nextMarker.Color;
                     }

@@ -16,12 +16,12 @@ using VCodeEditor.Undo;
 namespace VCodeEditor.Document
 {
     /// <summary>
-    /// 线条查看器样式
+    /// 行视图查看器样式
     /// </summary>
     public enum LineViewerStyle
     {
         /// <summary>
-        /// 将不显示线查看器
+        /// 将不显示行视图查看器
         /// </summary>
         None,
         /// <summary>
@@ -101,9 +101,6 @@ namespace VCodeEditor.Document
         ITextEditorProperties textEditorProperties = new DefaultTextEditorProperties();
         MarkerStrategy markerStrategy = null;
 
-        /// <summary>
-        /// 标记策略
-        /// </summary>
         public MarkerStrategy MarkerStrategy
         {
             get
@@ -116,9 +113,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 编辑器属性
-        /// </summary>
         public ITextEditorProperties TextEditorProperties
         {
             get
@@ -131,9 +125,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 撤销栈
-        /// </summary>
         public UndoStack UndoStack
         {
             get
@@ -142,9 +133,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 行段落集合
-        /// </summary>
         public List<LineSegment> LineSegmentCollection
         {
             get
@@ -153,9 +141,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 是否只读
-        /// </summary>
         public bool ReadOnly
         {
             get
@@ -168,9 +153,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 行管理器
-        /// </summary>
         public ILineManager LineManager
         {
             get
@@ -183,9 +165,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 文本缓冲策略
-        /// </summary>
         public ITextBufferStrategy TextBufferStrategy
         {
             get
@@ -198,9 +177,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 格式化策略
-        /// </summary>
         public IFormattingStrategy FormattingStrategy
         {
             get
@@ -213,9 +189,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 折叠管理
-        /// </summary>
         public FoldingManager FoldingManager
         {
             get
@@ -228,24 +201,18 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 高亮策略
-        /// </summary>
-        public IStyleStrategy HighlightingStrategy
+        public IStyleStrategy HighlightStyle
         {
             get
             {
-                return lineTrackingStrategy.HighlightingStrategy;
+                return lineTrackingStrategy.HighlightStyle;
             }
             set
             {
-                lineTrackingStrategy.HighlightingStrategy = value;
+                lineTrackingStrategy.HighlightStyle = value;
             }
         }
 
-        /// <summary>
-        /// 文本长度
-        /// </summary>
         public int TextLength
         {
             get
@@ -254,9 +221,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 书签管理
-        /// </summary>
         public BookmarkManager BookmarkManager
         {
             get
@@ -269,9 +233,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 自定义行管理
-        /// </summary>
         public ICustomLineManager CustomLineManager
         {
             get
@@ -284,9 +245,6 @@ namespace VCodeEditor.Document
             }
         }
 
-        /// <summary>
-        /// 文本内容
-        /// </summary>
         public string TextContent
         {
             get
@@ -408,9 +366,6 @@ namespace VCodeEditor.Document
             return GetText(segment.Offset, segment.Length);
         }
 
-        /// <summary>
-        /// 总行数
-        /// </summary>
         public int TotalNumberOfLines
         {
             get

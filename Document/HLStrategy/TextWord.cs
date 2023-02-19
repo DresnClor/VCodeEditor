@@ -41,6 +41,9 @@ namespace VCodeEditor.Document
 		int          offset;
 		int          length;
 		
+		/// <summary>
+		/// 空格单词
+		/// </summary>
 		public sealed class SpaceTextWord : TextWord
 		{
 			public SpaceTextWord()
@@ -51,7 +54,7 @@ namespace VCodeEditor.Document
 			public SpaceTextWord(HighlightStyle color)
 			{
 				length = 1;
-				base.SyntaxColor = color;
+				base.SyntaxStyle = color;
 			}
 			
 			public override Font Font {
@@ -72,6 +75,9 @@ namespace VCodeEditor.Document
 			}
 		}
 		
+		/// <summary>
+		/// 制表符单词
+		/// </summary>
 		public sealed class TabTextWord : TextWord
 		{
 			public TabTextWord()
@@ -81,7 +87,7 @@ namespace VCodeEditor.Document
 			public TabTextWord(HighlightStyle color)
 			{
 				length = 1;
-				base.SyntaxColor = color;
+				base.SyntaxStyle = color;
 			}
 			
 			public override Font Font {
@@ -107,24 +113,36 @@ namespace VCodeEditor.Document
 		
 		public bool hasDefaultColor;
 		
+		/// <summary>
+		/// 空格单词
+		/// </summary>
 		static public TextWord Space {
 			get {
 				return spaceWord;
 			}
 		}
 		
+		/// <summary>
+		/// 制表符单词
+		/// </summary>
 		static public TextWord Tab {
 			get {
 				return tabWord;
 			}
 		}
 		
+		/// <summary>
+		/// 偏移位置
+		/// </summary>
 		public int Offset {
 			get {
 				return offset;
 			}
 		}
 		
+		/// <summary>
+		/// 长度
+		/// </summary>
 		public int Length {
 			get {
 				return length;
@@ -137,12 +155,18 @@ namespace VCodeEditor.Document
 			}
 		}
 		
+		/// <summary>
+		/// 单词类型
+		/// </summary>
 		public virtual TextWordType Type {
 			get {
 				return TextWordType.Word;
 			}
 		}
 		
+		/// <summary>
+		/// 单词文本内容
+		/// </summary>
 		public string Word {
 			get {
 				if (document == null) {
@@ -152,19 +176,28 @@ namespace VCodeEditor.Document
 			}
 		}
 		
+		/// <summary>
+		/// 字体
+		/// </summary>
 		public virtual Font Font {
 			get {
 				return color.Font;
 			}
 		}
 		
+		/// <summary>
+		/// 颜色
+		/// </summary>
 		public Color Color {
 			get {
 				return color.Color;
 			}
 		}
 		
-		public HighlightStyle SyntaxColor {
+		/// <summary>
+		/// 语法样式
+		/// </summary>
+		public HighlightStyle SyntaxStyle {
 			get {
 				return color;
 			}
@@ -174,6 +207,9 @@ namespace VCodeEditor.Document
 			}
 		}
 		
+		/// <summary>
+		/// 是否为空白
+		/// </summary>
 		public virtual bool IsWhiteSpace {
 			get {
 				return false;

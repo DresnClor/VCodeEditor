@@ -214,8 +214,8 @@ namespace VCodeEditor
         //新加
         public IStyleStrategy HLStrategy
         {
-            get => this.document.HighlightingStrategy;
-            set => this.document.HighlightingStrategy = value;
+            get => this.document.HighlightStyle;
+            set => this.document.HighlightStyle = value;
         }
 
         #region Document Properties
@@ -651,9 +651,9 @@ namespace VCodeEditor
         /// <param name="e">参数</param>
         void ReloadHighlighting(object sender, EventArgs e)
         {
-            if (Document.HighlightingStrategy != null)
+            if (Document.HighlightStyle != null)
             {
-                Document.HighlightingStrategy = HighlightStrategyFactory.CreateHLStrategy(Document.HighlightingStrategy.Name);
+                Document.HighlightStyle = HighlightStrategyFactory.CreateHLStrategy(Document.HighlightStyle.Name);
                 OptionsChanged();
             }
         }
@@ -827,7 +827,7 @@ namespace VCodeEditor
             document.BookmarkManager.Clear();
             if (autoLoadHighlighting)
             {
-                document.HighlightingStrategy = 
+                document.HighlightStyle = 
                     HighlightStrategyFactory.CreateHLStrategyForFile(fileName);
             }
 
@@ -957,7 +957,7 @@ namespace VCodeEditor
             if (disposing)
             {
                 HLManager.Manager.ReloadSyntaxHL -= new EventHandler(ReloadHighlighting);
-                document.HighlightingStrategy = null;
+                document.HighlightStyle = null;
                 document.UndoStack.TextEditorControl = null;
             }
             base.Dispose(disposing);

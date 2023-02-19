@@ -14,11 +14,20 @@ using VCodeEditor.Undo;
 namespace VCodeEditor.Document
 {
 	/// <summary>
-	/// 此选择管理
+	/// 文本内容选择管理器
 	/// </summary>
 	public class SelectionManager : IDisposable
 	{
-		IDocument document;
+        /// <summary>
+        /// 创建新实例<see cref="SelectionManager"/>
+        /// </summary>
+        public SelectionManager(IDocument document)
+        {
+            this.document = document;
+            document.DocumentChanged += new DocumentEventHandler(DocumentChanged);
+        }
+
+        IDocument document;
 		List<ISelection> selectionCollection = new List<ISelection>();
 		
 		/// <value>
@@ -31,7 +40,7 @@ namespace VCodeEditor.Document
 		}
 		
 		/// <value>
-		///  真，如果<see cref="SelectionCollection"/> 不是空的，否则是假。
+		///  如果<see cref="SelectionCollection"/> 不为空，返回true
 		/// </value>
 		public bool HasSomethingSelected {
 			get {
@@ -60,15 +69,6 @@ namespace VCodeEditor.Document
 				
 				return builder.ToString();
 			}
-		}
-		
-		/// <summary>
-		/// 创建新实例<see cref="SelectionManager"/>
-		/// </summary>
-		public SelectionManager(IDocument document)
-		{
-			this.document = document;
-			document.DocumentChanged += new DocumentEventHandler(DocumentChanged);
 		}
 		
 		public void Dispose()
@@ -394,6 +394,9 @@ namespace VCodeEditor.Document
 			}
 		}
 		
+		/// <summary>
+		/// 选择改变
+		/// </summary>
 		public event EventHandler SelectionChanged;
 	}
 }
