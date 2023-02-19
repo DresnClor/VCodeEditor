@@ -17,10 +17,6 @@
 		<Property name="DrawBracket" value="//"/>
 		<Property name="BreakpointBar" value="//"/>
 		<Property name="IconBar" value="//"/>
-		<Property name="DrawBracket" value="//"/>
-		<Property name="DrawBracket" value="//"/>
-		<Property name="DrawBracket" value="//"/>
-		<Property name="DrawBracket" value="//"/>
 	</Properties>
 	<Resources>
 		<!--资源-->

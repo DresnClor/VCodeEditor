@@ -61,6 +61,31 @@ namespace VCodeEditor.Document
                 italic = Boolean.Parse(el.Attributes["italic"].InnerText);
             }
 
+            if (el.Attributes["font"] != null)
+            {
+                string[] descr = el.Attributes["font"].InnerText.Split(new char[] { ',', '=' });
+                if (descr.Length == 4)
+                {
+                    FontStyle fontStyle = FontStyle.Regular;
+                    if (bold)
+                        fontStyle = (FontStyle)fontStyle | FontStyle.Bold;
+                    if (italic)
+                        fontStyle = (FontStyle)fontStyle | FontStyle.Italic;
+                    FontFamily fontFamily;
+                    if (descr[0] == "Ref")
+                    {
+                        fontFamily = FontContainer.GetPrivateFont(descr[1]);
+                    }
+                    else
+                    {
+                        fontFamily = new FontFamily(descr[1]);
+                    }
+                    if (fontFamily != null)
+                        if (fontFamily.IsStyleAvailable(fontStyle))
+                            font = new Font(fontFamily, float.Parse(descr[3]), fontStyle);
+                }
+            }
+
             if (el.Attributes["color"] != null)
             {//颜色
                 string c = el.Attributes["color"].InnerText;

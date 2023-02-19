@@ -23,6 +23,11 @@ namespace VCodeEditor.Document
         /// </value>
         string Name { get; }
 
+        /// <summary>
+        /// 语言
+        /// </summary>
+        string Language { get; }
+
         /// <value>
         /// 文件扩展名列表
         /// </value>
@@ -33,7 +38,10 @@ namespace VCodeEditor.Document
         /// </summary>
         Dictionary<string, string> Properties { get; }
 
-
+        /// <summary>
+        /// 断点栏样式
+        /// </summary>
+        BreakpointStyle BreakpointStyle { get; }
 
         /// <summary>
         /// 规则集
@@ -55,14 +63,14 @@ namespace VCodeEditor.Document
         /// <remarks>
         /// 获取指定名称的系统颜色
         /// </remarks>
-        HighlightStyle GetColorFor(string name);
+        HighlightStyle GetStyleFor(string name);
 
         /// <summary>
         /// 获取xshd文件内部定义的颜色
         /// </summary>
         /// <param name="name">颜色名称</param>
         /// <returns></returns>
-        HighlightStyle GetHighlightColor(string name);
+        HighlightStyle GetHighlightStyle(string name);
 
         /// <remarks>
         /// 取规则集，span为null返回默认规则集
@@ -72,7 +80,7 @@ namespace VCodeEditor.Document
         /// <remarks>
         /// 获取指定位置的高亮颜色
         /// </remarks>
-        HighlightStyle GetColor(IDocument document, LineSegment keyWord, int index, int length);
+        HighlightStyle GetStyle(IDocument document, LineSegment keyWord, int index, int length);
 
         /// <remarks>
         /// 更新高亮单词集
@@ -92,7 +100,6 @@ namespace VCodeEditor.Document
     {
         public BreakpointStyle()
         {
-
         }
 
         /// <summary>

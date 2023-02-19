@@ -9,14 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using VCodeEditor.Document;
+using VCodeEditor.Util;
 
-namespace VCodeEditor.Util
+namespace VCodeEditor.Document
 {
     /// <summary>
     /// vsl文件解析
     /// </summary>
     public class VslParser : VCodeEditor.Document.IStyleStrategy
     {
+        private string VslDir;
         /// <param name="name">高亮名称</param>
         /// <param name="file">配置文件</param>
         public VslParser(string name, string file) : this(name)
@@ -27,12 +29,78 @@ namespace VCodeEditor.Util
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(file);
+                this.VslDir = Path.GetDirectoryName(file);
                 //根属性
                 if (doc.DocumentElement.HasAttribute("name"))
                     this.name = doc.DocumentElement.Attributes["name"].InnerText;
                 if (doc.DocumentElement.HasAttribute("extensions"))
                     this.Extensions = doc.DocumentElement.GetAttribute("extensions").
                          Split(new char[] { ';', '|', ',' });
+                if (doc.DocumentElement.HasAttribute("language"))
+                    this.Language = doc.DocumentElement.GetAttribute("language");
+                //解析资源
+                XmlElement resources = doc.DocumentElement["Resources"];
+                if (resources != null)
+                {
+                    foreach (XmlNode resource in resources.ChildNodes)
+                    {
+                        if (resource is XmlElement xe)
+                        {
+                            string iname = xe.GetAttribute("name");
+                            string ipath = Utils.GetAbsolutePath(this.VslDir, this.VslDir, xe.GetAttribute("path"));
+                            if (File.Exists(ipath))
+                            {
+                                if (xe.Name == "Image")
+                                {//图片
+                                    this.Images[iname] = Image.FromFile(ipath);
+                                }
+                                else if (xe.Name == "Font")
+                                {//字体
+                                    FontContainer.AddFontFile(ipath);
+                                }
+                            }
+                        }
+                    }
+                }
+                //解析断点栏
+                XmlElement breakpoint = doc.DocumentElement["Breakpoint"];
+                if (breakpoint != null)
+                {
+                    Func<string, string, Image> getImage = (image, path) =>
+                    {//获取图片
+                        if (string.IsNullOrWhiteSpace(path))
+                        {
+                            return this.GetImage(name);
+                        }
+                        else
+                        {
+                            string p = Utils.GetAbsolutePath(this.VslDir, this.VslDir, path);
+                            if (File.Exists(p))
+                            {
+                                return Image.FromFile(p);
+                            }
+                            else
+                            {
+                                return null;
+                            }
+                        }
+                    };
+
+                    //解析配置
+                    XmlElement normal = breakpoint["Normal"];
+                    if (normal != null)
+                        this.BreakpointStyle.Normal =
+                            getImage(normal.GetAttribute("image"), normal.GetAttribute("path"));
+                    XmlElement disable = breakpoint["Disable"];
+                    if (disable != null)
+                        this.BreakpointStyle.Disable =
+                            getImage(disable.GetAttribute("image"), disable.GetAttribute("path"));
+                    XmlElement unableToHit = breakpoint["UnableToHit"];
+                    if (unableToHit != null)
+                        this.BreakpointStyle.UnableToHit =
+                            getImage(unableToHit.GetAttribute("image"), unableToHit.GetAttribute("path"));
+                }
+
                 //解析引用高亮文件列表
                 XmlElement syntaxs = doc.DocumentElement["Syntaxs"];
                 if (syntaxs != null)
@@ -43,25 +111,25 @@ namespace VCodeEditor.Util
                         try
                         {
                             string sf = Path.Combine(Path.GetDirectoryName(file), c.Attributes["file"].InnerText);
-                            FileHLStrategy hl = new FileHLStrategy(n, sf);
+                           VslParser hl = new VslParser(n, sf);
                             this.references.Add(n, hl);
                         }
                         catch { }
                     }
                 }
-                //解析颜色
-                XmlElement col = doc.DocumentElement["Colors"];
-                if (col != null)
+                //解析样式
+                XmlElement styles = doc.DocumentElement["Styles"];
+                if (styles != null)
                 {
-                    foreach (XmlElement c in col.ChildNodes)
+                    foreach (XmlElement c in styles.ChildNodes)
                     {
                         string n = c.Attributes["name"].InnerText;
-                        this.Colors.Add(n,
+                        this.HighlightStyles.Add(n,
                             new HighlightStyle(c));
                     }
                 }
                 //解析环境配置
-                XmlElement env = doc.DocumentElement["Environment"];
+                XmlElement env = doc.DocumentElement["EnvColors"];
                 if (env != null)
                 {
                     foreach (XmlNode node in env.ChildNodes)
@@ -92,7 +160,7 @@ namespace VCodeEditor.Util
                     this.DigitColor = new HighlightStyle(doc.DocumentElement["Digits"]);
                 }
                 //解析规则
-                XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("RuleSet");
+                XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("RuleSets");
                 foreach (XmlElement element in nodes)
                 {
                     this.AddRuleSet(new HighlightRuleSet(element));
@@ -101,7 +169,6 @@ namespace VCodeEditor.Util
             }
             catch
             {
-
             }
         }
 
@@ -110,25 +177,22 @@ namespace VCodeEditor.Util
         {
             this.name = name;
             this.references = new Dictionary<string, IStyleStrategy>();
-
-            this.digitColor = new HighlightStyle(SystemColors.WindowText, false, false);
+            this.digitStyle = new HighlightStyle(SystemColors.WindowText, false, false);
             this.defaultTextColor = new HighlightStyle(SystemColors.WindowText, false, false);
-
-            // set small 'default color environment'
-            this.environmentColors["Default"] = new HLBackground("WindowText", "Window", false, false);
-            this.environmentColors["Selection"] = new HighlightStyle("HighlightText", "Highlight", false, false);
-            this.environmentColors["VRuler"] = new HighlightStyle("ControlLight", "Window", false, false);
-            this.environmentColors["InvalidLines"] = new HighlightStyle(Color.Red, false, false);
-            this.environmentColors["CaretMarker"] = new HighlightStyle(Color.FromArgb(224, 229, 235), false, false);
-            this.environmentColors["LineNumbers"] = new HLBackground("ControlDark", "Window", false, false);
-
-            this.environmentColors["FoldLine"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
-            this.environmentColors["FoldMarker"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
-            this.environmentColors["SelectedFoldLine"] = new HighlightStyle(Color.Black, false, false);
-            this.environmentColors["EOLMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
-            this.environmentColors["SpaceMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
-            this.environmentColors["TabMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
-            //this.defaultRuleSet = new HLRuleSet();
+            this.environmentStyle["Default"] = new HLBackground("WindowText", "Window", false, false);
+            this.environmentStyle["Selection"] = new HighlightStyle("HighlightText", "Highlight", false, false);
+            this.environmentStyle["VRuler"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentStyle["InvalidLines"] = new HighlightStyle(Color.Red, false, false);
+            this.environmentStyle["CaretMarker"] = new HighlightStyle(Color.FromArgb(224, 229, 235), false, false);
+            this.environmentStyle["LineNumbers"] = new HLBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["BreakpointBar"] = new HLBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["IconBar"] = new HLBackground("ControlDark", "Window", false, false);
+            this.environmentStyle["FoldLine"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.Black, false, false);
+            this.environmentStyle["FoldMarker"] = new HighlightStyle(Color.FromArgb(0x80, 0x80, 0x80), Color.White, false, false);
+            this.environmentStyle["SelectedFoldLine"] = new HighlightStyle(Color.Black, false, false);
+            this.environmentStyle["EOLMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentStyle["SpaceMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
+            this.environmentStyle["TabMarkers"] = new HighlightStyle("ControlLight", "Window", false, false);
         }
 
         /// <summary>
@@ -142,7 +206,7 @@ namespace VCodeEditor.Util
         /// <summary>
         /// 环境颜色列表
         /// </summary>
-        Dictionary<string, HighlightStyle> environmentColors = new Dictionary<string, HighlightStyle>();
+        Dictionary<string, HighlightStyle> environmentStyle = new Dictionary<string, HighlightStyle>();
         /// <summary>
         /// 属性列表
         /// </summary>
@@ -154,20 +218,29 @@ namespace VCodeEditor.Util
         /// <summary>
         /// 高亮颜色列表
         /// </summary>
-        internal Dictionary<string, HighlightStyle> Colors = new Dictionary<string, HighlightStyle>();
+        internal Dictionary<string, HighlightStyle> HighlightStyles = new Dictionary<string, HighlightStyle>();
         /// <summary>
         /// 数字高亮颜色
         /// </summary>
-        HighlightStyle digitColor;
+        HighlightStyle digitStyle;
+        /// <summary>
+        /// 图片资源
+        /// </summary>
+        Dictionary<string, Image> Images = new Dictionary<string, Image>();
 
         /// <summary>
         /// 外部引用规则集列表
         /// </summary>
         Dictionary<string, IStyleStrategy> references;
+
         /// <summary>
         /// 默认规则集
         /// </summary>
         HighlightRuleSet defaultRuleSet = null;
+
+        public BreakpointStyle BreakpointStyle { get; } = new BreakpointStyle();
+
+        public string Language { get; }
 
         /// <summary>
         /// 数字颜色
@@ -176,11 +249,11 @@ namespace VCodeEditor.Util
         {
             get
             {
-                return digitColor;
+                return digitStyle;
             }
             set
             {
-                digitColor = value;
+                digitStyle = value;
             }
         }
 
@@ -193,11 +266,13 @@ namespace VCodeEditor.Util
         {
             get
             {
-                return environmentColors[name];
+                if (environmentStyle.ContainsKey(name))
+                    return environmentStyle[name];
+                return null;
             }
             set
             {
-                environmentColors[name] = value;
+                environmentStyle[name] = value;
             }
         }
 
@@ -308,6 +383,13 @@ namespace VCodeEditor.Util
             }
         }
 
+        public Image GetImage(string name)
+        {
+            if (this.Images.ContainsKey(name))
+                return this.Images[name];
+            return null;
+        }
+
         internal void ResolveReferences()
         {
             // Resolve references from Span definitions to RuleSets
@@ -403,7 +485,7 @@ namespace VCodeEditor.Util
         {
             if (name == "Default")
                 defaultTextColor = new HighlightStyle(color.Color, color.Bold, color.Italic);
-            environmentColors[name] = color;
+            environmentStyle[name] = color;
         }
 
         /// <summary>
@@ -411,19 +493,19 @@ namespace VCodeEditor.Util
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public HighlightStyle GetColorFor(string name)
+        public HighlightStyle GetStyleFor(string name)
         {
-            if (!environmentColors.ContainsKey(name))
+            if (!environmentStyle.ContainsKey(name))
             {
                 throw new Exception("Color : " + name + " not found!");
             }
-            return (HighlightStyle)environmentColors[name];
+            return (HighlightStyle)environmentStyle[name];
         }
 
-        public HighlightStyle GetHighlightColor(string name)
+        public HighlightStyle GetHighlightStyle(string name)
         {
-            if (this.Colors.ContainsKey(name))
-                return this.Colors[name];
+            if (this.HighlightStyles.ContainsKey(name))
+                return this.HighlightStyles[name];
             return new HighlightStyle(Color.Black, Color.White, false, false);
         }
 
@@ -435,7 +517,7 @@ namespace VCodeEditor.Util
         /// <param name="currentOffset"></param>
         /// <param name="currentLength"></param>
         /// <returns></returns>
-        public HighlightStyle GetColor(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
+        public HighlightStyle GetStyle(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
         {
             return GetColor(defaultRuleSet, document, currentSegment, currentOffset, currentLength);
         }
@@ -446,7 +528,7 @@ namespace VCodeEditor.Util
             {
                 if (ruleSet.Reference != null)
                 {
-                    return ruleSet.Highlighter.GetColor(document, currentSegment, currentOffset, currentLength);
+                    return ruleSet.Highlighter.GetStyle(document, currentSegment, currentOffset, currentLength);
                 }
                 else
                 {

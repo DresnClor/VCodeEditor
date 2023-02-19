@@ -129,12 +129,11 @@ namespace VCodeEditor.Document
             {
                 return new Font(GetPrivateFont(descr[1]), float.Parse(descr[3]));
             }
-
             //返回系统字体
             return new Font(descr[1], float.Parse(descr[3]));
         }
 
-        /// <summary>
+        /*/// <summary>
         /// 获取私有字体
         /// </summary>
         /// <param name="name">私有字体名称</param>
@@ -154,7 +153,7 @@ namespace VCodeEditor.Document
         {
             return Fonts.ContainsKey(name);
         }
-
+        
         /// <summary>
         /// 添加私有字体，如果字体存在将覆盖
         /// </summary>
@@ -167,7 +166,7 @@ namespace VCodeEditor.Document
             else
                 Fonts.Add(name, font);
         }
-
+        */
         /// <summary>
         /// 添加字体文件
         /// </summary>

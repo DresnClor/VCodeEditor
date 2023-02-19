@@ -279,7 +279,7 @@ namespace VCodeEditor.Document
             environmentColors[name] = color;
         }
 
-        public HighlightStyle GetColorFor(string name)
+        public HighlightStyle GetStyleFor(string name)
         {
             if (!environmentColors.ContainsKey(name))
             {
@@ -288,7 +288,7 @@ namespace VCodeEditor.Document
             return (HighlightStyle)environmentColors[name];
         }
 
-        public HighlightStyle GetColor(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
+        public HighlightStyle GetStyle(IDocument document, LineSegment currentSegment, int currentOffset, int currentLength)
         {
             return GetColor(defaultRuleSet, document, currentSegment, currentOffset, currentLength);
         }
@@ -299,7 +299,7 @@ namespace VCodeEditor.Document
             {
                 if (ruleSet.Reference != null)
                 {
-                    return ruleSet.Highlighter.GetColor(document, currentSegment, currentOffset, currentLength);
+                    return ruleSet.Highlighter.GetStyle(document, currentSegment, currentOffset, currentLength);
                 }
                 else
                 {
@@ -308,7 +308,7 @@ namespace VCodeEditor.Document
             }
             return null;
         }
-        public HighlightStyle GetHighlightColor(string name)
+        public HighlightStyle GetHighlightStyle(string name)
         {
             if (this.Colors.ContainsKey(name))
                 return this.Colors[name];
