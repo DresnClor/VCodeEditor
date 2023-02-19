@@ -20,7 +20,7 @@ namespace VCodeEditor.Undo
 		Stack undostack = new Stack();
 		Stack redostack = new Stack();
 		
-		public TextEditorControlBase TextEditorControl = null;
+		public TextEditorControl TextEditorControl = null;
 		
 		/// <summary>
 		/// </summary>

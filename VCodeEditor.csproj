@@ -275,9 +275,6 @@
     <Compile Include="Gui\TextEditorControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\TextEditorControlBase.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Gui\TextView.cs" />
     <Compile Include="Gui\ToolTipRequestEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
