@@ -143,6 +143,9 @@
     <EmbeddedResource Include="Resources\CPP-Mode.xshd" />
     <EmbeddedResource Include="Resources\CSharp-Mode.xshd" />
     <EmbeddedResource Include="Resources\HTML-Mode.xshd" />
+    <EmbeddedResource Include="Util\VslEdit.resx">
+      <DependentUpon>VslEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Resources\ICSharpCode.TextEditor.snk" />
     <EmbeddedResource Include="Resources\Java-Mode.xshd" />
     <EmbeddedResource Include="Resources\JavaScript-Mode.xshd" />
@@ -307,6 +310,12 @@
     <Compile Include="Util\TipText.cs" />
     <Compile Include="Util\Utils.cs" />
     <Compile Include="Document\VslParser.cs" />
+    <Compile Include="Util\VslEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Util\VslEdit.Designer.cs">
+      <DependentUpon>VslEdit.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="文档信息.txt" />
