@@ -31,21 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VslEdit));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.StripItem_New = new System.Windows.Forms.ToolStripButton();
-            this.StripItem_Open = new System.Windows.Forms.ToolStripButton();
-            this.StripItem_Save = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.StripItem_Close = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.StripItem_Info = new System.Windows.Forms.ToolStripButton();
             this.VslTreeView = new System.Windows.Forms.TreeView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.StripItem_Config = new System.Windows.Forms.ToolStripButton();
             this.RuleSetMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CommonMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.StripItem_New = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Open = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Save = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Config = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Close = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Info = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -68,60 +68,15 @@
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
-            // StripItem_New
-            // 
-            this.StripItem_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StripItem_New.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_New.Image")));
-            this.StripItem_New.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StripItem_New.Name = "StripItem_New";
-            this.StripItem_New.Size = new System.Drawing.Size(23, 22);
-            this.StripItem_New.Text = "新建文件";
-            // 
-            // StripItem_Open
-            // 
-            this.StripItem_Open.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StripItem_Open.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Open.Image")));
-            this.StripItem_Open.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StripItem_Open.Name = "StripItem_Open";
-            this.StripItem_Open.Size = new System.Drawing.Size(23, 22);
-            this.StripItem_Open.Text = "打开文件";
-            // 
-            // StripItem_Save
-            // 
-            this.StripItem_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StripItem_Save.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Save.Image")));
-            this.StripItem_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StripItem_Save.Name = "StripItem_Save";
-            this.StripItem_Save.Size = new System.Drawing.Size(23, 22);
-            this.StripItem_Save.Text = "保存";
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // StripItem_Close
-            // 
-            this.StripItem_Close.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StripItem_Close.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Close.Image")));
-            this.StripItem_Close.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StripItem_Close.Name = "StripItem_Close";
-            this.StripItem_Close.Size = new System.Drawing.Size(23, 22);
-            this.StripItem_Close.Text = "关闭";
-            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // StripItem_Info
-            // 
-            this.StripItem_Info.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StripItem_Info.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Info.Image")));
-            this.StripItem_Info.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StripItem_Info.Name = "StripItem_Info";
-            this.StripItem_Info.Size = new System.Drawing.Size(23, 22);
-            this.StripItem_Info.Text = "关于";
             // 
             // VslTreeView
             // 
@@ -162,6 +117,48 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // RuleSetMenu
+            // 
+            this.RuleSetMenu.Name = "RuleSetMenu";
+            this.RuleSetMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // CommonMenu
+            // 
+            this.CommonMenu.Name = "CommonMenu";
+            this.CommonMenu.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            // 
+            // StripItem_New
+            // 
+            this.StripItem_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_New.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_New.Image")));
+            this.StripItem_New.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_New.Name = "StripItem_New";
+            this.StripItem_New.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_New.Text = "新建文件";
+            // 
+            // StripItem_Open
+            // 
+            this.StripItem_Open.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Open.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Open.Image")));
+            this.StripItem_Open.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Open.Name = "StripItem_Open";
+            this.StripItem_Open.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Open.Text = "打开文件";
+            // 
+            // StripItem_Save
+            // 
+            this.StripItem_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Save.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Save.Image")));
+            this.StripItem_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Save.Name = "StripItem_Save";
+            this.StripItem_Save.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Save.Text = "保存";
+            // 
             // StripItem_Config
             // 
             this.StripItem_Config.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -171,20 +168,23 @@
             this.StripItem_Config.Size = new System.Drawing.Size(23, 22);
             this.StripItem_Config.Text = "配置";
             // 
-            // RuleSetMenu
+            // StripItem_Close
             // 
-            this.RuleSetMenu.Name = "RuleSetMenu";
-            this.RuleSetMenu.Size = new System.Drawing.Size(61, 4);
+            this.StripItem_Close.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Close.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Close.Image")));
+            this.StripItem_Close.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Close.Name = "StripItem_Close";
+            this.StripItem_Close.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Close.Text = "关闭";
             // 
-            // CommonMenu
+            // StripItem_Info
             // 
-            this.CommonMenu.Name = "CommonMenu";
-            this.CommonMenu.Size = new System.Drawing.Size(181, 26);
-            // 
-            // contextMenuStrip3
-            // 
-            this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            this.StripItem_Info.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Info.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Info.Image")));
+            this.StripItem_Info.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Info.Name = "StripItem_Info";
+            this.StripItem_Info.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Info.Text = "关于";
             // 
             // VslEdit
             // 
