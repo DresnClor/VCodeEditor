@@ -28,19 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VslEdit));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.StripItem_New = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Open = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Save = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.StripItem_Close = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.StripItem_Info = new System.Windows.Forms.ToolStripButton();
+            this.VslTreeView = new System.Windows.Forms.TreeView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.StripItem_Config = new System.Windows.Forms.ToolStripButton();
+            this.RuleSetMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CommonMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -48,53 +53,83 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
+            this.StripItem_New,
+            this.StripItem_Open,
+            this.StripItem_Save,
             this.toolStripSeparator1,
-            this.toolStripButton4,
+            this.StripItem_Config,
+            this.StripItem_Close,
             this.toolStripSeparator2,
-            this.toolStripButton5});
+            this.StripItem_Info});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(931, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
-            // toolStripButton1
+            // StripItem_New
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "新建文件";
+            this.StripItem_New.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_New.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_New.Image")));
+            this.StripItem_New.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_New.Name = "StripItem_New";
+            this.StripItem_New.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_New.Text = "新建文件";
             // 
-            // toolStripButton2
+            // StripItem_Open
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "打开文件";
+            this.StripItem_Open.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Open.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Open.Image")));
+            this.StripItem_Open.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Open.Name = "StripItem_Open";
+            this.StripItem_Open.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Open.Text = "打开文件";
             // 
-            // toolStripButton3
+            // StripItem_Save
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "保存";
+            this.StripItem_Save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Save.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Save.Image")));
+            this.StripItem_Save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Save.Name = "StripItem_Save";
+            this.StripItem_Save.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Save.Text = "保存";
             // 
-            // treeView1
+            // toolStripSeparator1
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.treeView1.Location = new System.Drawing.Point(0, 25);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(316, 548);
-            this.treeView1.TabIndex = 1;
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // StripItem_Close
+            // 
+            this.StripItem_Close.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Close.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Close.Image")));
+            this.StripItem_Close.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Close.Name = "StripItem_Close";
+            this.StripItem_Close.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Close.Text = "关闭";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // StripItem_Info
+            // 
+            this.StripItem_Info.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Info.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Info.Image")));
+            this.StripItem_Info.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Info.Name = "StripItem_Info";
+            this.StripItem_Info.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Info.Text = "关于";
+            // 
+            // VslTreeView
+            // 
+            this.VslTreeView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.VslTreeView.Location = new System.Drawing.Point(0, 25);
+            this.VslTreeView.Name = "VslTreeView";
+            this.VslTreeView.Size = new System.Drawing.Size(316, 548);
+            this.VslTreeView.TabIndex = 1;
             // 
             // tabControl1
             // 
@@ -122,38 +157,34 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
+            this.tabPage2.Size = new System.Drawing.Size(607, 522);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // toolStripButton4
+            // StripItem_Config
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "关闭";
+            this.StripItem_Config.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StripItem_Config.Image = ((System.Drawing.Image)(resources.GetObject("StripItem_Config.Image")));
+            this.StripItem_Config.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StripItem_Config.Name = "StripItem_Config";
+            this.StripItem_Config.Size = new System.Drawing.Size(23, 22);
+            this.StripItem_Config.Text = "配置";
             // 
-            // toolStripSeparator1
+            // RuleSetMenu
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.RuleSetMenu.Name = "RuleSetMenu";
+            this.RuleSetMenu.Size = new System.Drawing.Size(61, 4);
             // 
-            // toolStripSeparator2
+            // CommonMenu
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.CommonMenu.Name = "CommonMenu";
+            this.CommonMenu.Size = new System.Drawing.Size(181, 26);
             // 
-            // toolStripButton5
+            // contextMenuStrip3
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "关于";
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
             // VslEdit
             // 
@@ -161,7 +192,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 573);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.treeView1);
+            this.Controls.Add(this.VslTreeView);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "VslEdit";
@@ -178,16 +209,20 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.ToolStripButton StripItem_New;
+        private System.Windows.Forms.ToolStripButton StripItem_Open;
+        private System.Windows.Forms.ToolStripButton StripItem_Save;
+        private System.Windows.Forms.TreeView VslTreeView;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton StripItem_Close;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton StripItem_Info;
+        private System.Windows.Forms.ToolStripButton StripItem_Config;
+        private System.Windows.Forms.ContextMenuStrip RuleSetMenu;
+        private System.Windows.Forms.ContextMenuStrip CommonMenu;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip3;
     }
 }
