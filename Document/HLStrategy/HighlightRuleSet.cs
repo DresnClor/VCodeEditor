@@ -91,9 +91,9 @@ namespace VCodeEditor.Document
             {//关键字
                 HighlightStyle color = new HighlightStyle(el2);
                 //关键字分组
-                string ca = el2.GetAttribute("name");
+                string ca = el2.GetAttribute("name");//分组名称
                 KeywordCategory category = new KeywordCategory(ca, this, color);
-                XmlNodeList keys = el2.GetElementsByTagName("Key");
+                XmlNodeList keys = el2.GetElementsByTagName("Key");//关键字主
                 foreach (XmlElement node in keys)
                 {
                     category.Add(node.Attributes["word"].InnerText);

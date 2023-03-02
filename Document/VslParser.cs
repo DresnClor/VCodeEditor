@@ -25,7 +25,7 @@ namespace VCodeEditor.Document
         {
             if (!File.Exists(file))
                 throw new FileNotFoundException("文件不存在! ", file);
-            try
+          //  try
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(file);
@@ -160,15 +160,20 @@ namespace VCodeEditor.Document
                     this.DigitColor = new HighlightStyle(doc.DocumentElement["Digits"]);
                 }
                 //解析规则
-                XmlNodeList nodes = doc.DocumentElement.GetElementsByTagName("RuleSets");
-                foreach (XmlElement element in nodes)
+                XmlElement nodes = doc.DocumentElement["RuleSets"];
+                if(nodes != null)
                 {
-                    this.AddRuleSet(new HighlightRuleSet(element));
+                    XmlNodeList rss = nodes.GetElementsByTagName("RuleSet");
+                    foreach (XmlElement element in rss)
+                    {//遍历规则集
+                        this.AddRuleSet(new HighlightRuleSet(element));
+                    }
                 }
                 this.ResolveReferences();
             }
-            catch
+            //catch(Exception ex)
             {
+               // MessageBox.Show("Vsl Parser Error!\nMsg: "+ex.Message);
             }
         }
 

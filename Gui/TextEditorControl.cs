@@ -41,7 +41,7 @@ namespace VCodeEditor
         {
             GenerateDefaultActions();
             //注册高亮管理器ReloadSyntaxHighlighting事件
-            //HLManager.Manager.ReloadSyntaxHL += new EventHandler(ReloadHighlighting);
+            HLManager.Manager.ReloadSyntaxHL += new EventHandler(ReloadHighlighting);
 
             SetStyle(ControlStyles.ContainerControl, true);
             SetStyle(ControlStyles.Selectable, true);
@@ -556,7 +556,7 @@ namespace VCodeEditor
         {
             if (disposing)
             {
-                //HLManager.Manager.ReloadSyntaxHL -= new EventHandler(ReloadHighlighting);
+                HLManager.Manager.ReloadSyntaxHL -= new EventHandler(ReloadHighlighting);
                 document.HighlightStyle = null;
                 document.UndoStack.TextEditorControl = null;
                 if (printDocument != null)
@@ -1412,7 +1412,7 @@ namespace VCodeEditor
 
         #endregion 公共属性
 
-        /*// <summary>
+        // <summary>
         /// 重新加载高亮
         /// </summary>
         /// <param name="sender">调用者</param>
@@ -1424,7 +1424,7 @@ namespace VCodeEditor
                 Document.HighlightStyle = HighlightStrategyFactory.CreateHLStrategy(Document.HighlightStyle.Name);
                 OptionsChanged();
             }
-        }*/
+        }
 
         /// <summary>
         /// 获取编辑动作
