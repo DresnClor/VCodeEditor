@@ -25,7 +25,7 @@ namespace VCodeEditor.Document
         {
             if (!File.Exists(file))
                 throw new FileNotFoundException("文件不存在! ", file);
-          //  try
+            try
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(file);
@@ -171,9 +171,9 @@ namespace VCodeEditor.Document
                 }
                 this.ResolveReferences();
             }
-            //catch(Exception ex)
+            catch(Exception ex)
             {
-               // MessageBox.Show("Vsl Parser Error!\nMsg: "+ex.Message);
+                MessageBox.Show("Vsl Parser Error!\nMsg: "+ex.Message);
             }
         }
 
