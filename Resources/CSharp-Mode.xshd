@@ -3,7 +3,7 @@
 <!-- <Property name="DrawBracketColor" value="绘制匹配括号颜色 ，只能指定内部定义颜色名称 选择前景颜色"/>
 		<Property name="DrawBracketRectang" value="绘制匹配括号边框 由DrawBracketColor指定颜色 选择背景颜色"/> -->
 
-<Vsl name = "CSharp" language="C#" extensions = ".cs" Description="syntaxdefinition for C# 2000 by Mike Krueger">
+<Vsl name = "CSharp" language="C#" extensions = ".cs" description="syntaxdefinition for C# 2000 by Mike Krueger">
 	<Styles>
 		<Style name="Sy" color="#302695EC" bgcolor="#ffff0000" font="" exampleText="；" />
 	</Styles>

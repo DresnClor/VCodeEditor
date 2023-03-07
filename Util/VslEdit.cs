@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace VCodeEditor.Util
+namespace VCodeEditor.Util.Vsl
 {
     public partial class VslEdit : Form
     {
@@ -32,7 +32,7 @@ namespace VCodeEditor.Util
                 区分符
                 标记
                 关键字 样式
-                    关键字数
+                    关键字列表
          */
 
 

@@ -1,4 +1,4 @@
-﻿namespace VCodeEditor.Util
+﻿namespace VCodeEditor.Util.Vsl
 {
     partial class VslEdit
     {

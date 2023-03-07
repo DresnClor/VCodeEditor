@@ -64,6 +64,8 @@ namespace VCodeEditor
         FoldMargin foldMargin;
         IconBarMargin iconBarMargin;
 
+        BreakpointBarMargin breakpointBarMargin;
+
         SelectionManager selectionManager;
         Caret caret;
 
@@ -171,6 +173,15 @@ namespace VCodeEditor
         }
 
         /// <summary>
+        /// 断点栏
+        /// </summary>
+        public BreakpointBarMargin BreakpointBarMargin
+        {
+            get=>this.breakpointBarMargin;
+        }
+
+
+        /// <summary>
         /// 编码
         /// </summary>
         public Encoding Encoding
@@ -276,7 +287,8 @@ namespace VCodeEditor
             gutterMargin = new GutterMargin(this);
             foldMargin = new FoldMargin(this);
             iconBarMargin = new IconBarMargin(this);
-            leftMargins.AddRange(new AbstractMargin[] { iconBarMargin, gutterMargin, foldMargin });
+            breakpointBarMargin=new BreakpointBarMargin(this);
+            leftMargins.AddRange(new AbstractMargin[] { breakpointBarMargin, iconBarMargin, gutterMargin, foldMargin });
             OptionsChanged();
 
 
