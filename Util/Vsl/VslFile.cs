@@ -15,12 +15,19 @@ namespace VCodeEditor.Util.Vsl
     {
         internal VslFile()
         {
-
+            this.EnvColors = new Dictionary<string, Style>();
+            this.Extensions = new List<string>();
+            this.Properties = new Dictionary<string, string>();
+            this.Resources = new List<ResItem>();
+            this.RuleSets = new Dictionary<string, RuleSet>();
+            this.Styles = new List<Style>();
         }
 
         internal VslFile(string name, string savaFile)
             : this()
         {
+            this.Name = name;
+            this.File=savaFile;
 
         }
 
