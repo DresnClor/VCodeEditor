@@ -107,8 +107,6 @@ namespace VCodeEditor.Util.Vsl
             }
         }
 
-
-
         /// <summary>
         /// 文件路径
         /// </summary>
