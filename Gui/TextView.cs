@@ -22,10 +22,10 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 using System.Security.Policy;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
     /// <summary>
     /// 文本区域视图

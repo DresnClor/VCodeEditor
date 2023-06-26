@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 
 //首页-结束相关
 
-namespace VCodeEditor.Actions
+namespace MeltuiCodeEditor.Actions
 {
 	/// <summary>
 	/// Home键（将光标定位至行开始的位置）

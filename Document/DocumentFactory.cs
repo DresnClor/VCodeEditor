@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// 文档工厂

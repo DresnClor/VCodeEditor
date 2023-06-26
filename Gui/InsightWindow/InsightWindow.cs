@@ -12,12 +12,12 @@ using System.Reflection;
 using System.Collections;
 using System.Collections.Generic;
 
-using VCodeEditor.Document;
-using VCodeEditor.Util;
-using VCodeEditor;
-using VCodeEditor.Gui.CompletionWindow;
+using MeltuiCodeEditor.Document;
+using MeltuiCodeEditor.Util;
+using MeltuiCodeEditor;
+using MeltuiCodeEditor.Gui.CompletionWindow;
 
-namespace VCodeEditor.Gui.InsightWindow
+namespace MeltuiCodeEditor.Gui.InsightWindow
 {
 	/// <summary>
 	/// 洞察窗口

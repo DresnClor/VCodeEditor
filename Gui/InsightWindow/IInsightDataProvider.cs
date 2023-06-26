@@ -11,9 +11,9 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Collections;
 
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 
-namespace VCodeEditor.Gui.InsightWindow
+namespace MeltuiCodeEditor.Gui.InsightWindow
 {
 	/// <summary>
 	/// 洞察数据提供者

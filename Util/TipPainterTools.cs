@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace VCodeEditor.Util
+namespace MeltuiCodeEditor.Util
 {
 	/// <summary>
 	/// 提示绘制工具

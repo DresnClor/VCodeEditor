@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Collections.Generic;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	/// <summary>
 	/// 折叠策略

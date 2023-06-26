@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace VCodeEditor.Util.Vsl
+namespace MeltuiCodeEditor.Util.Vsl
 {
     public partial class ConfigForm : Form
     {

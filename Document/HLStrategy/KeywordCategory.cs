@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// 关键字分组管理

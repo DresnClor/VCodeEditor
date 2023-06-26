@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Text;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// 默认高亮定义

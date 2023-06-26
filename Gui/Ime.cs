@@ -9,7 +9,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Drawing;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
 	/// <summary>
 	/// 内部使用，不供自己使用。

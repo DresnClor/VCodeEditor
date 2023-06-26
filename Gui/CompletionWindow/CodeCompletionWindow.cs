@@ -12,9 +12,9 @@ using System.Reflection;
 using System.Collections;
 using System.Diagnostics;
 
-using VCodeEditor;
+using MeltuiCodeEditor;
 
-namespace VCodeEditor.Gui.CompletionWindow
+namespace MeltuiCodeEditor.Gui.CompletionWindow
 {
 	/// <summary>
 	/// 代码自动补全窗口

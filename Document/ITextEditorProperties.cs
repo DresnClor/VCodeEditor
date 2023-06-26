@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Text;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// ±à¼­Æ÷ÊôÐÔ½Ó¿Ú

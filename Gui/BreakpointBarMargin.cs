@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
     /// <summary>
     /// 断点栏

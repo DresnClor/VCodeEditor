@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Text;
 
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	/// <summary>
 	/// 默认格式化策略

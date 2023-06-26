@@ -21,9 +21,9 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
 	/// <summary>
 	/// 光标插入点模式

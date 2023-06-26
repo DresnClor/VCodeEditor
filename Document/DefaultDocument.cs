@@ -11,9 +11,9 @@ using System.IO;
 using System.Diagnostics;
 using System.Drawing;
 
-using VCodeEditor.Undo;
+using MeltuiCodeEditor.Undo;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// 行视图查看器样式

@@ -6,14 +6,16 @@
 // </file>
 
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace VCodeEditor.Gui.CompletionWindow
+namespace MeltuiCodeEditor.Gui.CompletionWindow
 {
 	/// <summary>
 	/// 代码自动完成列表视图
 	/// </summary>
+	[ToolboxItem(false)]
 	public class CodeCompleListView : System.Windows.Forms.UserControl
 	{
 		ICompletionData[] completionData;

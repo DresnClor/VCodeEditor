@@ -6,14 +6,16 @@
 // </file>
 
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
 	/// <summary>
 	/// 横向标尺控件
 	/// </summary>
+	[ToolboxItem(false)]
 	public class HRuler : UserControl
 	{
 		TextArea   textArea;

@@ -9,9 +9,9 @@ using System;
 using System.Text;
 using System.Diagnostics;
 
-using VCodeEditor.Undo;
+using MeltuiCodeEditor.Undo;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// 文本辅助类

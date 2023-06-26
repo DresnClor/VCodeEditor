@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VCodeEditor {
+namespace MeltuiCodeEditor {
     using System;
     
     

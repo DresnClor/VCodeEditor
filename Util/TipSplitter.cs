@@ -9,7 +9,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 
-namespace VCodeEditor.Util
+namespace MeltuiCodeEditor.Util
 {
 	/// <summary>
 	/// Ã· æ∑÷∏Ó

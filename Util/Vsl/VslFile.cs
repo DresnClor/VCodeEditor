@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace VCodeEditor.Util.Vsl
+namespace MeltuiCodeEditor.Util.Vsl
 {
     /// <summary>
     /// vsl文件信息

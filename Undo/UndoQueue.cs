@@ -9,7 +9,7 @@ using System;
 using System.Diagnostics;
 using System.Collections;
 
-namespace VCodeEditor.Undo
+namespace MeltuiCodeEditor.Undo
 {
 	/// <summary>
 	/// 此类堆栈从撤消堆栈的最后 x 操作，使一个撤消/重做操作从它。

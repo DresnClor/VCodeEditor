@@ -21,11 +21,11 @@ using System.Runtime.InteropServices;
 using System.Xml;
 using System.Text;
 
-using VCodeEditor.Document;
-using VCodeEditor.Actions;
+using MeltuiCodeEditor.Document;
+using MeltuiCodeEditor.Actions;
 using System.Collections.Generic;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
     /// <summary>
     /// 代码编辑器主控件
@@ -55,7 +55,7 @@ namespace VCodeEditor
             InitializeTextAreaControl(primaryTextArea);
             Controls.Add(textAreaPanel);
             ResizeRedraw = true;
-            this.ContextMenuItems = new Dictionary<string, ToolStripMenuItem>();
+            //this.ContextMenuItems = new Dictionary<string, ToolStripMenuItem>();
             this.EditAction = new DresnClor.EditAction(this.TextArea);
             this.Caret.PositionChanged += this.Caret_PositionChanged;
             Document.UpdateCommited += new EventHandler(CommitUpdateRequested);
@@ -348,7 +348,7 @@ namespace VCodeEditor
             Document.HighlightStyle =
                 HighlightStrategyFactory.CreateHLStrategy(name);
         }
-
+        /*
         /// <summary>
         /// 新加：创建菜单项
         /// </summary>
@@ -370,7 +370,7 @@ namespace VCodeEditor
 
             return Menus;
         }
-
+        
         /// <summary>
         /// 右键菜单项列表
         /// </summary>
@@ -378,17 +378,18 @@ namespace VCodeEditor
         {
             get;
             private set;
-        }
+        }*/
 
         /// <summary>
         /// 设置默认弹出菜单
         /// </summary>
-        public void SetDefaultPopupMenu()
+        public void SetDefaultPopupMenu(ContextMenuStrip menuStrip)
         {
             //绑定右键菜单
-            this.ContextMenuStrip = this.CreatRightMenu();
+            this.ContextMenuStrip = menuStrip;
         }
 
+        /*
         /// <summary>
         /// 新加：右键菜单
         /// </summary>
@@ -547,6 +548,8 @@ namespace VCodeEditor
 
             return Menus;
         }
+        */
+
 
         /// <summary>
         /// 销毁控件

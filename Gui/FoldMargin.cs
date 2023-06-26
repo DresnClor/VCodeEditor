@@ -13,9 +13,9 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
 	/// <summary>
 	/// 折叠边栏

@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
 	public delegate void ToolTipRequestEventHandler(object sender, ToolTipRequestEventArgs e);
 	

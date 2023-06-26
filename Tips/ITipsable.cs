@@ -11,5 +11,14 @@ namespace Tips
 	/// </summary>
 	public interface ITipsable
 	{
+		/// <summary>
+		/// 提示标题名称
+		/// </summary>
+		string Name { get; }
+
+		/// <summary>
+		/// 提示说明信息
+		/// </summary>
+		string Description { get; }
 	}
 }

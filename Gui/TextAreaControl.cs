@@ -20,10 +20,10 @@ using System.Runtime.Remoting;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
-using VCodeEditor.Actions;
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Actions;
+using MeltuiCodeEditor.Document;
 
-namespace VCodeEditor
+namespace MeltuiCodeEditor
 {
 	/// <summary>
 	/// 文本区域控件

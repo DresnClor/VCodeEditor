@@ -6,9 +6,9 @@
 // </file>
 
 using System.Drawing;
-using VCodeEditor.Undo;
+using MeltuiCodeEditor.Undo;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// 文本内容选择接口

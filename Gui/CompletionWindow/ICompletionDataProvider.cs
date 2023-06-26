@@ -11,9 +11,9 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Collections;
 
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 
-namespace VCodeEditor.Gui.CompletionWindow
+namespace MeltuiCodeEditor.Gui.CompletionWindow
 {
 	/// <summary>
 	/// 自动完成数据提供者

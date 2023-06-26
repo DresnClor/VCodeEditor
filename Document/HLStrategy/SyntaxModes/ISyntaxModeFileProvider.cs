@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Xml;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	[Obsolete]
 	public interface ISyntaxModeFileProvider

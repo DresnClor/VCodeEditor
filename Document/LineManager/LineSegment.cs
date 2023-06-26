@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Text;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	/// <summary>
 	/// 行段落

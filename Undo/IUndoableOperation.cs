@@ -5,7 +5,7 @@
 //     <version>$Revision: 915 $</version>
 // </file>
 
-namespace VCodeEditor.Undo
+namespace MeltuiCodeEditor.Undo
 {
 	/// <summary>
 	/// 此界面描述了基本的撤消/重做操作，所有撤消操作必须实现此接口

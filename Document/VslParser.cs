@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
-using VCodeEditor.Document;
-using VCodeEditor.Util;
+using MeltuiCodeEditor.Document;
+using MeltuiCodeEditor.Util;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
     /// <summary>
     /// vsl文件解析
     /// </summary>
-    public class VslParser : VCodeEditor.Document.IStyleStrategy
+    public class VslParser : MeltuiCodeEditor.Document.IStyleStrategy
     {
         private string VslDir;
         /// <param name="name">高亮名称</param>

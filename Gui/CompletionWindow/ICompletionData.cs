@@ -10,9 +10,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Reflection;
 using System.Collections;
-using VCodeEditor;
+using MeltuiCodeEditor;
 
-namespace VCodeEditor.Gui.CompletionWindow
+namespace MeltuiCodeEditor.Gui.CompletionWindow
 {
 	/// <summary>
 	/// 自动完成数据接口

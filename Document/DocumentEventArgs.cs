@@ -7,7 +7,7 @@
 
 using System;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	/// <summary>
 	/// 此代表用于文档事件。

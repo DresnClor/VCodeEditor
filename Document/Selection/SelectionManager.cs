@@ -9,9 +9,9 @@ using System;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Text;
-using VCodeEditor.Undo;
+using MeltuiCodeEditor.Undo;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	/// <summary>
 	/// 文本内容选择管理器

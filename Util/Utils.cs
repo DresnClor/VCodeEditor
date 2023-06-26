@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VCodeEditor.Util
+namespace MeltuiCodeEditor.Util
 {
     /// <summary>
     /// 根据类

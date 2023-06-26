@@ -7,7 +7,7 @@
 
 using System;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	[Obsolete]
 	public class HLColorNotFoundException : Exception

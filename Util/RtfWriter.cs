@@ -9,9 +9,9 @@ using System;
 using System.Drawing;
 using System.Text;
 using System.Collections.Generic;
-using VCodeEditor.Document;
+using MeltuiCodeEditor.Document;
 
-namespace VCodeEditor.Util
+namespace MeltuiCodeEditor.Util
 {
 	/// <summary>
 	/// rtf写出

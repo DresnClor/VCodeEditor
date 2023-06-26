@@ -1,4 +1,4 @@
-﻿namespace VCodeEditor.Util.Vsl
+﻿namespace MeltuiCodeEditor.Util.Vsl
 {
     partial class AboutBox
     {

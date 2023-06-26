@@ -11,7 +11,7 @@ using System.Reflection;
 using System.Xml;
 using System.IO;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	[Obsolete]
 	public class ResourceSyntaxModeProvider : ISyntaxModeFileProvider

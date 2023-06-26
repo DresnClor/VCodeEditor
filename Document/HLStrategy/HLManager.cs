@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	/// <summary>
 	/// 高亮管理器

@@ -7,7 +7,7 @@
 
 using System;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	public delegate void BookmarkEventHandler(object sender, BookmarkEventArgs e);
 

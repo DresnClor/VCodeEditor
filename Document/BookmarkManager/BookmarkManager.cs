@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace VCodeEditor.Document
+namespace MeltuiCodeEditor.Document
 {
 	/// <summary>
 	/// 书签工厂

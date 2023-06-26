@@ -12,11 +12,11 @@ using System.Reflection;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-using VCodeEditor.Document;
-using VCodeEditor.Util;
-using VCodeEditor;
+using MeltuiCodeEditor.Document;
+using MeltuiCodeEditor.Util;
+using MeltuiCodeEditor;
 
-namespace VCodeEditor.Gui.CompletionWindow
+namespace MeltuiCodeEditor.Gui.CompletionWindow
 {
 	/// <summary>
 	/// 抽象自动完成窗口
