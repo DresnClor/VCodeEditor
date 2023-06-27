@@ -2,7 +2,7 @@
 
 //编辑接口
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// 文本编辑快捷键 接口

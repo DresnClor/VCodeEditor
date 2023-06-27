@@ -16,7 +16,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 用于标记下一个令牌

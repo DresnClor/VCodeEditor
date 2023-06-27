@@ -11,7 +11,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Collections.Generic;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 文本标记管理策略

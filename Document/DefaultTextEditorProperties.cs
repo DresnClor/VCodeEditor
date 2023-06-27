@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Text;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// ¿®∫≈∆•≈‰—˘ Ω

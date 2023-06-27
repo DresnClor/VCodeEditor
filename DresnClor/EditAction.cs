@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MeltuiCodeEditor;
-using MeltuiCodeEditor.Document;
-using MeltuiCodeEditor.Gui;
+using VCodeEditor;
+using VCodeEditor.Document;
+using VCodeEditor.Gui;
 
 
 namespace DresnClor

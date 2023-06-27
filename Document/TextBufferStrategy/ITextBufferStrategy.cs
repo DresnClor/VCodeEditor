@@ -5,9 +5,9 @@
 //     <version>$Revision: 915 $</version>
 // </file>
 
-using MeltuiCodeEditor.Undo;
+using VCodeEditor.Undo;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 文本缓冲策略接口

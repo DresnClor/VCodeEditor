@@ -9,7 +9,7 @@ using System;
 using System.Collections;
 using System.Drawing;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 自定义行

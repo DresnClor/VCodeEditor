@@ -21,11 +21,11 @@ using System.Runtime.Remoting;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
-using MeltuiCodeEditor.Actions;
-using MeltuiCodeEditor.Document;
-using MeltuiCodeEditor.Gui.CompletionWindow;
+using VCodeEditor.Actions;
+using VCodeEditor.Document;
+using VCodeEditor.Gui.CompletionWindow;
 
-namespace MeltuiCodeEditor
+namespace VCodeEditor
 {
     /// <summary>
     /// 按键事件

@@ -13,11 +13,11 @@ using System.Reflection;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-using MeltuiCodeEditor.Document;
-using MeltuiCodeEditor.Util;
-using MeltuiCodeEditor;
+using VCodeEditor.Document;
+using VCodeEditor.Util;
+using VCodeEditor;
 
-namespace MeltuiCodeEditor.Gui.CompletionWindow
+namespace VCodeEditor.Gui.CompletionWindow
 {
 	/// <summary>
 	/// 说明视图窗口接口

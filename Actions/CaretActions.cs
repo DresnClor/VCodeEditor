@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
 //方向键操作相关
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// 方向键： 左键，操作类（向左移动光标）

@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Collections;
 
-namespace MeltuiCodeEditor.Undo
+namespace VCodeEditor.Undo
 {
 	/// <summary>
 	/// 撤消堆栈

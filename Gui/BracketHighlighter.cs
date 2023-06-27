@@ -10,9 +10,9 @@ using System.Collections;
 using System.Drawing;
 using System.Diagnostics;
 
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
-namespace MeltuiCodeEditor
+namespace VCodeEditor
 {
 	/// <summary>
 	/// 高亮括号

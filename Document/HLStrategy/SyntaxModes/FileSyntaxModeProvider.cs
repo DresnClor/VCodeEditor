@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	///Syntaxs配置文件提供者

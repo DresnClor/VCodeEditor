@@ -7,7 +7,7 @@
 
 using System;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	public delegate void LineManagerEventHandler(object sender, LineManagerEventArgs e);
 

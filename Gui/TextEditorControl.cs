@@ -21,11 +21,11 @@ using System.Runtime.InteropServices;
 using System.Xml;
 using System.Text;
 
-using MeltuiCodeEditor.Document;
-using MeltuiCodeEditor.Actions;
+using VCodeEditor.Document;
+using VCodeEditor.Actions;
 using System.Collections.Generic;
 
-namespace MeltuiCodeEditor
+namespace VCodeEditor
 {
     /// <summary>
     /// 代码编辑器主控件

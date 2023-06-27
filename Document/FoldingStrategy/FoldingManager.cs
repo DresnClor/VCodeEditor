@@ -10,7 +10,7 @@ using System.Text;
 using System.Drawing;
 using System.Collections.Generic;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 折叠管理器

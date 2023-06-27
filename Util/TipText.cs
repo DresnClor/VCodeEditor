@@ -8,7 +8,7 @@
 using System.Drawing;
 using System.Drawing.Text;
 
-namespace MeltuiCodeEditor.Util
+namespace VCodeEditor.Util
 {
 	/// <summary>
 	/// 计数提示文本

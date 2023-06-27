@@ -20,11 +20,11 @@ using System.Runtime.InteropServices;
 using System.Xml;
 using System.Text;
 
-using MeltuiCodeEditor.Document;
-using MeltuiCodeEditor.Undo;
-using MeltuiCodeEditor.Util;
+using VCodeEditor.Document;
+using VCodeEditor.Undo;
+using VCodeEditor.Util;
 
-namespace MeltuiCodeEditor
+namespace VCodeEditor
 {
 	/// <summary>
 	/// 剪贴板处理
@@ -212,12 +212,12 @@ namespace MeltuiCodeEditor
 		
 		public void Delete(object sender, EventArgs e)
 		{
-			new MeltuiCodeEditor.Actions.Delete().Execute(textArea);
+			new VCodeEditor.Actions.Delete().Execute(textArea);
 		}
 		
 		public void SelectAll(object sender, EventArgs e)
 		{
-			new MeltuiCodeEditor.Actions.SelectWholeDocument().Execute(textArea);
+			new VCodeEditor.Actions.SelectWholeDocument().Execute(textArea);
 		}
 		
 		protected virtual void OnCopyText(CopyTextEventArgs e)

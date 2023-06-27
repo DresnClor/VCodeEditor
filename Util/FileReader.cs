@@ -9,7 +9,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace MeltuiCodeEditor.Util
+namespace VCodeEditor.Util
 {
 	/// <summary>
 	/// 可通过自动检测编码打开文本文件的类。

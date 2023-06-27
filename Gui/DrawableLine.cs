@@ -8,9 +8,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
-namespace MeltuiCodeEditor
+namespace VCodeEditor
 {
 	/// <summary>
 	/// 能够在任何控件上画出一条线的类（文本编辑器之外）

@@ -1,4 +1,4 @@
-﻿namespace MeltuiCodeEditor.Util.Vsl
+﻿namespace VCodeEditor.Util.Vsl
 {
     partial class ConfigForm
     {

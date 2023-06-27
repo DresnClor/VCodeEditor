@@ -1,9 +1,9 @@
 ﻿ using System.Drawing;
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
 //代码选择相关
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// Shift + →键（以光标为起点向右选择字符，每次选这一个字符）

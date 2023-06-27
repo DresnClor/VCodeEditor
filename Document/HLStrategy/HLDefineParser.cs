@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     [Obsolete]
     internal class HLDefineParser

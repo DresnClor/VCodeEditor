@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	[Obsolete]
 	public class SyntaxMode

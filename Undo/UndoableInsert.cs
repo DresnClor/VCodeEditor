@@ -8,10 +8,10 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
-using MeltuiCodeEditor.Document;
-using MeltuiCodeEditor.Undo;
+using VCodeEditor.Document;
+using VCodeEditor.Undo;
 
-namespace MeltuiCodeEditor.Undo
+namespace VCodeEditor.Undo
 {
 	/// <summary>
 	/// 此类用于撤销文档插入操作

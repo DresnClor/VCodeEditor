@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using SWF = System.Windows.Forms;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 书签

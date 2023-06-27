@@ -10,7 +10,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace MeltuiCodeEditor.Gui.CompletionWindow
+namespace VCodeEditor.Gui.CompletionWindow
 {
 	/// <summary>
 	/// 代码自动完成列表视图

@@ -1,9 +1,9 @@
 ﻿using System;
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
 //书签相关
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// 切换书签

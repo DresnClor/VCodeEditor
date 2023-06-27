@@ -7,9 +7,9 @@
 
 using System;
 
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
-namespace MeltuiCodeEditor.Util
+namespace VCodeEditor.Util
 {
 	/// <summary>
 	/// 文本辅助类

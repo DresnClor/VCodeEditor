@@ -4,9 +4,9 @@ using System.Text;
 
 //杂项
 
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// Tab键（插入tab符号）

@@ -8,7 +8,7 @@
 using System;
 using System.Text;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 间隔文本缓冲策略

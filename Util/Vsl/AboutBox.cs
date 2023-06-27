@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MeltuiCodeEditor.Util.Vsl
+namespace VCodeEditor.Util.Vsl
 {
     partial class AboutBox : Form
     {

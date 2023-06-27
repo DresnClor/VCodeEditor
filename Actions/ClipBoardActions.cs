@@ -1,7 +1,7 @@
 ﻿
 //编辑相关
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// 剪切

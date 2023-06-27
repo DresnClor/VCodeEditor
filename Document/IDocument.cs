@@ -9,9 +9,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 
-using MeltuiCodeEditor.Undo;
+using VCodeEditor.Undo;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     /// <summary>
     /// 文档接口

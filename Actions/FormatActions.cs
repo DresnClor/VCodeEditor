@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text;
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
 //格式作用相关
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// 行格式 抽象类，继承AbstractEditAction

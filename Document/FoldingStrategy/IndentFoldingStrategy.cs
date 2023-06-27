@@ -8,7 +8,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	///  缩进折叠策略

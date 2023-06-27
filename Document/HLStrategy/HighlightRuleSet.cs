@@ -13,9 +13,9 @@ using System.Drawing;
 using System.Text;
 using System.Xml;
 
-using MeltuiCodeEditor.Util;
+using VCodeEditor.Util;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     /// <summary>
     /// 高亮显示规则集

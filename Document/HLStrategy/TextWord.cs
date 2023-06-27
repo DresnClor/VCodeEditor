@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Diagnostics;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 单词类型

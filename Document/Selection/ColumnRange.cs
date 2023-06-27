@@ -9,9 +9,9 @@ using System;
 using System.Drawing;
 using System.Collections;
 using System.Text;
-using MeltuiCodeEditor.Undo;
+using VCodeEditor.Undo;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 列范围

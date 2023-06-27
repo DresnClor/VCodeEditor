@@ -9,9 +9,9 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
-namespace MeltuiCodeEditor
+namespace VCodeEditor
 {
 	/// <summary>
 	/// 文本区域更新类型

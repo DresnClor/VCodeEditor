@@ -10,7 +10,7 @@ using System.Drawing;
 using System.Diagnostics;
 using System.Collections;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 标记类型

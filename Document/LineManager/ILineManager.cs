@@ -7,7 +7,7 @@
 
 using System.Collections.Generic;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 行管理接口

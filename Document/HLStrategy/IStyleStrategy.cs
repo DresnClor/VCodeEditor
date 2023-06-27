@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     /// <summary>
     /// 样式策略接口

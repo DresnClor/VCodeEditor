@@ -8,7 +8,7 @@
 using System;
 using System.Drawing;
 
-namespace MeltuiCodeEditor.Util
+namespace VCodeEditor.Util
 {
 	/// <summary>
 	/// Ã· æø’º‰

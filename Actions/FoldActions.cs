@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
 //代码折叠相关
 
-namespace MeltuiCodeEditor.Actions
+namespace VCodeEditor.Actions
 {
 	/// <summary>
 	/// 展开、折叠当前

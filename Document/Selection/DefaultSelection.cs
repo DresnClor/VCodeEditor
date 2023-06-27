@@ -8,10 +8,10 @@
 using System;
 using System.Drawing;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     /// <summary>
-    /// 选择接口 <see cref="MeltuiCodeEditor.Document.ISelection"/> 默认实现
+    /// 选择接口 <see cref="VCodeEditor.Document.ISelection"/> 默认实现
     /// </summary>
     public class DefaultSelection : ISelection
     {

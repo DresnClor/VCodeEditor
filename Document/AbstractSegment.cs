@@ -6,9 +6,9 @@
 // </file>
 
 using System;
-using MeltuiCodeEditor.Undo;
+using VCodeEditor.Undo;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 抽象段落 <see cref="ISegment"/> 接口实现

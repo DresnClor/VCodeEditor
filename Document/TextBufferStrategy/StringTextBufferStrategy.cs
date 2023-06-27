@@ -9,9 +9,9 @@ using System;
 using System.IO;
 using System.Diagnostics;
 using System.Text;
-using MeltuiCodeEditor.Undo;
+using VCodeEditor.Undo;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     /// <summary>
     /// 字符串文本缓冲策略

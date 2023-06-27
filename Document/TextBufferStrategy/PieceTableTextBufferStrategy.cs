@@ -8,7 +8,7 @@
 using System;
 using System.Collections;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	// 当前未使用且未编译，因为"设置"未实现。
 	//如果有人想使用这个，它应该很容易修复它。

@@ -20,9 +20,9 @@ using System.Runtime.Remoting;
 using System.Runtime.InteropServices;
 using System.Xml;
 
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
-namespace MeltuiCodeEditor
+namespace VCodeEditor
 {
 	/// <summary>
 	/// 文本区域拖放处理

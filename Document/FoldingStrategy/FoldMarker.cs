@@ -9,7 +9,7 @@ using System;
 using System.Drawing;
 using System.Collections;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
 	/// <summary>
 	/// 折叠类型

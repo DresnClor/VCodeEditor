@@ -15,7 +15,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     /// <summary>
     /// 高亮样式

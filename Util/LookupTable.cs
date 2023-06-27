@@ -8,9 +8,9 @@
 using System;
 using System.Collections;
 using System.Drawing;
-using MeltuiCodeEditor.Document;
+using VCodeEditor.Document;
 
-namespace MeltuiCodeEditor.Util
+namespace VCodeEditor.Util
 {
 	/// <summary>
 	/// 查阅表，此类实现关键字映射。它实现数字搜索树（尝试）找到一个字。

@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Drawing.Text;
 
-namespace MeltuiCodeEditor.Document
+namespace VCodeEditor.Document
 {
     /// <summary>
     /// 字体容器
