@@ -292,12 +292,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <Compile Include="StyleManager.cs" />
     <Compile Include="StyleRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StyleRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Tips\ITipsable.cs" />
     <Compile Include="Undo\IUndoableOperation.cs" />
     <Compile Include="Undo\UndoableDelete.cs" />
     <Compile Include="Undo\UndoableInsert.cs" />

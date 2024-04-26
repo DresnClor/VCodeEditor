@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("VCodeEditor")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("VCodeEditor")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("VCodeEditor")]
 [assembly: AssemblyProduct("VCodeEditor")]
-[assembly: AssemblyCopyright("© 2020-2022 DresnClor. ICSharpCode team.")]
+[assembly: AssemblyCopyright("© 2020-2024 DresnClor. ICSharpCode team.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      生成号
 //      修订号
 //
-[assembly: AssemblyVersion("4.5.0.0")]
-[assembly: AssemblyFileVersion("4.5.0.0")]
+[assembly: AssemblyVersion("5.0.0.0")]
+[assembly: AssemblyFileVersion("5.0.0.0")]

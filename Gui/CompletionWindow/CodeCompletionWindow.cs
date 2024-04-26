@@ -88,7 +88,9 @@ namespace VCodeEditor.Gui.CompletionWindow
 				Controls.Add(vScrollBar);
 			}
 			
-			this.drawingSize = new Size(codeCompletionListView.ItemHeight * 10, codeCompletionListView.ItemHeight * Math.Min(10, completionData.Length));
+			this.drawingSize = new Size(
+				codeCompletionListView.ItemHeight * 10, 
+				codeCompletionListView.ItemHeight * Math.Min(10, completionData.Length));
 			SetLocation();
 			
 			if (declarationViewWindow == null) {

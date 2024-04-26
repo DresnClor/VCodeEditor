@@ -68,8 +68,8 @@ namespace VCodeEditor.Util.Vsl
             }
             else if (e.ClickedItem == this.StripItem_Info)
             {//信息
-                Vsl.AboutBox aboutBox = new Vsl.AboutBox();
-                aboutBox.ShowDialog();
+               /* Vsl.AboutBox aboutBox = new Vsl.AboutBox();
+                aboutBox.ShowDialog();*/
             }
         }
 

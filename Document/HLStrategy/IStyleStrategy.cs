@@ -19,12 +19,12 @@ namespace VCodeEditor.Document
     public interface IStyleStrategy
     {
         /// <value>
-        /// 策略名称
+        /// 样式名称
         /// </value>
         string Name { get; }
 
         /// <summary>
-        /// 语言
+        /// 编程语言名称
         /// </summary>
         string Language { get; }
 
@@ -66,7 +66,7 @@ namespace VCodeEditor.Document
         HighlightStyle GetStyleFor(string name);
 
         /// <summary>
-        /// 获取xshd文件内部定义的颜色
+        /// 获取内部定义的颜色
         /// </summary>
         /// <param name="name">颜色名称</param>
         /// <returns></returns>
@@ -91,6 +91,7 @@ namespace VCodeEditor.Document
         /// 更新高亮单词集
         /// </remarks>
         void MarkTokens(IDocument document);
+
     }
 
     /// <summary>

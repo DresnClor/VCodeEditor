@@ -57,7 +57,8 @@ namespace VCodeEditor.Gui.CompletionWindow
 				if (value == null && Visible) {
 					Visible = false;
 				} else if (value != null) {
-					if (!Visible) ShowDeclarationViewWindow();
+					if (!Visible) 
+						ShowDeclarationViewWindow();
 					Refresh();
 				}
 			}
