@@ -137,7 +137,7 @@ namespace VCodeEditor
 					FillRoundRect(g, brush, rect);
 				}*/
 				//使用本地图片作为书签标志
-				g.DrawImage(StyleRes.Bookmark, rect.Location);
+				g.DrawImage(Resource.Bookmark, rect.Location);
 			} else {
 				FillRoundRect(g, Brushes.White, rect);
 			}

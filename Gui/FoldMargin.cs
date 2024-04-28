@@ -51,8 +51,8 @@ namespace VCodeEditor
 			if (rect.Width <= 0 || rect.Height <= 0) {
 				return;
 			}
-			HighlightStyle lineNumberPainterColor = textArea.Document.HighlightStyle.GetStyleFor("LineNumbers");
-			HighlightStyle foldLineColor          = textArea.Document.HighlightStyle.GetStyleFor("FoldLine");
+			ColorStyle lineNumberPainterColor = textArea.Document.HighlightStyle.GetStyleFor("LineNumbers");
+			ColorStyle foldLineColor          = textArea.Document.HighlightStyle.GetStyleFor("FoldLine");
 			
 			
 			for (int y = 0; y < (DrawingPosition.Height + textArea.TextView.VisibleLineDrawingRemainder) / textArea.TextView.FontHeight + 1; ++y) {
@@ -96,8 +96,8 @@ namespace VCodeEditor
 		
 		void PaintFoldMarker(Graphics g, int lineNumber, Rectangle drawingRectangle)
 		{
-			HighlightStyle foldLineColor    = textArea.Document.HighlightStyle.GetStyleFor("FoldLine");
-			HighlightStyle selectedFoldLine = textArea.Document.HighlightStyle.GetStyleFor("SelectedFoldLine");
+			ColorStyle foldLineColor    = textArea.Document.HighlightStyle.GetStyleFor("FoldLine");
+			ColorStyle selectedFoldLine = textArea.Document.HighlightStyle.GetStyleFor("SelectedFoldLine");
 			
 			List<FoldMarker> foldingsWithStart = textArea.Document.FoldingManager.GetFoldingsWithStart(lineNumber);
 			List<FoldMarker> foldingsBetween   = textArea.Document.FoldingManager.GetFoldingsContainsLineNumber(lineNumber);
@@ -248,9 +248,9 @@ namespace VCodeEditor
 #region Drawing functions
 		void DrawFoldMarker(Graphics g, RectangleF rectangle, bool isOpened, bool isSelected)
 		{
-			HighlightStyle foldMarkerColor = textArea.Document.HighlightStyle.GetStyleFor("FoldMarker");
-			HighlightStyle foldLineColor   = textArea.Document.HighlightStyle.GetStyleFor("FoldLine");
-			HighlightStyle selectedFoldLine = textArea.Document.HighlightStyle.GetStyleFor("SelectedFoldLine");
+			ColorStyle foldMarkerColor = textArea.Document.HighlightStyle.GetStyleFor("FoldMarker");
+			ColorStyle foldLineColor   = textArea.Document.HighlightStyle.GetStyleFor("FoldLine");
+			ColorStyle selectedFoldLine = textArea.Document.HighlightStyle.GetStyleFor("SelectedFoldLine");
 			
 			Rectangle intRect = new Rectangle((int)rectangle.X, (int)rectangle.Y, (int)rectangle.Width, (int)rectangle.Height);
 			g.FillRectangle(BrushRegistry.GetBrush(foldMarkerColor.BackgroundColor), intRect);

@@ -30,7 +30,7 @@ namespace VCodeEditor
     /// <summary>
     /// 代码编辑器主控件
     /// </summary>
-    [ToolboxBitmap("VCodeEditor.Resources.TextEditorControl.bmp")]
+    [ToolboxBitmap("TextEditorControl.bmp")]
     [ToolboxItem(true)]
     public class TextEditorControl : UserControl
     {
@@ -41,7 +41,7 @@ namespace VCodeEditor
         {
             GenerateDefaultActions();
             //注册高亮管理器ReloadSyntaxHighlighting事件
-            HLManager.Manager.ReloadSyntaxHL += new EventHandler(ReloadHighlighting);
+            //HLManager.Manager.ReloadSyntaxHL += new EventHandler(ReloadHighlighting);
 
             SetStyle(ControlStyles.ContainerControl, true);
             SetStyle(ControlStyles.Selectable, true);
@@ -56,7 +56,7 @@ namespace VCodeEditor
             Controls.Add(textAreaPanel);
             ResizeRedraw = true;
             //this.ContextMenuItems = new Dictionary<string, ToolStripMenuItem>();
-            this.EditAction = new DresnClor.EditAction(this.TextArea);
+            this.EditAction = new Actions.EditAction(this.TextArea);
             this.Caret.PositionChanged += this.Caret_PositionChanged;
             Document.UpdateCommited += new EventHandler(CommitUpdateRequested);
             OptionsChanged();
@@ -109,7 +109,7 @@ namespace VCodeEditor
         /// <summary>
         /// 编辑动作
         /// </summary>
-        public DresnClor.EditAction EditAction
+        public EditAction EditAction
         {
             get;
             private set;
@@ -559,7 +559,7 @@ namespace VCodeEditor
         {
             if (disposing)
             {
-                HLManager.Manager.ReloadSyntaxHL -= new EventHandler(ReloadHighlighting);
+                //HLManager.Manager.ReloadSyntaxHL -= new EventHandler(ReloadHighlighting);
                 document.HighlightStyle = null;
                 document.UndoStack.TextEditorControl = null;
                 if (printDocument != null)
@@ -823,12 +823,12 @@ namespace VCodeEditor
         /// <summary>
         /// 新加：代码编辑器扩展
         /// </summary>
-        public DresnClor.IEditorExtsable EditorExts
+        public IEditorExtsable EditorExts
         {
             get => this.editorExts;
             set => this.editorExts = value;
         }
-        private DresnClor.IEditorExtsable editorExts = null;
+        private IEditorExtsable editorExts = null;
 
         /// <summary>
         /// 文本编辑器属性
@@ -1415,6 +1415,7 @@ namespace VCodeEditor
 
         #endregion 公共属性
 
+        /*
         // <summary>
         /// 重新加载高亮
         /// </summary>
@@ -1427,7 +1428,7 @@ namespace VCodeEditor
                 Document.HighlightStyle = HighlightStrategyFactory.CreateHLStrategy(Document.HighlightStyle.Name);
                 OptionsChanged();
             }
-        }
+        }*/
 
         /// <summary>
         /// 获取编辑动作

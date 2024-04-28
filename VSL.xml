@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<VSL name="CSharp" language="C#" extensions=".cs" description="syntaxdefinition for C# 2000 by Mike Krueger" xmlns:ref="http">
+	
+	<Styles>
+		<FontFamily name="" file="" />
+		<FontStyle />
+		<ColorStyle name="Sy" color="#302695EC" bgcolor="#ffff0000" font="" exampleText="；" />
+	</Styles>
+	
+	<Resources>
+		<!--资源-->
+		<Image name="图片名称" path="路径"/>
+		<Font name="必须与字体内标识名称系统" path=""/>
+	</Resources>
+
+	<Environments>
+		<LineNumbers color="#FF2695EC" />
+	</Environments>
+	
+	<Properties>
+		<Property name="" value=""/>
+	</Properties>
+	
+	<Digits name="Digits" ref:color="引用颜色样式" ref:font="引用字体样式" bold="false" italic="false" color="DarkBlue"/>
+	
+	<RuleSets>
+		
+		<RuleSet ignorecase="false" noescapesequences="true" reference="JavaScript">
+			
+			<Delimiters>&amp;&lt;&gt;~!%^*()-+=|\#/{}[]:;"' ,	.?</Delimiters>
+			
+			<Span name = "DocLineComment" rule = "DocCommentSet" bold = "false" italic = "false" color = "Green" stopateol = "true">
+				<Begin bold = "false" italic = "false" color = "Gray">///</Begin>
+			</Span>
+
+			<Span name = "BlockComment" rule = "CommentMarkerSet" bold = "false" italic = "false" color = "Green" stopateol = "false">
+				<Begin>/*</Begin>
+				<End>*/</End>
+			</Span>
+
+			<Span name = "String" bold = "false" italic = "false" color = "Blue" stopateol = "true">
+				<Begin>"</Begin>
+				<End>"</End>
+			</Span>
+
+			<Span name = "MuLineString" bold = "false" italic = "false" color = "Red" stopateol = "true">
+				<Begin>rem</Begin>
+			</Span>
+
+			<Span name = "MultiLineString" bold = "false" italic = "false" color = "Blue" stopateol = "false" noescapesequences="true">
+				<Begin>@@"</Begin>
+				<End>"</End>
+			</Span>
+			
+			<MarkPrevious bold = "true" italic = "false" color = "MidnightBlue">(</MarkPrevious>
+
+			<KeyWords name = "Punctuation" bold = "false" italic = "false" color = "DarkGreen">
+				<word value="?" />
+				<word value="," />
+			</KeyWords>
+
+			<KeyWords name="AccessKeywords" bold="true" italic="false" color="#FF2695EC">
+				<word value = "this" />
+				<word value = "base" />
+			</KeyWords>
+			
+		</RuleSet>
+		
+	</RuleSets>
+	
+</VSL>

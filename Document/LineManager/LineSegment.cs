@@ -94,7 +94,7 @@ namespace VCodeEditor.Document
 		/// </summary>
 		/// <param name="x">列号，从开始，行开始位置计算</param>
 		/// <returns></returns>
-		public HighlightStyle GetColorForPosition(int x)
+		public ColorStyle GetColorForPosition(int x)
 		{
 			if (Words != null) {
 				int xPos = 0;
@@ -105,7 +105,7 @@ namespace VCodeEditor.Document
 					xPos += word.Length;
 				}
 			}
-			return new HighlightStyle(Color.Black, false, false);
+			return new ColorStyle(Color.Black, false, false);
 		}
 		
 		/// <summary>

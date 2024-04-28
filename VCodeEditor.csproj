@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+<PropertyGroup>
+    <TargetFramework>net4.5</TargetFramework>
+	<PlatformTarget>AnyCPU</PlatformTarget>
+	<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+	<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +20,7 @@
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
+	
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +44,13 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
+    <Title>VCodeEditor</Title>
+    <Version>5.0.0.0</Version>
+    <Authors>DresnClor. ICSharpCode team.</Authors>
+    <Description>基于 SharpDevelop-ICSharpCode.TextEditor V3.2.1 二次开发，WinForm代码编辑框控件。</Description>
+    <Copyright>© 2020-2024 DresnClor. ICSharpCode team.</Copyright>
+    <PackageProjectUrl>https://gitee.com/dcosa/VCodeEditor</PackageProjectUrl>
+    <RepositoryUrl>https://gitee.com/dcosa/VCodeEditor</RepositoryUrl>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Community|AnyCPU'">
     <OutputPath>bin\Community\</OutputPath>
@@ -141,45 +157,27 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\ASPX.xshd" />
-    <EmbeddedResource Include="Resources\BAT-Mode.xshd" />
-    <EmbeddedResource Include="Resources\Boo.xshd" />
-    <EmbeddedResource Include="Resources\Coco-Mode.xshd" />
-    <EmbeddedResource Include="Resources\CPP-Mode.xshd" />
-    <EmbeddedResource Include="Resources\CSharp-Mode.xshd" />
-    <EmbeddedResource Include="Resources\HTML-Mode.xshd" />
-    <EmbeddedResource Include="Util\VslEdit.resx">
-      <DependentUpon>VslEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Resources\ICSharpCode.TextEditor.snk" />
-    <EmbeddedResource Include="Resources\Java-Mode.xshd" />
-    <EmbeddedResource Include="Resources\JavaScript-Mode.xshd" />
-    <EmbeddedResource Include="Resources\Mode.xsd">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\PHP-Mode.xshd" />
-    <EmbeddedResource Include="Resources\Tex-Mode.xshd" />
-    <EmbeddedResource Include="Resources\VBNET-Mode.xshd" />
-    <EmbeddedResource Include="Resources\XML-Mode.xshd" />
+    <None Remove="Document\StyleStrategy\HLStrategy\**" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="StyleRes.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>StyleRes.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="Util\VslEdit.resx">
+      <DependentUpon>VslEdit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\BookmarkActions.cs" />
     <Compile Include="Actions\CaretActions.cs" />
     <Compile Include="Actions\ClipBoardActions.cs" />
+    <Compile Include="Actions\EditAction.cs" />
     <Compile Include="Actions\FoldActions.cs" />
     <Compile Include="Actions\FormatActions.cs" />
     <Compile Include="Actions\HomeEndActions.cs" />
     <Compile Include="Actions\IEditAction.cs" />
+    <Compile Include="Actions\IEditorExtsable.cs" />
     <Compile Include="Actions\MiscActions.cs" />
     <Compile Include="Actions\SelectionActions.cs" />
     <Compile Include="Document\AbstractSegment.cs" />
@@ -199,27 +197,23 @@
     <Compile Include="Document\FoldingStrategy\IndentFoldingStrategy.cs" />
     <Compile Include="Document\FormattingStrategy\DefaultFormattingStrategy.cs" />
     <Compile Include="Document\FormattingStrategy\IFormattingStrategy.cs" />
-    <Compile Include="Document\HLStrategy\DefaultHLStrategy.cs" />
-    <Compile Include="Document\HLStrategy\FileHLStrategy.cs" />
-    <Compile Include="Document\HLStrategy\FontContainer.cs" />
-    <Compile Include="Document\HLStrategy\HighlightStyle.cs" />
-    <Compile Include="Document\HLStrategy\HighlightInfo.cs" />
-    <Compile Include="Document\HLStrategy\HighlightBackground.cs" />
-    <Compile Include="Document\HLStrategy\HLColorNotFoundException.cs" />
-    <Compile Include="Document\HLStrategy\HLDefineParser.cs" />
-    <Compile Include="Document\HLStrategy\HLManager.cs" />
-    <Compile Include="Document\HLStrategy\HighlightRuleSet.cs" />
-    <Compile Include="Document\HLStrategy\HighlightStrategyFactory.cs" />
-    <Compile Include="Document\HLStrategy\IStyleStrategy.cs" />
-    <Compile Include="Document\HLStrategy\KeywordCategory.cs" />
-    <Compile Include="Document\HLStrategy\NextMarker.cs" />
-    <Compile Include="Document\HLStrategy\PrevMarker.cs" />
-    <Compile Include="Document\HLStrategy\Span.cs" />
-    <Compile Include="Document\HLStrategy\SyntaxModes\FileSyntaxModeProvider.cs" />
-    <Compile Include="Document\HLStrategy\SyntaxModes\ISyntaxModeFileProvider.cs" />
-    <Compile Include="Document\HLStrategy\SyntaxModes\ResourceSyntaxModeProvider.cs" />
-    <Compile Include="Document\HLStrategy\SyntaxModes\SyntaxMode.cs" />
-    <Compile Include="Document\HLStrategy\TextWord.cs" />
+    <Compile Include="Document\StyleStrategy\DefaultGlobalStyle.cs" />
+    <Compile Include="Document\StyleStrategy\StyleStrategy.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\ColorStyle.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\FontContainer.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\HighlightBackground.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\HighlightInfo.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\HighlightRuleSet.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\HighlightStrategyFactory.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\NextMarker.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\PrevMarker.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\Span.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\TextWord.cs" />
+    <Compile Include="Document\StyleStrategy\StyleElement\WordCategory.cs" />
+    <Compile Include="Document\StyleStrategy\StyleModeProvider.cs" />
+    <Compile Include="Implement\DefaultStyleStrategy.cs" />
+    <Compile Include="Implement\FileStyleStrategy.cs" />
+    <Compile Include="Document\StyleStrategy\IStyleStrategy.cs" />
     <Compile Include="Document\IDocument.cs" />
     <Compile Include="Document\ISegment.cs" />
     <Compile Include="Document\ITextEditorProperties.cs" />
@@ -233,13 +227,12 @@
     <Compile Include="Document\Selection\DefaultSelection.cs" />
     <Compile Include="Document\Selection\ISelection.cs" />
     <Compile Include="Document\Selection\SelectionManager.cs" />
+    <Compile Include="Document\StyleStrategy\IGlobalStyle.cs" />
     <Compile Include="Document\TextBufferStrategy\GapTextBufferStrategy.cs" />
     <Compile Include="Document\TextBufferStrategy\ITextBufferStrategy.cs" />
     <Compile Include="Document\TextBufferStrategy\PieceTableTextBufferStrategy.cs" />
     <Compile Include="Document\TextBufferStrategy\StringTextBufferStrategy.cs" />
     <Compile Include="Document\TextUtilities.cs" />
-    <Compile Include="DresnClor\EditAction.cs" />
-    <Compile Include="DresnClor\IEditorExtsable.cs" />
     <Compile Include="Gui\AbstractMargin.cs" />
     <Compile Include="Gui\BracketHighlighter.cs" />
     <Compile Include="Gui\BreakpointBarMargin.cs" />
@@ -286,18 +279,12 @@
     </Compile>
     <Compile Include="Gui\TextView.cs" />
     <Compile Include="Gui\ToolTipRequestEventArgs.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
     <Compile Include="StyleManager.cs" />
-    <Compile Include="StyleRes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StyleRes.resx</DependentUpon>
-    </Compile>
     <Compile Include="Undo\IUndoableOperation.cs" />
     <Compile Include="Undo\UndoableDelete.cs" />
     <Compile Include="Undo\UndoableInsert.cs" />
@@ -315,14 +302,12 @@
     <Compile Include="Util\TipSplitter.cs" />
     <Compile Include="Util\TipText.cs" />
     <Compile Include="Util\Utils.cs" />
-    <Compile Include="Document\VslParser.cs" />
     <Compile Include="Util\VslEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util\VslEdit.Designer.cs">
       <DependentUpon>VslEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util\Vsl\VslFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="文档信息.txt" />
@@ -336,74 +321,7 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Bookmark.png" />
-    <Content Include="Resources\BookmarkHorizontal.png" />
-    <Content Include="Resources\BreakPoint.png" />
-    <Content Include="Resources\Class.png" />
-    <Content Include="Resources\ClassIcon.png" />
-    <Content Include="Resources\Class_Private.png" />
-    <Content Include="Resources\Class_Protected.png" />
-    <Content Include="Resources\Class_Public.png" />
-    <Content Include="Resources\Clearallrequests.png" />
-    <Content Include="Resources\CodeError.png" />
-    <Content Include="Resources\Const.png" />
-    <Content Include="Resources\Const_Private.png" />
-    <Content Include="Resources\Const_Protected.png" />
-    <Content Include="Resources\Const_Public.png" />
-    <Content Include="Resources\Copy.png" />
-    <Content Include="Resources\Cut.png" />
-    <Content Include="Resources\Enum.png" />
-    <Content Include="Resources\Enum_Private.png" />
-    <Content Include="Resources\Enum_Protected.png" />
-    <Content Include="Resources\Enum_Public.png" />
-    <Content Include="Resources\Event.png" />
-    <Content Include="Resources\Event_Private.png" />
-    <Content Include="Resources\Event_Protected.png" />
-    <Content Include="Resources\Event_Public.png" />
-    <Content Include="Resources\Field.png" />
-    <Content Include="Resources\Field_Private.png" />
-    <Content Include="Resources\Field_Protected.png" />
-    <Content Include="Resources\Field_Public.png" />
-    <Content Include="Resources\FormatWarning.png" />
-    <Content Include="Resources\Function.png" />
-    <Content Include="Resources\Function_Private.png" />
-    <Content Include="Resources\Function_Protect.png" />
-    <Content Include="Resources\Function_Public.png" />
-    <Content Include="Resources\Interface.png" />
-    <Content Include="Resources\Interface_Private.png" />
-    <Content Include="Resources\Interface_Protect.png" />
-    <Content Include="Resources\Interface_Public.png" />
-    <Content Include="Resources\LoadProfilenode.png" />
-    <Content Include="Resources\Module.png" />
-    <Content Include="Resources\Module_Private.png" />
-    <Content Include="Resources\Module_Protected.png" />
-    <Content Include="Resources\Module_Public.png" />
-    <Content Include="Resources\Namespace.png" />
-    <Content Include="Resources\NoEditor.png" />
-    <Content Include="Resources\Package.png" />
-    <Content Include="Resources\PanTool.png" />
-    <Content Include="Resources\Paste.png" />
-    <Content Include="Resources\Pointer.png" />
-    <Content Include="Resources\Property.png" />
-    <Content Include="Resources\Property_Private.png" />
-    <Content Include="Resources\Property_Protected.png" />
-    <Content Include="Resources\Property_Public.png" />
-    <Content Include="Resources\Redo.png" />
-    <Content Include="Resources\Rename.png" />
-    <EmbeddedResource Include="Resources\RightArrow.cur" />
-    <Content Include="Resources\Save.png" />
-    <Content Include="Resources\Struct.png" />
-    <Content Include="Resources\Structure_Protected.png" />
-    <Content Include="Resources\Structure_Public.png" />
-    <Content Include="Resources\Struct_Private.png" />
-    <Content Include="Resources\Sub.png" />
-    <Content Include="Resources\Sub_Private.png" />
-    <Content Include="Resources\Sub_Protected.png" />
-    <Content Include="Resources\Sub_Public.png" />
-    <EmbeddedResource Include="Resources\SyntaxModes.xml" />
-    <Content Include="Resources\TextEditorControl.bmp" />
-    <Content Include="Resources\Undo.png" />
-    <Content Include="Resources\ViewCode.png" />
+    <EmbeddedResource Include="Gui\TextEditorControl.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

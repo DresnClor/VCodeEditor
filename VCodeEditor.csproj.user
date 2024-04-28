@@ -4,4 +4,36 @@
     <StartAction>Program</StartAction>
     <StartProgram>C:\Users\DresnClor\Desktop\XiYuyan\Cao!Yuyan\bin\Debug\XiYuyan.exe</StartProgram>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Gui\CompletionWindow\AbstCompleWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\CompletionWindow\CodeCompleListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Gui\CompletionWindow\CodeCompletionWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\CompletionWindow\DeclarationViewWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\HRuler.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Gui\InsightWindow\InsightWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Gui\TextArea.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Gui\TextAreaControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Gui\TextEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Util\VslEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

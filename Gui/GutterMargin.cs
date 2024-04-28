@@ -73,7 +73,7 @@ namespace VCodeEditor
 			if (rect.Width <= 0 || rect.Height <= 0) {
 				return;
 			}
-			HighlightStyle lineNumberPainterColor = textArea.Document.HighlightStyle.GetStyleFor("LineNumbers");
+			ColorStyle lineNumberPainterColor = textArea.Document.HighlightStyle.GetStyleFor("LineNumbers");
 			int fontHeight = textArea.TextView.FontHeight;
 			Brush fillBrush = textArea.Enabled ? BrushRegistry.GetBrush(lineNumberPainterColor.BackgroundColor) : SystemBrushes.InactiveBorder;
 			Brush drawBrush = BrushRegistry.GetBrush(lineNumberPainterColor.Color);
