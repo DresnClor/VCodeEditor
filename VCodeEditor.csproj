@@ -211,6 +211,9 @@
     <Compile Include="Document\StyleStrategy\StyleElement\TextWord.cs" />
     <Compile Include="Document\StyleStrategy\StyleElement\WordCategory.cs" />
     <Compile Include="Document\StyleStrategy\StyleModeProvider.cs" />
+    <Compile Include="FoldStrategies\CSharpFoldStrategy.cs" />
+    <Compile Include="FoldStrategies\LuaFoldStrategy.cs" />
+    <Compile Include="FoldStrategies\XmlFoldStrategy.cs" />
     <Compile Include="Implement\DefaultStyleStrategy.cs" />
     <Compile Include="Implement\FileStyleStrategy.cs" />
     <Compile Include="Document\StyleStrategy\IStyleStrategy.cs" />

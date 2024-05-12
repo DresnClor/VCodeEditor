@@ -109,7 +109,7 @@ namespace VCodeEditor.Document
 							unableToHit.GetAttribute("image"),
 							unableToHit.GetAttribute("path"));
 				}
-
+				
 				//解析引用高亮文件列表
 				XmlElement syntaxs = root["Syntaxs"];
 				if (syntaxs != null)
@@ -423,9 +423,9 @@ namespace VCodeEditor.Document
 		internal void ResolveReferences()
 		{
 			// Resolve references from Span definitions to RuleSets
-			ResolveRuleSetReferences();
+			this.ResolveRuleSetReferences();
 			// Resolve references from RuleSet defintitions to Highlighters defined in an external mode file
-			ResolveExternalReferences();
+			this.ResolveExternalReferences();
 		}
 
 		void ResolveRuleSetReferences()
@@ -481,6 +481,12 @@ namespace VCodeEditor.Document
 					{
 						ruleSet.Highlighter = this.references[ruleSet.Reference];
 						continue;
+					}
+					else
+					{
+						ruleSet.Highlighter = StyleManager
+							.StyleProvider
+							.GetStyle(ruleSet.Reference);
 					}
 				}
 				ruleSet.Highlighter = this;

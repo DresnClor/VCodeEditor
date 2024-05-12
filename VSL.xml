@@ -20,6 +20,10 @@
 	<Properties>
 		<Property name="" value=""/>
 	</Properties>
+
+	<Syntaxs>
+		<reference name="" file="" />
+	</Syntaxs>
 	
 	<Digits name="Digits" ref:color="引用颜色样式" ref:font="引用字体样式" bold="false" italic="false" color="DarkBlue"/>
 	
